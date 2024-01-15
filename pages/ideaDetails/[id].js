@@ -14,6 +14,33 @@ const StyledArticle = styled.article`
   list-style: none;
   padding: 0;
   margin-top: 1rem;
+
+  flex-direction: column;
+`;
+
+const StyledImage = styled(Image)`
+  border-radius: 0.5rem;
+`;
+
+const StyledContainer = styled.div`
+  display: flex;
+  gap: 1rem;
+`;
+
+const Instruction = styled.ol`
+  padding-left: 1rem;
+`;
+
+const Hashtags = styled.ul`
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+`;
+
+const Items = styled.ul`
+  border: 1px solid black;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
 `;
 
 const defaultIdeas = ideas;
@@ -39,25 +66,32 @@ export default function IdeaDetails() {
       <Header />
       <StyledArticle>
         <h2>{ideaDetails.title}</h2>
-        <Image
-          src={ideaDetails.image}
-          alt={ideaDetails.title}
-          width={150}
-          height={120}
-        />
-        <ol>
+        <StyledContainer>
+          <StyledImage
+            src={ideaDetails.image}
+            alt={ideaDetails.title}
+            width={150}
+            height={120}
+          />
+          <Items>
+            {items.map((item, index) => (
+              <li key={index}>{item}</li>
+            ))}
+          </Items>
+        </StyledContainer>
+        <Instruction>
           {instructions.map((instruction) => (
             <li key={instruction.id}>{instruction.step}</li>
           ))}
-        </ol>
+        </Instruction>
 
-        <ul>
+        <Hashtags>
           {hashtags.map((hashtag, index) => (
             <li key={index}>#{hashtag}</li>
           ))}
-        </ul>
+        </Hashtags>
+        <Link href="/">Go Back</Link>
       </StyledArticle>
-      <Link href="/">Go Back</Link>
     </>
   );
 }
