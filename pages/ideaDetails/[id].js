@@ -16,15 +16,6 @@ const StyledArticle = styled.article`
   margin-top: 1rem;
 `;
 
-const CardListItem = styled.li`
-  flex: 0 0 calc(50% - 1rem);
-  max-width: calc(50% - 1rem);
-  box-sizing: border-box;
-  border: 1px solid black;
-  border-radius: 0.5rem;
-  padding: 1rem;
-`;
-
 const defaultIdeas = ideas;
 
 export default function IdeaDetails() {
