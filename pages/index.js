@@ -1,13 +1,9 @@
-console.clear();
-
 import { useState } from "react";
 import styled from "styled-components";
 
-import { ideas } from "@/lib/db";
+import { ideas as defaultIdeas } from "@/lib/db";
 import Card from "../components/Card";
 import Header from "@/components/Header";
-
-const defaultIdeas = ideas;
 
 const CardContainer = styled.ul`
   display: flex;
