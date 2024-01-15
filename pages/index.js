@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
+import Link from "next/link";
 
 import { ideas as defaultIdeas } from "@/lib/db";
 import Card from "../components/Card";
@@ -37,6 +38,7 @@ export default function HomePage() {
               title={idea.title}
               hashtags={idea.hashtags}
             />
+            <Link href={`/ideaDetails/${idea.id}`}>See More</Link>
           </CardListItem>
         ))}
       </CardList>
