@@ -1,5 +1,6 @@
 import Image from "next/image";
 import styled from "styled-components";
+import { v4 as uuidv4 } from "uuid";
 
 const Article = styled.article`
   display: flex;
@@ -24,8 +25,8 @@ export default function Card({ image, title, hashtags }) {
       <StyledImage src={image} alt={title} width={150} height={120} />
       <h2>{title}</h2>
       <Hashtags>
-        {hashtags.map((hashtag, index) => (
-          <li key={index}>#{hashtag}</li>
+        {hashtags.map((hashtag) => (
+          <li key={uuidv4()}>#{hashtag}</li>
         ))}
       </Hashtags>
     </Article>
