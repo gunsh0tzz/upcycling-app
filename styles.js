@@ -11,18 +11,9 @@ export default createGlobalStyle`
 
   body {
     font-family: system-ui;
-    margin: 1rem 0rem 0rem 1rem;
-  }
-
-  header {
-    margin-bottom: 2rem;
-  }
-
-  ul {
-    list-style-type: none;
-  }
-
-  h1 {
-    text-align: center;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 `;

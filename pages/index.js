@@ -1,21 +1,17 @@
-console.clear();
-
 import { useState } from "react";
 import styled from "styled-components";
 
-import { ideas } from "@/lib/db";
+import { ideas as defaultIdeas } from "@/lib/db";
 import Card from "../components/Card";
 import Header from "@/components/Header";
 
-const defaultIdeas = ideas;
-
-const CardContainer = styled.ul`
+const CardList = styled.ul`
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
-  list-style: none;
+  list-style-type: none;
   padding: 0;
-  margin-top: 1rem;
+  margin: 1rem 0rem 0rem 1rem;
 `;
 
 const CardListItem = styled.li`
@@ -33,7 +29,7 @@ export default function HomePage() {
   return (
     <div>
       <Header />
-      <CardContainer>
+      <CardList>
         {ideas.map((idea) => (
           <CardListItem key={idea.id}>
             <Card
@@ -43,7 +39,7 @@ export default function HomePage() {
             />
           </CardListItem>
         ))}
-      </CardContainer>
+      </CardList>
     </div>
   );
 }
