@@ -17,6 +17,7 @@ const Hashtags = styled.ul`
   display: flex;
   gap: 0.5rem;
   flex-wrap: wrap;
+  list-style-type: none;
 `;
 
 export default function Card({ image, title, hashtags }) {

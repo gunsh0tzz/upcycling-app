@@ -9,9 +9,9 @@ const CardList = styled.ul`
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
-  list-style: none;
+  list-style-type: none;
   padding: 0;
-  margin-top: 1rem;
+  margin: 1rem 0rem 0rem 1rem;
 `;
 
 const CardListItem = styled.li`
