@@ -5,7 +5,7 @@ import { ideas as defaultIdeas } from "@/lib/db";
 import Card from "../components/Card";
 import Header from "@/components/Header";
 
-const CardContainer = styled.ul`
+const CardList = styled.ul`
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
@@ -29,7 +29,7 @@ export default function HomePage() {
   return (
     <div>
       <Header />
-      <CardContainer>
+      <CardList>
         {ideas.map((idea) => (
           <CardListItem key={idea.id}>
             <Card
@@ -39,7 +39,7 @@ export default function HomePage() {
             />
           </CardListItem>
         ))}
-      </CardContainer>
+      </CardList>
     </div>
   );
 }
