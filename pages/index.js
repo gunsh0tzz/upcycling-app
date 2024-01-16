@@ -42,6 +42,7 @@ export default function HomePage() {
           </CardListItem>
         ))}
       </CardList>
+      <Link href="/create">Add a new Idea</Link>
     </div>
   );
 }
