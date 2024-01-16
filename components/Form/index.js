@@ -1,6 +1,28 @@
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
+import styled from "styled-components";
+
+const StyledForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+`;
+
+const StyledUnorderedList = styled.ul`
+  margin-left: 1rem;
+  list-style: none;
+`;
+
+const ButtonContainer = styled.div`
+  display: flex;
+  gap: 1rem;
+`;
+
+const StyledButton = styled.button`
+  flex: 1;
+`;
 
 export default function Form({ onSubmit }) {
   const [instructions, setInstructions] = useState([
@@ -53,39 +75,63 @@ export default function Form({ onSubmit }) {
   }
 
   console.log(instructions);
-  return (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="title">title:</label>
-      <input id="title" name="title" />
-      <label htmlFor="image">image:</label>
-      <input id="image" name="image" />
-      <label htmlFor="items">items:</label>
-      <input id="items" name="items" />
-      <label htmlFor="instructions">instructions:</label>
 
-      {instructions.map((instruction) => (
-        <div key={instruction.id}>
-          <input
-            type="text"
-            value={instruction.step || ""}
-            onChange={(e) =>
-              handleInstructionChange(instruction.id, e.target.value)
-            }
-          />
-          <button type="button" onClick={() => handleAddInstruction()}>
-            +
-          </button>
-          <button
-            type="button"
-            onClick={() => handleRemoveInstruction(instruction.id)}
-          >
-            x
-          </button>
-        </div>
-      ))}
-      <label htmlFor="hashtags">hashtags:</label>
-      <input id="hastags" name="hashtags" />
-      <button>add</button>
-    </form>
+  function handleCancel() {
+    const isConfirmed = window.confirm("Are you sure?");
+    if (isConfirmed) {
+      router.push("/");
+    }
+  }
+
+  return (
+    <>
+      <StyledForm onSubmit={handleSubmit}>
+        <label htmlFor="title">title:</label>
+        <input id="title" name="title" />
+        <label htmlFor="image">image url:</label>
+        <input id="image" name="image" />
+        <label htmlFor="items">items:</label>
+        <input id="items" name="items" placeholder="item, item, item" />
+        <label htmlFor="instructions">instructions:</label>
+
+        {instructions.map((instruction, index) => (
+          <div key={instruction.id}>
+            <StyledUnorderedList>
+              <li>
+                <span>{index + 1}. </span>
+                <input
+                  type="text"
+                  value={instruction.step || ""}
+                  onChange={(e) =>
+                    handleInstructionChange(instruction.id, e.target.value)
+                  }
+                />
+                <button type="button" onClick={() => handleAddInstruction()}>
+                  +
+                </button>
+                <button
+                  type="button"
+                  onClick={() => handleRemoveInstruction(instruction.id)}
+                >
+                  x
+                </button>
+              </li>
+            </StyledUnorderedList>
+          </div>
+        ))}
+        <label htmlFor="hashtags">hashtags:</label>
+        <input
+          id="hastags"
+          name="hashtags"
+          placeholder="hashtag, hashtag, hashtag"
+        />
+        <ButtonContainer>
+          <StyledButton>add</StyledButton>
+        </ButtonContainer>
+      </StyledForm>
+      <ButtonContainer>
+        <StyledButton onClick={handleCancel}>Cancel</StyledButton>
+      </ButtonContainer>
+    </>
   );
 }
