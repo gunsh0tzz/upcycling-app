@@ -45,14 +45,13 @@ const Items = styled.ul`
   padding: 0.5rem;
 `;
 
-export default function IdeaDetails({ideas}) {
- 
+export default function IdeaDetails({ ideas }) {
   const router = useRouter();
 
   const { id } = router.query;
 
   const ideaDetails = ideas.find((idea) => idea.id === id);
-console.log (ideaDetails);
+
   if (!ideaDetails) {
     return <h2>Loading...</h2>;
   }
