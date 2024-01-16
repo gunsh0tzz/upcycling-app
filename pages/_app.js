@@ -1,6 +1,7 @@
 import GlobalStyle from "../styles";
 import { ideas as defaultIdeas } from "@/lib/db";
 import { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 
 export default function App({ Component, pageProps }) {

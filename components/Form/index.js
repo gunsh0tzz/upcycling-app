@@ -1,5 +1,7 @@
-export default function Form ({onSubmit}) {
+import { useRouter } from "next/router";
 
+export default function Form ({onSubmit}) {
+const router = useRouter();
     function handleSubmit(event){
         event.preventDefault();
     const data = Object.fromEntries(new FormData(event.target));
@@ -9,10 +11,11 @@ export default function Form ({onSubmit}) {
     data.instructions = data.instructions.split(",").map((item) => item.trim());
 
     onSubmit(data);
-
+    window.alert("Your new idea has been added!");
     const form = event.target.elements;
     event.target.reset();
     form.title.focus();
+    router.push("/");
     }
 return(
     <form onSubmit={handleSubmit}>
