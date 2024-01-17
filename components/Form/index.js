@@ -83,9 +83,10 @@ export default function Form({ idea = {}, onSubmit }) {
 
   return (
     <>
+      <h2>{router.query.id ? "update idea" : "add a new idea"}</h2>
       <StyledForm onSubmit={handleSubmit}>
         <label htmlFor="title">title:</label>
-        <input id="title" name="title" defaultValue={idea.title} />
+        <input id="title" name="title" defaultValue={idea.title} required />
         <label htmlFor="image">image url:</label>
         <input id="image" name="image" defaultValue={idea.image} />
         <label htmlFor="items">items:</label>
@@ -94,6 +95,8 @@ export default function Form({ idea = {}, onSubmit }) {
           name="items"
           placeholder="item, item, item"
           defaultValue={idea.items}
+          minLength={1}
+          maxLength={150}
         />
         <label htmlFor="instructions">instructions:</label>
 
@@ -109,6 +112,9 @@ export default function Form({ idea = {}, onSubmit }) {
                   onChange={(e) =>
                     handleInstructionChange(instruction.id, e.target.value)
                   }
+                  required
+                  minLength={1}
+                  maxLength={150}
                 />
                 <button type="button" onClick={() => handleAddInstruction()}>
                   +
@@ -129,9 +135,11 @@ export default function Form({ idea = {}, onSubmit }) {
           name="hashtags"
           placeholder="hashtag, hashtag, hashtag"
           defaultValue={idea.hashtags}
+          minLength={1}
+          maxLength={150}
         />
         <ButtonContainer>
-          <StyledButton>add</StyledButton>
+          <StyledButton>{router.query.id ? "save" : "add"}</StyledButton>
         </ButtonContainer>
       </StyledForm>
       <ButtonContainer>
