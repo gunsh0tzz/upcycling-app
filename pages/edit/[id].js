@@ -5,33 +5,20 @@ import Header from "@/components/Header";
 import { useEffect, useState } from "react";
 import useSWR from "swr";
 
-export default function EditIdeas({ ideas }) {
+export default function EditIdeas({ ideas, editIdea }) {
   const router = useRouter();
   const { id } = router.query;
   const ideaToEdit = ideas.find((idea) => idea.id === id);
 
-  function handleEdit(event) {
-    event.preventDefault();
-    const formData = new FormData(event.target);
-    const data = Object.fromEntries(formData);
-
-    onEdit(updatedIdeas, id);
-    router.push(`/${id}`);
-  }
-
-  function prepareFormData(data) {
-    const updatedIdeas = {
-      id: id,
-      title: data.title,
-      image: data.image,
-    };
-    router.push(`/${id}`);
+  function handleEdit(updatedIdea) {
+    editIdea(updatedIdea);
+    router.push("/");
   }
 
   return (
     <>
       <Header />
-      <Form idea={ideaToEdit} onSubmit={handleEdit} isEdit={true} />
+      <Form idea={ideaToEdit} onSubmit={handleEdit} />
     </>
   );
 }

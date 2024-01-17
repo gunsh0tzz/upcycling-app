@@ -25,9 +25,9 @@ const StyledButton = styled.button`
 `;
 
 export default function Form({ idea = {}, onSubmit }) {
-  const [instructions, setInstructions] = useState([
-    { id: uuidv4(), value: "" },
-  ]);
+  const [instructions, setInstructions] = useState(
+    idea.instructions ? idea.instructions : [{ id: uuidv4(), value: "" }]
+  );
   const router = useRouter();
 
   function handleInstructionChange(id, value) {
@@ -66,15 +66,14 @@ export default function Form({ idea = {}, onSubmit }) {
         step: instruction.step.trim(),
       }));
 
-    onSubmit(data);
+    // onSubmit(data);
+    onSubmit({ ...idea, ...data });
     window.alert("Your new idea has been added!");
     const form = event.target.elements;
     event.target.reset();
     form.title.focus();
     router.push("/");
   }
-
-  console.log(instructions);
 
   function handleCancel() {
     const isConfirmed = window.confirm("Are you sure?");
@@ -83,6 +82,15 @@ export default function Form({ idea = {}, onSubmit }) {
     }
   }
 
+  // const ideaWithDefaults = {
+  //   title: "",
+  //   image: "",
+  //   items: "",
+  //   instructions: [],
+  //   hashtags: "",
+  //
+  // };
+  console.log(instructions);
   return (
     <>
       <StyledForm onSubmit={handleSubmit}>
