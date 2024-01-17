@@ -45,7 +45,12 @@ const Items = styled.ul`
   padding: 0.5rem;
 `;
 
-export default function IdeaDetails({ ideas }) {
+const StyledButton = styled.button`
+  width: fit-content;
+  padding: 0.5rem;
+`;
+
+export default function IdeaDetails({ ideas, onDelete }) {
   const router = useRouter();
 
   const { id } = router.query;
@@ -89,6 +94,9 @@ export default function IdeaDetails({ ideas }) {
         </Hashtags>
         <Link href="/">Go Back</Link>
         <Link href={`/edit/${ideaDetails.id}`}>Edit</Link>
+        <StyledButton onClick={() => onDelete({ id })}>
+          Delete Idea
+        </StyledButton>
       </StyledArticle>
     </>
   );
