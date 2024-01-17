@@ -24,7 +24,7 @@ const StyledButton = styled.button`
   flex: 1;
 `;
 
-export default function Form({ onSubmit }) {
+export default function Form({ idea = {}, onSubmit }) {
   const [instructions, setInstructions] = useState([
     { id: uuidv4(), value: "" },
   ]);
@@ -87,11 +87,16 @@ export default function Form({ onSubmit }) {
     <>
       <StyledForm onSubmit={handleSubmit}>
         <label htmlFor="title">title:</label>
-        <input id="title" name="title" />
+        <input id="title" name="title" defaultValue={idea.title} />
         <label htmlFor="image">image url:</label>
-        <input id="image" name="image" />
+        <input id="image" name="image" defaultValue={idea.image} />
         <label htmlFor="items">items:</label>
-        <input id="items" name="items" placeholder="item, item, item" />
+        <input
+          id="items"
+          name="items"
+          placeholder="item, item, item"
+          defaultValue={idea.items}
+        />
         <label htmlFor="instructions">instructions:</label>
 
         {instructions.map((instruction, index) => (
@@ -124,6 +129,7 @@ export default function Form({ onSubmit }) {
           id="hastags"
           name="hashtags"
           placeholder="hashtag, hashtag, hashtag"
+          defaultValue={idea.hashtags}
         />
         <ButtonContainer>
           <StyledButton>add</StyledButton>
