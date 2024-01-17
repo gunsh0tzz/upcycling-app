@@ -45,8 +45,7 @@ const Items = styled.ul`
   padding: 0.5rem;
 `;
 
-export default function IdeaDetails() {
-  const [ideas, setIdeas] = useState(defaultIdeas);
+export default function IdeaDetails({ ideas }) {
   const router = useRouter();
 
   const { id } = router.query;

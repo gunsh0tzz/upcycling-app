@@ -1,8 +1,8 @@
-import { useState } from "react";
+
 import styled from "styled-components";
 import Link from "next/link";
 
-import { ideas as defaultIdeas } from "@/lib/db";
+
 import Card from "../components/Card";
 import Header from "@/components/Header";
 
@@ -24,8 +24,8 @@ const CardListItem = styled.li`
   padding: 1rem;
 `;
 
-export default function HomePage() {
-  const [ideas, setIdeas] = useState(defaultIdeas);
+export default function HomePage({ideas}) {
+
 
   return (
     <div>
@@ -42,6 +42,7 @@ export default function HomePage() {
           </CardListItem>
         ))}
       </CardList>
+      <Link href="/create">Add a new Idea</Link>
     </div>
   );
 }
