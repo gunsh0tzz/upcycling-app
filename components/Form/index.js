@@ -24,10 +24,10 @@ const StyledButton = styled.button`
   flex: 1;
 `;
 
-export default function Form({ onSubmit }) {
-  const [instructions, setInstructions] = useState([
-    { id: uuidv4(), value: "" },
-  ]);
+export default function Form({ idea = {}, onSubmit }) {
+  const [instructions, setInstructions] = useState(
+    idea.instructions ? idea.instructions : [{ id: uuidv4(), value: "" }]
+  );
   const router = useRouter();
 
   function handleInstructionChange(id, value) {
@@ -66,15 +66,13 @@ export default function Form({ onSubmit }) {
         step: instruction.step.trim(),
       }));
 
-    onSubmit(data);
+    onSubmit({ ...idea, ...data });
     window.alert("Your new idea has been added!");
     const form = event.target.elements;
     event.target.reset();
     form.title.focus();
     router.push("/");
   }
-
-  console.log(instructions);
 
   function handleCancel() {
     const isConfirmed = window.confirm("Are you sure?");
@@ -85,13 +83,21 @@ export default function Form({ onSubmit }) {
 
   return (
     <>
+      <h2>{router.query.id ? "update idea" : "add a new idea"}</h2>
       <StyledForm onSubmit={handleSubmit}>
         <label htmlFor="title">title:</label>
-        <input id="title" name="title" />
+        <input id="title" name="title" defaultValue={idea.title} required />
         <label htmlFor="image">image url:</label>
-        <input id="image" name="image" />
+        <input id="image" name="image" defaultValue={idea.image} />
         <label htmlFor="items">items:</label>
-        <input id="items" name="items" placeholder="item, item, item" />
+        <textarea
+          as="input"
+          name="items"
+          placeholder="item, item, item"
+          defaultValue={idea.items}
+          minLength={1}
+          maxLength={150}
+        />
         <label htmlFor="instructions">instructions:</label>
 
         {instructions.map((instruction, index) => (
@@ -99,12 +105,16 @@ export default function Form({ onSubmit }) {
             <StyledUnorderedList>
               <li>
                 <span>{index + 1}. </span>
-                <input
+                <textarea
+                  as="input"
                   type="text"
                   value={instruction.step || ""}
                   onChange={(e) =>
                     handleInstructionChange(instruction.id, e.target.value)
                   }
+                  required
+                  minLength={1}
+                  maxLength={150}
                 />
                 <button type="button" onClick={() => handleAddInstruction()}>
                   +
@@ -120,13 +130,16 @@ export default function Form({ onSubmit }) {
           </div>
         ))}
         <label htmlFor="hashtags">hashtags:</label>
-        <input
-          id="hastags"
+        <textarea
+          as="input"
           name="hashtags"
           placeholder="hashtag, hashtag, hashtag"
+          defaultValue={idea.hashtags}
+          minLength={1}
+          maxLength={150}
         />
         <ButtonContainer>
-          <StyledButton>add</StyledButton>
+          <StyledButton>{router.query.id ? "save" : "add"}</StyledButton>
         </ButtonContainer>
       </StyledForm>
       <ButtonContainer>

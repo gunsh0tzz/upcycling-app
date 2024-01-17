@@ -88,6 +88,7 @@ export default function IdeaDetails({ ideas }) {
           ))}
         </Hashtags>
         <Link href="/">Go Back</Link>
+        <Link href={`/edit/${ideaDetails.id}`}>Edit</Link>
       </StyledArticle>
     </>
   );
