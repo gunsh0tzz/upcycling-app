@@ -1,5 +1,4 @@
 import Form from "@/components/Form"
-import Header from "@/components/Header"
 
 
 export default function Create ({addIdea}){
@@ -7,7 +6,6 @@ export default function Create ({addIdea}){
         addIdea(newIdea);
       }
 return (<>
-<Header/>
 <Form onSubmit={handleSubmit}/>
 
 </>) 

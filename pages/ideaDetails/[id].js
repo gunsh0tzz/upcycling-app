@@ -1,11 +1,8 @@
-import Header from "@/components/Header";
+
 import Image from "next/image";
 import Link from "next/link";
 import styled from "styled-components";
-
 import { v4 as uuidv4 } from "uuid";
-import { ideas as defaultIdeas } from "@/lib/db";
-import { useState } from "react";
 import { useRouter } from "next/router.js";
 
 const StyledArticle = styled.article`
@@ -65,7 +62,6 @@ export default function IdeaDetails({ ideas, onDelete }) {
 
   return (
     <>
-      <Header />
       <StyledArticle>
         <h2>{ideaDetails.title}</h2>
         <StyledContainer>

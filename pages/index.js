@@ -4,7 +4,7 @@ import Link from "next/link";
 
 
 import Card from "../components/Card";
-import Header from "@/components/Header";
+
 
 const CardList = styled.ul`
   display: flex;
@@ -29,7 +29,6 @@ export default function HomePage({ideas}) {
 
   return (
     <div>
-      <Header />
       <CardList>
         {ideas.map((idea) => (
           <CardListItem key={idea.id}>
