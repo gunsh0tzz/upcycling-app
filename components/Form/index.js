@@ -66,7 +66,6 @@ export default function Form({ idea = {}, onSubmit }) {
         step: instruction.step.trim(),
       }));
 
-    // onSubmit(data);
     onSubmit({ ...idea, ...data });
     window.alert("Your new idea has been added!");
     const form = event.target.elements;
@@ -82,15 +81,6 @@ export default function Form({ idea = {}, onSubmit }) {
     }
   }
 
-  // const ideaWithDefaults = {
-  //   title: "",
-  //   image: "",
-  //   items: "",
-  //   instructions: [],
-  //   hashtags: "",
-  //
-  // };
-  console.log(instructions);
   return (
     <>
       <StyledForm onSubmit={handleSubmit}>
@@ -99,8 +89,8 @@ export default function Form({ idea = {}, onSubmit }) {
         <label htmlFor="image">image url:</label>
         <input id="image" name="image" defaultValue={idea.image} />
         <label htmlFor="items">items:</label>
-        <input
-          id="items"
+        <textarea
+          as="input"
           name="items"
           placeholder="item, item, item"
           defaultValue={idea.items}
@@ -112,7 +102,8 @@ export default function Form({ idea = {}, onSubmit }) {
             <StyledUnorderedList>
               <li>
                 <span>{index + 1}. </span>
-                <input
+                <textarea
+                  as="input"
                   type="text"
                   value={instruction.step || ""}
                   onChange={(e) =>
@@ -133,8 +124,8 @@ export default function Form({ idea = {}, onSubmit }) {
           </div>
         ))}
         <label htmlFor="hashtags">hashtags:</label>
-        <input
-          id="hastags"
+        <textarea
+          as="input"
           name="hashtags"
           placeholder="hashtag, hashtag, hashtag"
           defaultValue={idea.hashtags}
