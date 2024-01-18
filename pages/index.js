@@ -21,11 +21,23 @@ const CardListItem = styled.li`
   padding: 1rem;
 `;
 
-export default function HomePage({ ideas, onToggleFavourites,favouriteIdeas }) {
-  console.log(favouriteIdeas)
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: black;
+
+  &:hover {
+    text-decoration: underline;
+  }
+`;
+
+export default function HomePage({
+  ideas,
+  onToggleFavourites,
+  favouriteIdeas,
+}) {
+  console.log(favouriteIdeas);
   return (
     <div>
-      <Link href={`/favourites`}>Favourites</Link>
       <CardList>
         {ideas.map((idea) => (
           <CardListItem key={idea.id}>
@@ -33,11 +45,11 @@ export default function HomePage({ ideas, onToggleFavourites,favouriteIdeas }) {
               image={idea.image}
               title={idea.title}
               hashtags={idea.hashtags}
-            onToggleFavourites={onToggleFavourites}
-            isFavourite={idea.isFavourite}
-            id={idea.id}
+              onToggleFavourites={onToggleFavourites}
+              isFavourite={idea.isFavourite}
+              id={idea.id}
             />
-            <Link href={`/ideaDetails/${idea.id}`}>See More</Link>
+            <StyledLink href={`/ideaDetails/${idea.id}`}>See More</StyledLink>
           </CardListItem>
         ))}
       </CardList>

@@ -2,14 +2,14 @@ import Link from "next/link";
 import styled from "styled-components";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHouse, faPlus } from "@fortawesome/free-solid-svg-icons";
+import { faHouse, faPlus, faHeart } from "@fortawesome/free-solid-svg-icons";
 
 const StyledNavigation = styled.nav`
   position: fixed;
   bottom: 0;
   width: 100%;
   border-top: 1px solid black;
-background-color: white;
+  background-color: white;
 `;
 
 const StyledUnorderedList = styled.ul`
@@ -47,6 +47,11 @@ export default function Navigation() {
         <StyledListItem>
           <StyledLink href="/create">
             <StyledIcon icon={faPlus} />
+          </StyledLink>
+        </StyledListItem>
+        <StyledListItem>
+          <StyledLink href="/favourites">
+            <StyledIcon icon={faHeart} />
           </StyledLink>
         </StyledListItem>
       </StyledUnorderedList>
