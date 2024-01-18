@@ -35,7 +35,6 @@ export default function HomePage({
   onToggleFavourites,
   favouriteIdeas,
 }) {
-  console.log(favouriteIdeas);
   return (
     <div>
       <CardList>

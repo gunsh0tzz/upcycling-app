@@ -7,8 +7,9 @@ import { useRouter } from "next/router";
 import useLocalStorageState from "use-local-storage-state";
 
 export default function App({ Component, pageProps }) {
-
-  const [ideas, setIdeas] = useLocalStorageState("ideas", { defaultValue: defaultIdeas });
+  const [ideas, setIdeas] = useLocalStorageState("ideas", {
+    defaultValue: defaultIdeas,
+  });
 
   const router = useRouter();
 
@@ -32,29 +33,27 @@ export default function App({ Component, pageProps }) {
     }
   }
 
-function handleToggleFavourites({ id }) {
-  setIdeas(
-    ideas.map((idea) =>
-      idea.id === id ? { ...idea, isFavourite: !idea.isFavourite } : idea
-    )
-  )}
-
-
-
+  function handleToggleFavourites(id) {
+    setIdeas(
+      ideas.map((idea) =>
+        idea.id === id ? { ...idea, isFavourite: !idea.isFavourite } : idea
+      )
+    );
+  }
 
   return (
     <>
-    <Layout>
-      <GlobalStyle />
+      <Layout>
+        <GlobalStyle />
 
-      <Component
-  {...pageProps}
-  ideas={ideas}
-  addIdea={addIdea}
-  editIdea={editIdea}
-  onDelete={handleDelete}
-  onToggleFavourites={handleToggleFavourites}
-/>
+        <Component
+          {...pageProps}
+          ideas={ideas}
+          addIdea={addIdea}
+          editIdea={editIdea}
+          onDelete={handleDelete}
+          onToggleFavourites={handleToggleFavourites}
+        />
       </Layout>
     </>
   );

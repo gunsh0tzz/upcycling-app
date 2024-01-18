@@ -54,12 +54,8 @@ export default function Card({
 }) {
   return (
     <Article>
-      <FavoriteButton onClick={() => onToggleFavourites({ id })}>
-        {isFavourite ? (
-          <StyledIcon icon={solidHeart} />
-        ) : (
-          <StyledIcon icon={regularHeart} />
-        )}
+      <FavoriteButton onClick={() => onToggleFavourites(id)}>
+        <StyledIcon icon={isFavourite ? solidHeart : regularHeart} />
       </FavoriteButton>
       <StyledImage src={image} alt={title} width={150} height={120} />
       <h2>{title}</h2>
