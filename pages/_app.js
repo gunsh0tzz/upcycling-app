@@ -30,6 +30,16 @@ export default function App({ Component, pageProps }) {
     }
   }
 
+function handleToggleFavourites({ id }) {
+  setIdeas(
+    ideas.map((idea) =>
+      idea.id === id ? { ...idea, isFavourite: !idea.isFavourite } : idea
+    )
+  )}
+
+  const favouriteIdeas = ideas.filter((idea)=> idea.isFavourite);
+
+
   return (
     <>
     <Layout>
@@ -40,6 +50,11 @@ export default function App({ Component, pageProps }) {
         addIdea={addIdea}
         editIdea={editIdea}
         onDelete={handleDelete}
+        onToggleFavourites={handleToggleFavourites}
+        favouriteIdeas={favouriteIdeas}
+        id={ideas.id}
+        isFavourite={ideas.isFavourite}
+
       />
       </Layout>
     </>

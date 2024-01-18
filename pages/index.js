@@ -21,7 +21,7 @@ const CardListItem = styled.li`
   padding: 1rem;
 `;
 
-export default function HomePage({ ideas }) {
+export default function HomePage({ ideas, onToggleFavourites }) {
   return (
     <div>
       <CardList>
@@ -31,6 +31,9 @@ export default function HomePage({ ideas }) {
               image={idea.image}
               title={idea.title}
               hashtags={idea.hashtags}
+            onToggleFavourites={onToggleFavourites}
+            isFavourite={idea.isFavourite}
+            id={idea.id}
             />
             <Link href={`/ideaDetails/${idea.id}`}>See More</Link>
           </CardListItem>

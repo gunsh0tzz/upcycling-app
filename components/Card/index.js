@@ -1,6 +1,8 @@
 import Image from "next/image";
 import styled from "styled-components";
 import { v4 as uuidv4 } from "uuid";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {faHeart } from "@fortawesome/free-solid-svg-icons";
 
 const Article = styled.article`
   display: flex;
@@ -20,9 +22,17 @@ const Hashtags = styled.ul`
   list-style-type: none;
 `;
 
-export default function Card({ image, title, hashtags }) {
+const StyledIcon = styled(FontAwesomeIcon)`
+  color: black;
+`;
+
+
+export default function Card({ image, title, hashtags, onToggleFavourites, id, isFavourite }) {
   return (
     <Article>
+      <button onClick={()=>onToggleFavourites({id})}>
+      {isFavourite?<StyledIcon icon={faHeart} />:"🤍"}
+      </button>
       <StyledImage src={image} alt={title} width={150} height={120} />
       <h2>{title}</h2>
       <Hashtags>
