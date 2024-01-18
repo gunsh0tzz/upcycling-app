@@ -8,7 +8,7 @@ const StyledHeader = styled.header`
 export default function Header() {
   return (
     <StyledHeader>
-      <h1>Upcycling App</h1>
+      <h1>Reuse</h1>
     </StyledHeader>
   );
 }

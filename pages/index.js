@@ -1,10 +1,7 @@
-
 import styled from "styled-components";
 import Link from "next/link";
 
-
 import Card from "../components/Card";
-import Header from "@/components/Header";
 
 const CardList = styled.ul`
   display: flex;
@@ -24,12 +21,9 @@ const CardListItem = styled.li`
   padding: 1rem;
 `;
 
-export default function HomePage({ideas}) {
-
-
+export default function HomePage({ ideas }) {
   return (
     <div>
-      <Header />
       <CardList>
         {ideas.map((idea) => (
           <CardListItem key={idea.id}>
@@ -42,7 +36,6 @@ export default function HomePage({ideas}) {
           </CardListItem>
         ))}
       </CardList>
-      <Link href="/create">Add a new Idea</Link>
     </div>
   );
 }

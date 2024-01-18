@@ -1,4 +1,5 @@
 import GlobalStyle from "../styles";
+import Layout from "@/components/layout";
 import { ideas as defaultIdeas } from "@/lib/db";
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
@@ -31,6 +32,7 @@ export default function App({ Component, pageProps }) {
 
   return (
     <>
+    <Layout>
       <GlobalStyle />
       <Component
         {...pageProps}
@@ -39,6 +41,7 @@ export default function App({ Component, pageProps }) {
         editIdea={editIdea}
         onDelete={handleDelete}
       />
+      </Layout>
     </>
   );
 }
