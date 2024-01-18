@@ -11,9 +11,5 @@ export default createGlobalStyle`
 
   body {
     font-family: system-ui;
-    
-    display: flex;
-    justify-content: center;
-    align-items: center;
   }
 `;
