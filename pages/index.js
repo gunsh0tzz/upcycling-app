@@ -21,7 +21,8 @@ const CardListItem = styled.li`
   padding: 1rem;
 `;
 
-export default function HomePage({ ideas, onToggleFavourites }) {
+export default function HomePage({ ideas, onToggleFavourites,favouriteIdeas }) {
+  console.log(favouriteIdeas)
   return (
     <div>
       <CardList>

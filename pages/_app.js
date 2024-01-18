@@ -37,7 +37,7 @@ function handleToggleFavourites({ id }) {
     )
   )}
 
-  const favouriteIdeas = ideas.filter((idea)=> idea.isFavourite);
+
 
 
   return (
@@ -51,7 +51,6 @@ function handleToggleFavourites({ id }) {
         editIdea={editIdea}
         onDelete={handleDelete}
         onToggleFavourites={handleToggleFavourites}
-        favouriteIdeas={favouriteIdeas}
         id={ideas.id}
         isFavourite={ideas.isFavourite}
 
