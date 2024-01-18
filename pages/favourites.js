@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import Link from "next/link";
-
-import Card from "../components/Card";
+import Card from "@/components/Card";
 
 const CardList = styled.ul`
   display: flex;
@@ -21,24 +20,13 @@ const CardListItem = styled.li`
   padding: 1rem;
 `;
 
-const StyledLink = styled(Link)`
-  text-decoration: none;
-  color: black;
+export default function FavouritePage({ ideas, onToggleFavourites }) {
+  const favouriteIdeas = ideas.filter((idea) => idea.isFavourite);
 
-  &:hover {
-    text-decoration: underline;
-  }
-`;
-
-export default function HomePage({
-  ideas,
-  onToggleFavourites,
-  favouriteIdeas,
-}) {
   return (
     <div>
       <CardList>
-        {ideas.map((idea) => (
+        {favouriteIdeas.map((idea) => (
           <CardListItem key={idea.id}>
             <Card
               image={idea.image}
@@ -48,7 +36,7 @@ export default function HomePage({
               isFavourite={idea.isFavourite}
               id={idea.id}
             />
-            <StyledLink href={`/ideaDetails/${idea.id}`}>See More</StyledLink>
+            <Link href={`/ideaDetails/${idea.id}`}>See More</Link>
           </CardListItem>
         ))}
       </CardList>
