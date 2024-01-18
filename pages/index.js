@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Link from "next/link";
 
 import Card from "../components/Card";
+import Searchbar from "@/components/Searchbar";
 
 const CardList = styled.ul`
   display: flex;
@@ -37,6 +38,7 @@ export default function HomePage({
 }) {
   return (
     <div>
+      <Searchbar />
       <CardList>
         {ideas.map((idea) => (
           <CardListItem key={idea.id}>
