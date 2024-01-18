@@ -25,6 +25,7 @@ export default function HomePage({ ideas, onToggleFavourites,favouriteIdeas }) {
   console.log(favouriteIdeas)
   return (
     <div>
+      <Link href={`/favourites`}>Favourites</Link>
       <CardList>
         {ideas.map((idea) => (
           <CardListItem key={idea.id}>

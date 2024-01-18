@@ -21,25 +21,27 @@ import Card from "@/components/Card";
       padding: 1rem;
     `;
     
-    export default function FavouritePage ({ ideas ,onToggleFavourites}){
+    export default function FavouritePage({ ideas, onToggleFavourites }) {
         const favouriteIdeas = ideas.filter((idea) => idea.isFavourite);
+      
         return (
-        <div>
-          <CardList>
-            {favouriteIdeas.map((idea) => (
-              <CardListItem key={idea.id}>
-                <Card
-                  image={idea.image}
-                  title={idea.title}
-                  hashtags={idea.hashtags}
-                onToggleFavourites={onToggleFavourites}
-                isFavourite={idea.isFavourite}
-                id={idea.id}
-                />
-                <Link href={`/ideaDetails/${idea.id}`}>See More</Link>
-              </CardListItem>
-            ))}
-          </CardList>
-        </div>
-      );
-    }
+          <div>
+            <Link href={`/`}>Back</Link>
+            <CardList>
+              {favouriteIdeas.map((idea) => (
+                <CardListItem key={idea.id}>
+                  <Card
+                    image={idea.image}
+                    title={idea.title}
+                    hashtags={idea.hashtags}
+                    onToggleFavourites={onToggleFavourites}
+                    isFavourite={idea.isFavourite}
+                    id={idea.id}
+                  />
+                  <Link href={`/ideaDetails/${idea.id}`}>See More</Link>
+                </CardListItem>
+              ))}
+            </CardList>
+          </div>
+        );
+      }
