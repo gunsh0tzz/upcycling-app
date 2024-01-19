@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Fuse from "fuse.js";
 
 import Card from "../components/Card";
@@ -41,7 +41,9 @@ export default function HomePage({
   favouriteIdeas,
 }) {
   const [suggestions, setSuggestions] = useState([]);
-  const [searchResults, setSearchResults] = useState([]);
+  const [searchResults, setSearchResults] = useState(
+    ideas.map((idea) => ({ item: idea }))
+  );
   const [searchValue, setSearchValue] = useState("");
 
   const fuse = new Fuse(defaultIdeas, {
@@ -57,8 +59,6 @@ export default function HomePage({
     setSuggestions(fuse.search(item));
   }
 
-  // handleInputChange("");
-
   return (
     <div>
       <Searchbar
@@ -69,37 +69,6 @@ export default function HomePage({
         setSearchValue={setSearchValue}
       />
       <CardList>
-        {searchResults.length > 0 && searchValue
-          ? searchResults.map((searchResult) => (
-              <CardListItem key={searchResult.item.id}>
-                <Card
-                  image={searchResult.item.image}
-                  title={searchResult.item.title}
-                  hashtags={searchResult.item.hashtags}
-                  onToggleFavourites={onToggleFavourites}
-                  isFavourite={searchResult.item.isFavourite}
-                  id={searchResult.item.id}
-                />
-                <StyledLink href={`/ideaDetails/${searchResult.item.id}`}>
-                  See More
-                </StyledLink>
-              </CardListItem>
-            ))
-          : ideas.map((idea) => (
-              <CardListItem key={idea.id}>
-                <Card
-                  image={idea.image}
-                  title={idea.title}
-                  hashtags={idea.hashtags}
-                  onToggleFavourites={onToggleFavourites}
-                  isFavourite={idea.isFavourite}
-                  id={idea.id}
-                />
-                <StyledLink href={`/ideaDetails/${idea.id}`}>
-                  See More
-                </StyledLink>
-              </CardListItem>
-            ))}
         {searchResults.map((searchResult) => (
           <CardListItem key={searchResult.item.id}>
             <Card
