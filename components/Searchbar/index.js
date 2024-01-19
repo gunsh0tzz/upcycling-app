@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
+import { useRouter } from "next/router";
 
 import Link from "next/link";
 
@@ -41,10 +42,21 @@ export default function Searchbar({
   onClickEvent,
 }) {
   const [inputValue, setInputValue] = useState("");
+  const [showSuggestions, setShowSuggestions] = useState(true);
+  const router = useRouter();
 
   function handleChangeEvent(e) {
     onInputChange(e.target.value);
     setInputValue(e.target.value);
+    setShowSuggestions(true);
+  }
+  function handleReset() {
+    setInputValue("");
+    router.reload();
+  }
+  function handleSearch() {
+    setShowSuggestions(false);
+    onClickEvent(inputValue);
   }
 
   return (
@@ -55,18 +67,18 @@ export default function Searchbar({
           value={inputValue}
           onChange={handleChangeEvent}
         />
-        <StyledSearchButton onClick={() => onClickEvent(inputValue)}>
-          Search
-        </StyledSearchButton>
+        <StyledSearchButton onClick={handleSearch}>Search</StyledSearchButton>
+        <StyledSearchButton onClick={handleReset}>reset</StyledSearchButton>
       </div>
       <ul>
-        {suggestions.map(({ item }, index) => (
-          <StyledListItem key={index}>
-            <StyledLink href={"/ideaDetails/" + item.id}>
-              {item.title}
-            </StyledLink>
-          </StyledListItem>
-        ))}
+        {showSuggestions &&
+          suggestions.map(({ item }, index) => (
+            <StyledListItem key={index}>
+              <StyledLink href={"/ideaDetails/" + item.id}>
+                {item.title}
+              </StyledLink>
+            </StyledListItem>
+          ))}
       </ul>
     </>
   );

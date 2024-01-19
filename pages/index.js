@@ -69,7 +69,38 @@ export default function HomePage({
         setSearchValue={setSearchValue}
       />
       <CardList>
-        {searchResults.map((searchResult) => (
+        {suggestions.length > 0 && searchValue
+          ? suggestions.map((suggestion) => (
+              <CardListItem key={suggestion.item.id}>
+                <Card
+                  image={suggestion.item.image}
+                  title={suggestion.item.title}
+                  hashtags={suggestion.item.hashtags}
+                  onToggleFavourites={onToggleFavourites}
+                  isFavourite={suggestion.item.isFavourite}
+                  id={suggestion.item.id}
+                />
+                <StyledLink href={`/ideaDetails/${suggestion.item.id}`}>
+                  See More
+                </StyledLink>
+              </CardListItem>
+            ))
+          : ideas.map((idea) => (
+              <CardListItem key={idea.id}>
+                <Card
+                  image={idea.image}
+                  title={idea.title}
+                  hashtags={idea.hashtags}
+                  onToggleFavourites={onToggleFavourites}
+                  isFavourite={idea.isFavourite}
+                  id={idea.id}
+                />
+                <StyledLink href={`/ideaDetails/${idea.id}`}>
+                  See More
+                </StyledLink>
+              </CardListItem>
+            ))}
+        {/* {searchResults.map((searchResult) => (
           <CardListItem key={searchResult.item.id}>
             <Card
               image={searchResult.item.image}
@@ -83,7 +114,7 @@ export default function HomePage({
               See More
             </StyledLink>
           </CardListItem>
-        ))}
+        ))} */}
       </CardList>
     </div>
   );
