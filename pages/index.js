@@ -53,7 +53,6 @@ export default function HomePage({
   function handleClickEvent(value) {
     setSearchValue(value);
     setSearchResults(fuse.search(value));
-    console.log(searchValue);
   }
   function handleInputChange(item) {
     setSuggestions(fuse.search(item));
@@ -100,21 +99,6 @@ export default function HomePage({
                 </StyledLink>
               </CardListItem>
             ))}
-        {/* {searchResults.map((searchResult) => (
-          <CardListItem key={searchResult.item.id}>
-            <Card
-              image={searchResult.item.image}
-              title={searchResult.item.title}
-              hashtags={searchResult.item.hashtags}
-              onToggleFavourites={onToggleFavourites}
-              isFavourite={searchResult.item.isFavourite}
-              id={searchResult.item.id}
-            />
-            <StyledLink href={`/ideaDetails/${searchResult.item.id}`}>
-              See More
-            </StyledLink>
-          </CardListItem>
-        ))} */}
       </CardList>
     </div>
   );
