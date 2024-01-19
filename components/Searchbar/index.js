@@ -34,10 +34,15 @@ const StyledLink = styled(Link)`
   }
 `;
 
-export default function Searchbar({ suggestions, onInputChange }) {
+export default function Searchbar({
+  suggestions,
+  onInputChange,
+  searchValue,
+  onClickEvent,
+}) {
   const [inputValue, setInputValue] = useState("");
 
-  function handleEvent(e) {
+  function handleChangeEvent(e) {
     onInputChange(e.target.value);
     setInputValue(e.target.value);
   }
@@ -48,9 +53,11 @@ export default function Searchbar({ suggestions, onInputChange }) {
         <StyledSearchbar
           placeholder="Search for titles or hashtags"
           value={inputValue}
-          onChange={handleEvent}
+          onChange={handleChangeEvent}
         />
-        <StyledSearchButton>Search</StyledSearchButton>
+        <StyledSearchButton onClick={() => onClickEvent(inputValue)}>
+          Search
+        </StyledSearchButton>
       </div>
       <ul>
         {suggestions.map(({ item }, index) => (

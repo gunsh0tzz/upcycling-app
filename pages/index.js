@@ -41,31 +41,46 @@ export default function HomePage({
   favouriteIdeas,
 }) {
   const [suggestions, setSuggestions] = useState([]);
+  const [searchResults, setSearchResults] = useState([]);
+  const [searchValue, setSearchValue] = useState("");
 
   const fuse = new Fuse(defaultIdeas, {
     keys: ["hashtags", "title"],
   });
 
+  function handleClickEvent(value) {
+    setSearchValue(value);
+    setSearchResults(fuse.search(value));
+    console.log(searchValue);
+  }
   function handleInputChange(item) {
     setSuggestions(fuse.search(item));
   }
 
+  // handleInputChange("");
+
   return (
     <div>
-      <Searchbar suggestions={suggestions} onInputChange={handleInputChange} />
+      <Searchbar
+        suggestions={suggestions}
+        onInputChange={handleInputChange}
+        searchValue={searchValue}
+        onClickEvent={handleClickEvent}
+        setSearchValue={setSearchValue}
+      />
       <CardList>
-        {suggestions.length > 0
-          ? suggestions.map((suggestion) => (
-              <CardListItem key={suggestion.item.id}>
+        {searchResults.length > 0 && searchValue
+          ? searchResults.map((searchResult) => (
+              <CardListItem key={searchResult.item.id}>
                 <Card
-                  image={suggestion.item.image}
-                  title={suggestion.item.title}
-                  hashtags={suggestion.item.hashtags}
+                  image={searchResult.item.image}
+                  title={searchResult.item.title}
+                  hashtags={searchResult.item.hashtags}
                   onToggleFavourites={onToggleFavourites}
-                  isFavourite={suggestion.item.isFavourite}
-                  id={suggestion.item.id}
+                  isFavourite={searchResult.item.isFavourite}
+                  id={searchResult.item.id}
                 />
-                <StyledLink href={`/ideaDetails/${suggestion.item.id}`}>
+                <StyledLink href={`/ideaDetails/${searchResult.item.id}`}>
                   See More
                 </StyledLink>
               </CardListItem>
@@ -85,6 +100,21 @@ export default function HomePage({
                 </StyledLink>
               </CardListItem>
             ))}
+        {searchResults.map((searchResult) => (
+          <CardListItem key={searchResult.item.id}>
+            <Card
+              image={searchResult.item.image}
+              title={searchResult.item.title}
+              hashtags={searchResult.item.hashtags}
+              onToggleFavourites={onToggleFavourites}
+              isFavourite={searchResult.item.isFavourite}
+              id={searchResult.item.id}
+            />
+            <StyledLink href={`/ideaDetails/${searchResult.item.id}`}>
+              See More
+            </StyledLink>
+          </CardListItem>
+        ))}
       </CardList>
     </div>
   );
