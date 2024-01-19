@@ -1,37 +1,66 @@
-import Fuse from "fuse.js";
 import { useState } from "react";
 import styled from "styled-components";
 
-import { ideas as defaultIdeas } from "@/lib/db";
+import Link from "next/link";
 
 const StyledSearchbar = styled.input`
   border: 1px solid black;
   padding: 0.5rem;
+  width: 15rem;
 `;
 
-export default function Searchbar() {
+const StyledSearchButton = styled.button`
+  border: 1px solid black;
+  padding: 0.5rem;
+`;
+
+const StyledListItem = styled.li`
+  list-style: none;
+  border: 1px solid black;
+  width: 15rem;
+  padding: 0.25rem;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.125);
+  }
+`;
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: black;
+
+  &:hover {
+    text-decoration: underline;
+  }
+`;
+
+export default function Searchbar({ suggestions, onInputChange }) {
   const [inputValue, setInputValue] = useState("");
-  const [suggestions, setSuggestions] = useState([]);
 
-  const handleInputChange = async (e) => {
-    const searchResult = fuse.search(e.target.value);
-
-    console.clear();
-    console.log(searchResult);
-  };
-
-  const fuse = new Fuse(defaultIdeas, {
-    keys: ["hashtags"],
-  });
+  function handleEvent(e) {
+    onInputChange(e.target.value);
+    setInputValue(e.target.value);
+  }
 
   return (
-    <StyledSearchbar
-      placeholder="Type to search ..."
-      value={inputValue}
-      onChange={(e) => {
-        setInputValue(e.target.value);
-        handleInputChange(e);
-      }}
-    />
+    <>
+      <div>
+        <StyledSearchbar
+          placeholder="Search for titles or hashtags"
+          value={inputValue}
+          onChange={handleEvent}
+        />
+        <StyledSearchButton>Search</StyledSearchButton>
+      </div>
+      <ul>
+        {suggestions.map(({ item }, index) => (
+          <StyledListItem key={index}>
+            <StyledLink href={"/ideaDetails/" + item.id}>
+              {item.title}
+            </StyledLink>
+          </StyledListItem>
+        ))}
+      </ul>
+    </>
   );
 }
