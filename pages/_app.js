@@ -10,15 +10,6 @@ import useLocalStorageState from "use-local-storage-state";
 const fetcher = (url) => fetch(url).then((response) => response.json());
 
 export default function App({ Component, pageProps }) {
-  const { data, mutate, error } = useSWR(
-    "/api/ideas",
-    { fallbackData: [] },
-    fetcher
-  );
-  const [ideas, setIdeas] = useLocalStorageState("ideas", {
-    defaultValue: data,
-  });
-
   const router = useRouter();
   function addIdea(newIdea) {
     newIdea.id = uuidv4();
@@ -30,31 +21,6 @@ export default function App({ Component, pageProps }) {
       idea.id === updatedIdea.id ? updatedIdea : idea
     );
     setIdeas(updatedIdeas);
-  }
-
-  // function handleDelete({ id }) {
-  //   const isConfirmed = window.confirm("Are you sure?");
-  //   if (isConfirmed) {
-  //     setIdeas(ideas.filter((idea) => idea.id !== id));
-  //     router.push("/");
-  //   }
-  // }
-
-  async function handleDelete(id) {
-    const response = await fetch(`/api/ideas/${id}`, {
-      method: "DELETE",
-    });
-
-    if (response.ok) {
-      await response.json();
-      mutate();
-    } else {
-      console.error(
-        "Error deleting idea:",
-        response.status,
-        response.statusText
-      );
-    }
   }
 
   function handleToggleFavourites(id) {
@@ -72,10 +38,8 @@ export default function App({ Component, pageProps }) {
         <SWRConfig value={{ fetcher }}>
           <Component
             {...pageProps}
-            ideas={data}
             addIdea={addIdea}
             editIdea={editIdea}
-            onDelete={handleDelete}
             onToggleFavourites={handleToggleFavourites}
           />
         </SWRConfig>

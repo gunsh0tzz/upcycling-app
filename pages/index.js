@@ -7,7 +7,7 @@ import useSWR from "swr";
 import Card from "../components/Card";
 import Searchbar from "@/components/Searchbar";
 
-import { ideas as defaultIdeas } from "@/lib/db";
+import { ideas as defaultIdeas, ideas } from "@/lib/db";
 
 const CardList = styled.ul`
   display: flex;
@@ -36,16 +36,12 @@ const StyledLink = styled(Link)`
   }
 `;
 
-export default function HomePage({
-  ideas,
-  onToggleFavourites,
-  favouriteIdeas,
-}) {
+export default function HomePage({ onToggleFavourites, favouriteIdeas }) {
   const { data, mutate, error } = useSWR("/api/ideas", { fallbackData: [] });
 
   const [suggestions, setSuggestions] = useState([]);
   const [searchResults, setSearchResults] = useState(
-    ideas.map((idea) => ({ item: idea }))
+    data.map((idea) => ({ item: idea }))
   );
   const [searchValue, setSearchValue] = useState("");
 
@@ -82,12 +78,12 @@ export default function HomePage({
                   isFavourite={suggestion.item.isFavourite}
                   id={suggestion.item.id}
                 />
-                <StyledLink href={`/ideaDetails/${suggestion.item.id}`}>
+                <StyledLink href={`/ideaDetails/${suggestion.item._id}`}>
                   See More
                 </StyledLink>
               </CardListItem>
             ))
-          : ideas.map((idea) => (
+          : data.map((idea) => (
               <CardListItem key={idea._id}>
                 <Card
                   image={idea.image}
@@ -97,7 +93,7 @@ export default function HomePage({
                   isFavourite={idea.isFavourite}
                   id={idea.id}
                 />
-                <StyledLink href={`/ideaDetails/${idea.id}`}>
+                <StyledLink href={`/ideaDetails/${idea._id}`}>
                   See More
                 </StyledLink>
               </CardListItem>

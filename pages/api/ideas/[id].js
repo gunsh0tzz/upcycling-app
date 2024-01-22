@@ -4,6 +4,7 @@ import Idea from "@/db/models/Idea";
 export default async function handler(request, response) {
   await dbConnect();
   const { id } = request.query;
+  console.log("Received id:", id);
 
   //GET Method
   if (request.method === "GET") {

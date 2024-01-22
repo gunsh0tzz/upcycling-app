@@ -47,34 +47,45 @@ const StyledButton = styled.button`
   padding: 0.5rem;
 `;
 
-export default function IdeaDetails({ ideas, onDelete }) {
+export default function IdeaDetails() {
   const router = useRouter();
   const { isReady } = router;
   const { id } = router.query;
-  // const { data: idea, isLoading, error } = useSWR(`/api/recipes/${id}`);
 
-  // const ideaDetails = data.find((idea) => idea._id === id);
-
-  // if (!ideaDetails) {
-  //   return <h2>Loading...</h2>;
-  // }
-
-  const { data: idea, isLoading, error } = useSWR(`/api/ideas/${id}`);
+  const {
+    data: idea,
+    isLoading,
+    error,
+    mutate,
+  } = useSWR(id ? `/api/ideas/${id}` : null);
   if (!isReady || isLoading || error) return <h2>Loading...</h2>;
 
-  const { instructions, items, hashtags } = idea;
+  const { instructions, items, hashtags, title, image } = idea;
+
+  async function handleDelete(id) {
+    const response = await fetch(`/api/ideas/${id}`, {
+      method: "DELETE",
+    });
+
+    if (response.ok) {
+      await response.json();
+      mutate();
+      router.push("/");
+    } else {
+      console.error(
+        "Error deleting idea:",
+        response.status,
+        response.statusText
+      );
+    }
+  }
 
   return (
     <>
       <StyledArticle>
-        <h2>{idea.title}</h2>
+        <h2>{title}</h2>
         <StyledContainer>
-          <StyledImage
-            src={ideaDetails.image}
-            alt={ideaDetails.title}
-            width={150}
-            height={120}
-          />
+          <StyledImage src={image} alt={title} width={150} height={120} />
           <Items>
             {items.map((item) => (
               <li key={uuidv4()}>{item}</li>
@@ -93,8 +104,8 @@ export default function IdeaDetails({ ideas, onDelete }) {
           ))}
         </Hashtags>
         <Link href="/">Go Back</Link>
-        <Link href={`/edit/${ideaDetails.id}`}>Edit</Link>
-        <StyledButton onClick={() => onDelete(ideaDetails._id)}>
+        <Link href={`/edit/${idea._id}`}>Edit</Link>
+        <StyledButton onClick={() => handleDelete(idea._id)}>
           Delete Idea
         </StyledButton>
       </StyledArticle>
