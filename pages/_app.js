@@ -10,25 +10,18 @@ import useLocalStorageState from "use-local-storage-state";
 const fetcher = (url) => fetch(url).then((response) => response.json());
 
 export default function App({ Component, pageProps }) {
-  const router = useRouter();
-  function addIdea(newIdea) {
-    newIdea.id = uuidv4();
-    setIdeas([newIdea, ...ideas]);
-  }
+  const { data: ideas, error, isLoading } = useSWR("/api/ideas", fetcher);
 
-  function editIdea(updatedIdea) {
-    const updatedIdeas = ideas.map((idea) =>
-      idea.id === updatedIdea.id ? updatedIdea : idea
-    );
-    setIdeas(updatedIdeas);
-  }
+  const [favourites, setFavourites] = useLocalStorageState("favourites", {
+    defaultValue: [],
+  });
 
   function handleToggleFavourites(id) {
-    setIdeas(
-      ideas.map((idea) =>
-        idea.id === id ? { ...idea, isFavourite: !idea.isFavourite } : idea
-      )
-    );
+    if (favourites.includes(id)) {
+      setFavourites(favourites?.filter((favourite) => favourite !== id));
+    } else {
+      setFavourites([...favourites, id]);
+    }
   }
 
   return (
@@ -38,8 +31,7 @@ export default function App({ Component, pageProps }) {
         <SWRConfig value={{ fetcher }}>
           <Component
             {...pageProps}
-            addIdea={addIdea}
-            editIdea={editIdea}
+            favourites={favourites}
             onToggleFavourites={handleToggleFavourites}
           />
         </SWRConfig>

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Link from "next/link";
 import Card from "@/components/Card";
+import useSWR from "swr";
 
 const CardList = styled.ul`
   display: flex;
@@ -20,8 +21,13 @@ const CardListItem = styled.li`
   padding: 1rem;
 `;
 
-export default function FavouritePage({ ideas, onToggleFavourites }) {
-  const favouriteIdeas = ideas.filter((idea) => idea.isFavourite);
+export default function FavouritePage({ onToggleFavourites, favourites }) {
+  const {
+    data: ideas,
+    mutate,
+    error,
+  } = useSWR("/api/ideas", { fallbackData: [] });
+  const favouriteIdeas = ideas.filter((idea) => favourites.includes(idea._id));
 
   return (
     <div>

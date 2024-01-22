@@ -7,8 +7,6 @@ import useSWR from "swr";
 import Card from "../components/Card";
 import Searchbar from "@/components/Searchbar";
 
-import { ideas as defaultIdeas, ideas } from "@/lib/db";
-
 const CardList = styled.ul`
   display: flex;
   flex-wrap: wrap;
@@ -36,7 +34,7 @@ const StyledLink = styled(Link)`
   }
 `;
 
-export default function HomePage({ onToggleFavourites, favouriteIdeas }) {
+export default function HomePage({ onToggleFavourites, favourites }) {
   const { data, mutate, error } = useSWR("/api/ideas", { fallbackData: [] });
 
   const [suggestions, setSuggestions] = useState([]);
@@ -75,6 +73,7 @@ export default function HomePage({ onToggleFavourites, favouriteIdeas }) {
                   title={suggestion.item.title}
                   hashtags={suggestion.item.hashtags}
                   onToggleFavourites={onToggleFavourites}
+                  favourites={favourites}
                   isFavourite={suggestion.item.isFavourite}
                   id={suggestion.item.id}
                 />
@@ -89,8 +88,9 @@ export default function HomePage({ onToggleFavourites, favouriteIdeas }) {
                   image={idea.image}
                   title={idea.title}
                   hashtags={idea.hashtags}
+                  favourites={favourites}
                   onToggleFavourites={onToggleFavourites}
-                  isFavourite={idea.isFavourite}
+                  isFavourite={favourites?.includes(idea._id)}
                   id={idea.id}
                 />
                 <StyledLink href={`/ideaDetails/${idea._id}`}>
