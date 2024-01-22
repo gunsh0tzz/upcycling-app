@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import Fuse from "fuse.js";
+import useSWR from "swr";
 
 import Card from "../components/Card";
 import Searchbar from "@/components/Searchbar";
@@ -40,6 +41,8 @@ export default function HomePage({
   onToggleFavourites,
   favouriteIdeas,
 }) {
+  const { data, mutate, error } = useSWR("/api/ideas", { fallbackData: [] });
+
   const [suggestions, setSuggestions] = useState([]);
   const [searchResults, setSearchResults] = useState(
     ideas.map((idea) => ({ item: idea }))
@@ -85,7 +88,7 @@ export default function HomePage({
               </CardListItem>
             ))
           : ideas.map((idea) => (
-              <CardListItem key={idea.id}>
+              <CardListItem key={idea._id}>
                 <Card
                   image={idea.image}
                   title={idea.title}

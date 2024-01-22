@@ -1,9 +1,9 @@
-
 import Image from "next/image";
 import Link from "next/link";
 import styled from "styled-components";
 import { v4 as uuidv4 } from "uuid";
 import { useRouter } from "next/router.js";
+import useSWR from "swr";
 
 const StyledArticle = styled.article`
   display: flex;
@@ -49,21 +49,25 @@ const StyledButton = styled.button`
 
 export default function IdeaDetails({ ideas, onDelete }) {
   const router = useRouter();
-
+  const { isReady } = router;
   const { id } = router.query;
+  // const { data: idea, isLoading, error } = useSWR(`/api/recipes/${id}`);
 
-  const ideaDetails = ideas.find((idea) => idea.id === id);
+  // const ideaDetails = data.find((idea) => idea._id === id);
 
-  if (!ideaDetails) {
-    return <h2>Loading...</h2>;
-  }
+  // if (!ideaDetails) {
+  //   return <h2>Loading...</h2>;
+  // }
 
-  const { instructions, items, hashtags } = ideaDetails;
+  const { data: idea, isLoading, error } = useSWR(`/api/ideas/${id}`);
+  if (!isReady || isLoading || error) return <h2>Loading...</h2>;
+
+  const { instructions, items, hashtags } = idea;
 
   return (
     <>
       <StyledArticle>
-        <h2>{ideaDetails.title}</h2>
+        <h2>{idea.title}</h2>
         <StyledContainer>
           <StyledImage
             src={ideaDetails.image}
@@ -90,7 +94,7 @@ export default function IdeaDetails({ ideas, onDelete }) {
         </Hashtags>
         <Link href="/">Go Back</Link>
         <Link href={`/edit/${ideaDetails.id}`}>Edit</Link>
-        <StyledButton onClick={() => onDelete({ id })}>
+        <StyledButton onClick={() => onDelete(ideaDetails._id)}>
           Delete Idea
         </StyledButton>
       </StyledArticle>
