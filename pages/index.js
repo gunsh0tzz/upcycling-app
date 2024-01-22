@@ -45,7 +45,7 @@ export default function HomePage({ onToggleFavourites, favouriteIdeas }) {
   );
   const [searchValue, setSearchValue] = useState("");
 
-  const fuse = new Fuse(defaultIdeas, {
+  const fuse = new Fuse(data, {
     keys: ["hashtags", "title"],
   });
 
