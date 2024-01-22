@@ -3,6 +3,17 @@ import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import styled from "styled-components";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faPlus,
+  faXmark,
+  faFloppyDisk,
+} from "@fortawesome/free-solid-svg-icons";
+
+const StyledHeading = styled.h2`
+  margin: 1rem 0rem;
+`;
+
 const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
@@ -10,9 +21,38 @@ const StyledForm = styled.form`
   margin-bottom: 0.5rem;
 `;
 
+const StyledInput = styled.input`
+  border: 0;
+  border-radius: 0.25rem;
+  background-color: var(--green-200);
+  color: white;
+  padding: 0.25rem;
+
+  &::placeholder {
+    color: white;
+  }
+`;
+
+const StyledTextarea = styled.textarea`
+  border: 0;
+  border-radius: 0.25rem;
+  background-color: var(--green-200);
+  color: white;
+  padding: 0.25rem;
+
+  &::placeholder {
+    color: white;
+  }
+`;
+
 const StyledUnorderedList = styled.ul`
   margin-left: 1rem;
   list-style: none;
+`;
+
+const StyledListItem = styled.li`
+  display: flex;
+  gap: 0.5rem;
 `;
 
 const ButtonContainer = styled.div`
@@ -22,6 +62,17 @@ const ButtonContainer = styled.div`
 
 const StyledButton = styled.button`
   flex: 1;
+  background-color: rgba(0, 0, 0, 0.175);
+  border: 0;
+  border-radius: 0.25rem;
+  padding: 0.25rem;
+`;
+
+const StyledInstructionButton = styled.button`
+  background-color: rgba(0, 0, 0, 0.175);
+  border: 0;
+  border-radius: 0.25rem;
+  padding: 0.25rem;
 `;
 
 export default function Form({ idea = {}, onSubmit }) {
@@ -83,14 +134,21 @@ export default function Form({ idea = {}, onSubmit }) {
 
   return (
     <>
-      <h2>{router.query.id ? "update idea" : "add a new idea"}</h2>
+      <StyledHeading>
+        {router.query.id ? "Update idea" : "Add a new idea"}
+      </StyledHeading>
       <StyledForm onSubmit={handleSubmit}>
-        <label htmlFor="title">title:</label>
-        <input id="title" name="title" defaultValue={idea.title} required />
-        <label htmlFor="image">image url:</label>
-        <input id="image" name="image" defaultValue={idea.image} />
-        <label htmlFor="items">items:</label>
-        <textarea
+        <label htmlFor="title">Title:</label>
+        <StyledInput
+          id="title"
+          name="title"
+          defaultValue={idea.title}
+          required
+        />
+        <label htmlFor="image">Image URL:</label>
+        <StyledInput id="image" name="image" defaultValue={idea.image} />
+        <label htmlFor="items">Items:</label>
+        <StyledTextarea
           as="input"
           name="items"
           placeholder="item, item, item"
@@ -98,14 +156,14 @@ export default function Form({ idea = {}, onSubmit }) {
           minLength={1}
           maxLength={150}
         />
-        <label htmlFor="instructions">instructions:</label>
+        <label htmlFor="instructions">Instructions:</label>
 
         {instructions.map((instruction, index) => (
           <div key={instruction.id}>
             <StyledUnorderedList>
-              <li>
+              <StyledListItem>
                 <span>{index + 1}. </span>
-                <textarea
+                <StyledTextarea
                   as="input"
                   type="text"
                   value={instruction.step || ""}
@@ -116,21 +174,24 @@ export default function Form({ idea = {}, onSubmit }) {
                   minLength={1}
                   maxLength={150}
                 />
-                <button type="button" onClick={() => handleAddInstruction()}>
-                  +
-                </button>
-                <button
+                <StyledInstructionButton
+                  type="button"
+                  onClick={() => handleAddInstruction()}
+                >
+                  <FontAwesomeIcon icon={faPlus} />
+                </StyledInstructionButton>
+                <StyledInstructionButton
                   type="button"
                   onClick={() => handleRemoveInstruction(instruction.id)}
                 >
-                  x
-                </button>
-              </li>
+                  <FontAwesomeIcon icon={faXmark} />
+                </StyledInstructionButton>
+              </StyledListItem>
             </StyledUnorderedList>
           </div>
         ))}
-        <label htmlFor="hashtags">hashtags:</label>
-        <textarea
+        <label htmlFor="hashtags">Hashtags:</label>
+        <StyledTextarea
           as="input"
           name="hashtags"
           placeholder="hashtag, hashtag, hashtag"
@@ -139,12 +200,18 @@ export default function Form({ idea = {}, onSubmit }) {
           maxLength={150}
         />
         <ButtonContainer>
-          <StyledButton>{router.query.id ? "save" : "add"}</StyledButton>
+          <StyledButton>
+            {router.query.id ? (
+              <FontAwesomeIcon icon={faFloppyDisk} />
+            ) : (
+              <FontAwesomeIcon icon={faPlus} />
+            )}
+          </StyledButton>
+          <StyledButton onClick={handleCancel}>
+            <FontAwesomeIcon icon={faXmark} />
+          </StyledButton>
         </ButtonContainer>
       </StyledForm>
-      <ButtonContainer>
-        <StyledButton onClick={handleCancel}>Cancel</StyledButton>
-      </ButtonContainer>
     </>
   );
 }

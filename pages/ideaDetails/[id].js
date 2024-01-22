@@ -1,4 +1,3 @@
-
 import Image from "next/image";
 import Link from "next/link";
 import styled from "styled-components";
@@ -36,15 +35,36 @@ const Hashtags = styled.ul`
 `;
 
 const Items = styled.ul`
-  list-style: none;
   border: 1px solid black;
   border-radius: 0.5rem;
-  padding: 0.5rem;
+  padding: 0.5rem 1rem;
+`;
+
+const StyledListItem = styled.li`
+  margin-left: 1rem;
 `;
 
 const StyledButton = styled.button`
   width: fit-content;
   padding: 0.5rem;
+  border: none;
+  border-radius: 0.25rem;
+  background-color: var(--green-200);
+  color: white;
+
+  &:hover {
+    background-color: var(--green-100);
+  }
+`;
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: black;
+  font-style: italic;
+
+  &:hover {
+    text-decoration: underline;
+  }
 `;
 
 export default function IdeaDetails({ ideas, onDelete }) {
@@ -73,7 +93,7 @@ export default function IdeaDetails({ ideas, onDelete }) {
           />
           <Items>
             {items.map((item) => (
-              <li key={uuidv4()}>{item}</li>
+              <StyledListItem key={uuidv4()}>{item}</StyledListItem>
             ))}
           </Items>
         </StyledContainer>
@@ -88,8 +108,8 @@ export default function IdeaDetails({ ideas, onDelete }) {
             <li key={uuidv4()}>#{hashtag}</li>
           ))}
         </Hashtags>
-        <Link href="/">Go Back</Link>
-        <Link href={`/edit/${ideaDetails.id}`}>Edit</Link>
+        <StyledLink href="/">Go Back</StyledLink>
+        <StyledLink href={`/edit/${ideaDetails.id}`}>Edit</StyledLink>
         <StyledButton onClick={() => onDelete({ id })}>
           Delete Idea
         </StyledButton>

@@ -1,6 +1,12 @@
 import { createGlobalStyle } from "styled-components";
 
 export default createGlobalStyle`
+  :root {
+    --green-100: rgba(98, 189, 105,1);
+    --green-200: rgba(90, 171, 97,1);
+    --green-300: rgba(53, 136, 86,1);
+  }
+
   *,
   *::before,
   *::after {

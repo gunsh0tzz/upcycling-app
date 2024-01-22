@@ -17,7 +17,6 @@ export default function EditIdeas({ ideas, editIdea }) {
 
   return (
     <>
-      <Header />
       <Form idea={ideaToEdit} onSubmit={handleEdit} />
     </>
   );

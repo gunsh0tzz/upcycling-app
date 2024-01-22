@@ -8,8 +8,9 @@ const StyledNavigation = styled.nav`
   position: fixed;
   bottom: 0;
   width: 100%;
-  border-top: 1px solid black;
-  background-color: white;
+
+  background-color: var(--green-300);
+  box-shadow: 0 0 0.5rem black;
 `;
 
 const StyledUnorderedList = styled.ul`
@@ -31,8 +32,8 @@ const StyledLink = styled(Link)`
 `;
 
 const StyledIcon = styled(FontAwesomeIcon)`
-  color: black;
   font-size: 2rem;
+  color: white;
 `;
 
 export default function Navigation() {

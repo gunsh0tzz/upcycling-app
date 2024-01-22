@@ -21,14 +21,17 @@ const CardListItem = styled.li`
   flex: 0 0 calc(50% - 1rem);
   max-width: calc(50% - 1rem);
   box-sizing: border-box;
-  border: 1px solid black;
   border-radius: 0.5rem;
   padding: 1rem;
+
+  background-color: var(--green-200);
+  color: white;
+  box-shadow: 0.1rem 0.1rem 0.5rem black;
 `;
 
 const StyledLink = styled(Link)`
   text-decoration: none;
-  color: black;
+  color: white;
 
   &:hover {
     text-decoration: underline;
