@@ -17,5 +17,6 @@ export default createGlobalStyle`
 
   body {
     font-family: system-ui;
+    margin-bottom: 5rem;
   }
 `;
