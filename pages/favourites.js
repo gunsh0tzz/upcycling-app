@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import Link from "next/link";
 import Card from "@/components/Card";
-import useSWR from "swr";
 
 const CardList = styled.ul`
   display: flex;
@@ -21,30 +20,29 @@ const CardListItem = styled.li`
   padding: 1rem;
 `;
 
-export default function FavouritePage({ onToggleFavourites, favourites }) {
-  const {
-    data: ideas,
-    mutate,
-    error,
-  } = useSWR("/api/ideas", { fallbackData: [] });
-  const favouriteIdeas = ideas.filter((idea) => favourites.includes(idea._id));
-
+export default function FavouritePage({
+  ideas,
+  onToggleFavourites,
+  favouriteIdeas,
+}) {
   return (
     <div>
       <CardList>
-        {favouriteIdeas.map((idea) => (
-          <CardListItem key={idea.id}>
-            <Card
-              image={idea.image}
-              title={idea.title}
-              hashtags={idea.hashtags}
-              onToggleFavourites={onToggleFavourites}
-              isFavourite={idea.isFavourite}
-              id={idea.id}
-            />
-            <Link href={`/ideaDetails/${idea.id}`}>See More</Link>
-          </CardListItem>
-        ))}
+        {ideas
+          .filter((idea) => favouriteIdeas.includes(idea._id))
+          .map((idea) => (
+            <CardListItem key={idea._id}>
+              <Card
+                image={idea.image}
+                title={idea.title}
+                hashtags={idea.hashtags}
+                onToggleFavourites={() => onToggleFavourites(idea._id)} // Pass the idea._id to onToggleFavourites
+                isFavourite={true}
+                id={idea._id}
+              />
+              <Link href={`/ideaDetails/${idea._id}`}>See More</Link>
+            </CardListItem>
+          ))}
       </CardList>
     </div>
   );

@@ -1,6 +1,7 @@
 import GlobalStyle from "../styles";
 import Layout from "@/components/layout";
 import { useState } from "react";
+import { useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 import useSWR from "swr";
 import { SWRConfig } from "swr";
@@ -10,18 +11,33 @@ import useLocalStorageState from "use-local-storage-state";
 const fetcher = (url) => fetch(url).then((response) => response.json());
 
 export default function App({ Component, pageProps }) {
-  const { data: ideas, error, isLoading } = useSWR("/api/ideas", fetcher);
+  const { data, mutate, error } = useSWR("/api/ideas", fetcher, {
+    fallbackData: [],
+  });
+  const router = useRouter();
+  const [ideas, setIdeas] = useState(data);
 
+  useEffect(() => {
+    if (data) {
+      setIdeas(data);
+    }
+  }, [data]);
   const [favourites, setFavourites] = useLocalStorageState("favourites", {
     defaultValue: [],
   });
 
   function handleToggleFavourites(id) {
-    if (favourites.includes(id)) {
-      setFavourites(favourites?.filter((favourite) => favourite !== id));
-    } else {
-      setFavourites([...favourites, id]);
-    }
+    return () => {
+      const idx = favourites.indexOf(id);
+      if (idx === -1) {
+        setFavourites([...favourites, id]);
+      } else {
+        setFavourites([
+          ...favourites.slice(0, idx),
+          ...favourites.slice(idx + 1),
+        ]);
+      }
+    };
   }
 
   return (
@@ -31,7 +47,8 @@ export default function App({ Component, pageProps }) {
         <SWRConfig value={{ fetcher }}>
           <Component
             {...pageProps}
-            favourites={favourites}
+            favouriteIdeas={favourites}
+            ideas={ideas}
             onToggleFavourites={handleToggleFavourites}
           />
         </SWRConfig>

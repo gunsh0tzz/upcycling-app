@@ -34,16 +34,18 @@ const StyledLink = styled(Link)`
   }
 `;
 
-export default function HomePage({ onToggleFavourites, favourites }) {
-  const { data, mutate, error } = useSWR("/api/ideas", { fallbackData: [] });
-
+export default function HomePage({
+  onToggleFavourites,
+  favouriteIdeas,
+  ideas,
+}) {
   const [suggestions, setSuggestions] = useState([]);
   const [searchResults, setSearchResults] = useState(
-    data.map((idea) => ({ item: idea }))
+    ideas.map((idea) => ({ item: idea }))
   );
   const [searchValue, setSearchValue] = useState("");
 
-  const fuse = new Fuse(data, {
+  const fuse = new Fuse(ideas, {
     keys: ["hashtags", "title"],
   });
 
@@ -67,30 +69,28 @@ export default function HomePage({ onToggleFavourites, favourites }) {
       <CardList>
         {suggestions.length > 0 && searchValue
           ? suggestions.map((suggestion) => (
-              <CardListItem key={suggestion.item.id}>
+              <CardListItem key={suggestion.item._id}>
                 <Card
                   image={suggestion.item.image}
                   title={suggestion.item.title}
                   hashtags={suggestion.item.hashtags}
-                  onToggleFavourites={onToggleFavourites}
-                  favourites={favourites}
-                  isFavourite={suggestion.item.isFavourite}
-                  id={suggestion.item.id}
+                  onToggleFavourites={onToggleFavourites(suggestion.item._id)}
+                  isFavourite={favouriteIdeas.includes(suggestion.item._id)}
+                  id={suggestion.item._id}
                 />
                 <StyledLink href={`/ideaDetails/${suggestion.item._id}`}>
                   See More
                 </StyledLink>
               </CardListItem>
             ))
-          : data.map((idea) => (
+          : ideas.map((idea) => (
               <CardListItem key={idea._id}>
                 <Card
                   image={idea.image}
                   title={idea.title}
                   hashtags={idea.hashtags}
-                  favourites={favourites}
-                  onToggleFavourites={onToggleFavourites}
-                  isFavourite={favourites?.includes(idea._id)}
+                  onToggleFavourites={onToggleFavourites(idea._id)}
+                  isFavourite={favouriteIdeas.includes(idea._id)}
                   id={idea.id}
                 />
                 <StyledLink href={`/ideaDetails/${idea._id}`}>

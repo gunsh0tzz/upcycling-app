@@ -3,10 +3,6 @@ import { mutate } from "swr";
 import { useRouter } from "next/router";
 
 export default function Create({ addIdea }) {
-  // function handleSubmit(newIdea) {
-  //     addIdea(newIdea);
-  //   }
-
   const router = useRouter();
 
   async function onSubmit(data) {
