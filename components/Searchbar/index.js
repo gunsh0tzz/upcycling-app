@@ -59,7 +59,7 @@ export default function Searchbar({
     setShowSuggestions(false);
     onClickEvent(inputValue);
   }
-  console.log(inputValue);
+
   return (
     <>
       <div>

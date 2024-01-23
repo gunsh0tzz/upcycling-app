@@ -41,7 +41,6 @@ export default function FavouritePage({
               onToggleFavourites={onToggleFavourites}
               favouriteIdeas={favouriteIdeas}
               id={idea._id}
-              ideas={ideas}
             />
             <Link href={`/ideaDetails/${idea._id}`}>See More</Link>
           </CardListItem>

@@ -52,10 +52,7 @@ export default function Card({
   onToggleFavourites,
   id,
 }) {
-  const isFavourite =
-    favouriteIdeas &&
-    Array.isArray(favouriteIdeas) &&
-    favouriteIdeas.includes(id);
+  const isFavourite = favouriteIdeas && favouriteIdeas.includes(id);
 
   return (
     <Article>
