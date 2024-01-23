@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import useSWR from "swr";
 import Fuse from "fuse.js";
 
 import Card from "../components/Card";
@@ -33,11 +34,14 @@ const StyledLink = styled(Link)`
   }
 `;
 
-export default function HomePage({
-  onToggleFavourites,
-  favouriteIdeas,
-  ideas,
-}) {
+export default function HomePage({ onToggleFavourites, favouriteIdeas }) {
+  const {
+    data: ideas,
+    isLoading,
+    error,
+  } = useSWR("/api/ideas", {
+    fallbackData: [],
+  });
   const [suggestions, setSuggestions] = useState([]);
   const [searchResults, setSearchResults] = useState(
     ideas.map((idea) => ({ item: idea }))

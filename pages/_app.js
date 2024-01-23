@@ -15,7 +15,6 @@ export default function App({ Component, pageProps }) {
   } = useSWR("/api/ideas", fetcher, {
     fallbackData: [],
   });
-
   if (!ideas) {
     return <p>ideas not found</p>;
   }
