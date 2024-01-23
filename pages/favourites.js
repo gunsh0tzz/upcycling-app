@@ -39,6 +39,7 @@ export default function FavouritePage({
               title={idea.title}
               hashtags={idea.hashtags}
               onToggleFavourites={onToggleFavourites}
+              favouriteIdeas={favouriteIdeas}
               id={idea._id}
               ideas={ideas}
             />
