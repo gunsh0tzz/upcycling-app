@@ -51,13 +51,17 @@ export default function Card({
   favouriteIdeas,
   onToggleFavourites,
   id,
-  ideas,
 }) {
-  const isFavourite = favouriteIdeas.includes(id);
+  const isFavourite =
+    favouriteIdeas &&
+    Array.isArray(favouriteIdeas) &&
+    favouriteIdeas.includes(id);
 
   return (
     <Article>
-      <FavoriteButton onClick={(event) => onToggleFavourites(id, event)}>
+      <FavoriteButton
+        onClick={(event) => event && onToggleFavourites(id, event)}
+      >
         <StyledIcon icon={isFavourite ? solidHeart : regularHeart} />
       </FavoriteButton>
       <StyledImage src={image} alt={title} width={150} height={120} />

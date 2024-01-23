@@ -2,7 +2,6 @@ import styled from "styled-components";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import Fuse from "fuse.js";
-import useSWR from "swr";
 
 import Card from "../components/Card";
 import Searchbar from "@/components/Searchbar";
@@ -74,10 +73,8 @@ export default function HomePage({
                   image={suggestion.item.image}
                   title={suggestion.item.title}
                   hashtags={suggestion.item.hashtags}
-                  onToggleFavourites={() =>
-                    onToggleFavourites(suggestion.item._id)
-                  }
-                  isFavourite={favouriteIdeas.includes(suggestion.item._id)}
+                  onToggleFavourites={onToggleFavourites}
+                  favouriteIdeas={favouriteIdeas}
                   id={suggestion.item._id}
                 />
                 <StyledLink href={`/ideaDetails/${suggestion.item._id}`}>
