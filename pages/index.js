@@ -74,7 +74,9 @@ export default function HomePage({
                   image={suggestion.item.image}
                   title={suggestion.item.title}
                   hashtags={suggestion.item.hashtags}
-                  onToggleFavourites={onToggleFavourites(suggestion.item._id)}
+                  onToggleFavourites={() =>
+                    onToggleFavourites(suggestion.item._id)
+                  }
                   isFavourite={favouriteIdeas.includes(suggestion.item._id)}
                   id={suggestion.item._id}
                 />
@@ -89,9 +91,10 @@ export default function HomePage({
                   image={idea.image}
                   title={idea.title}
                   hashtags={idea.hashtags}
-                  onToggleFavourites={onToggleFavourites(idea._id)}
-                  isFavourite={favouriteIdeas.includes(idea._id)}
-                  id={idea.id}
+                  onToggleFavourites={onToggleFavourites}
+                  favouriteIdeas={favouriteIdeas}
+                  id={idea._id}
+                  idea={idea}
                 />
                 <StyledLink href={`/ideaDetails/${idea._id}`}>
                   See More

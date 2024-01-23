@@ -25,24 +25,26 @@ export default function FavouritePage({
   onToggleFavourites,
   favouriteIdeas,
 }) {
+  const ideasToDisplay = ideas.filter((idea) =>
+    favouriteIdeas.includes(idea._id)
+  );
+
   return (
     <div>
       <CardList>
-        {ideas
-          .filter((idea) => favouriteIdeas.includes(idea._id))
-          .map((idea) => (
-            <CardListItem key={idea._id}>
-              <Card
-                image={idea.image}
-                title={idea.title}
-                hashtags={idea.hashtags}
-                onToggleFavourites={() => onToggleFavourites(idea._id)} // Pass the idea._id to onToggleFavourites
-                isFavourite={true}
-                id={idea._id}
-              />
-              <Link href={`/ideaDetails/${idea._id}`}>See More</Link>
-            </CardListItem>
-          ))}
+        {ideasToDisplay.map((idea) => (
+          <CardListItem key={idea._id}>
+            <Card
+              image={idea.image}
+              title={idea.title}
+              hashtags={idea.hashtags}
+              onToggleFavourites={onToggleFavourites}
+              id={idea._id}
+              ideas={ideas}
+            />
+            <Link href={`/ideaDetails/${idea._id}`}>See More</Link>
+          </CardListItem>
+        ))}
       </CardList>
     </div>
   );
