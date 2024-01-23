@@ -8,6 +8,10 @@ import useLocalStorageState from "use-local-storage-state";
 const fetcher = (url) => fetch(url).then((response) => response.json());
 
 export default function App({ Component, pageProps }) {
+  const [favourites, setFavourites] = useLocalStorageState("favourites", {
+    defaultValue: "",
+  });
+
   const {
     data: ideas,
     isLoading,
@@ -15,13 +19,10 @@ export default function App({ Component, pageProps }) {
   } = useSWR("/api/ideas", fetcher, {
     fallbackData: [],
   });
-  if (!ideas) {
-    return <p>ideas not found</p>;
-  }
 
-  const [favourites, setFavourites] = useLocalStorageState("favourites", {
-    defaultValue: "",
-  });
+  if (!ideas) {
+    return <p>ideas not found!</p>;
+  }
 
   function handleToggleFavourites(id, event) {
     event.preventDefault();
