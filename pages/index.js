@@ -35,12 +35,17 @@ const PreviousButton = styled.button`
   display: ${(props) => (props.show ? "block" : "none")};
 `;
 
+const NextButton = styled.button`
+  margin-top: 10px;
+  display: ${(props) => (props.show ? "block" : "none")};
+`;
+
 const ButtonBox = styled.div`
   display: flex;
   justify-content: space-between;
 `;
 
-const IDEAS_PER_PAGE = 4;
+const ideasPerPage = 4;
 export default function HomePage({ onToggleFavourites, favouriteIdeas }) {
   const {
     data: ideas,
@@ -55,10 +60,10 @@ export default function HomePage({ onToggleFavourites, favouriteIdeas }) {
   );
   const [searchValue, setSearchValue] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const totalPages = Math.ceil(ideas.length / IDEAS_PER_PAGE);
+  const totalPages = Math.ceil(ideas.length / ideasPerPage);
   const paginatedIdeas = ideas.slice(
-    (currentPage - 1) * IDEAS_PER_PAGE,
-    currentPage * IDEAS_PER_PAGE
+    (currentPage - 1) * ideasPerPage,
+    currentPage * ideasPerPage
   );
   const fuse = new Fuse(ideas, {
     keys: ["hashtags", "title"],
@@ -121,9 +126,12 @@ export default function HomePage({ onToggleFavourites, favouriteIdeas }) {
           Previous Page
         </PreviousButton>
 
-        <button onClick={() => setCurrentPage(currentPage + 1)}>
+        <NextButton
+          onClick={() => setCurrentPage(currentPage + 1)}
+          show={currentPage < totalPages}
+        >
           Next Page
-        </button>
+        </NextButton>
       </ButtonBox>
     </div>
   );
