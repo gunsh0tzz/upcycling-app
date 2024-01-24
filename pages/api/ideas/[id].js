@@ -18,6 +18,7 @@ export default async function handler(request, response) {
     } catch (error) {
       response.status(500).json({ message: "Error fetching idea" });
     }
+    return;
   }
 
   // PUT-Methode
@@ -32,6 +33,7 @@ export default async function handler(request, response) {
     } catch (error) {
       response.status(500).json({ message: "Error updating idea" });
     }
+    return;
   }
 
   // DELETE-Methode
@@ -42,6 +44,7 @@ export default async function handler(request, response) {
     } catch (error) {
       response.status(500).json({ message: "Error deleting idea" });
     }
+    return;
   }
 
   // Falls keine der erwarteten Methoden übereinstimmt

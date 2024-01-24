@@ -52,7 +52,9 @@ export default function IdeaDetails() {
   const { isReady } = router;
   const { id } = router.query;
 
-  const { data, isLoading, error, mutate } = useSWR(`/api/ideas/${id}`);
+  const { data, isLoading, error, mutate } = useSWR(
+    id ? `/api/ideas/${id}` : null
+  );
 
   if (error) return console.log(error);
 
