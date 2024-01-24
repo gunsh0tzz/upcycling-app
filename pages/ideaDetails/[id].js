@@ -52,12 +52,13 @@ export default function IdeaDetails() {
   const { isReady } = router;
   const { id } = router.query;
 
-  const { data: idea, isLoading, error, mutate } = useSWR(`/api/ideas/${id}`);
+  const { data, isLoading, error, mutate } = useSWR(`/api/ideas/${id}`);
+
   if (error) return console.log(error);
 
   if (!isReady || isLoading) return <h2>Loading...</h2>;
 
-  const { instructions, items, hashtags, title, image } = idea;
+  const { instructions, items, hashtags, title, image } = data;
 
   async function handleDelete(id) {
     const response = await fetch(`/api/ideas/${id}`, {
@@ -101,8 +102,8 @@ export default function IdeaDetails() {
           ))}
         </Hashtags>
         <Link href="/">Go Back</Link>
-        <Link href={`/edit/${idea._id}`}>Edit</Link>
-        <StyledButton onClick={() => handleDelete(idea._id)}>
+        <Link href={`/edit/${data._id}`}>Edit</Link>
+        <StyledButton onClick={() => handleDelete(data._id)}>
           Delete Idea
         </StyledButton>
       </StyledArticle>
