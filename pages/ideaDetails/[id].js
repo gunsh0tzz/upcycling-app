@@ -58,7 +58,10 @@ export default function IdeaDetails() {
     error,
     mutate,
   } = useSWR(id ? `/api/ideas/${id}` : null);
-  if (!isReady || isLoading || error) return <h2>Loading...</h2>;
+
+  if (error) return console.log(error);
+
+  if (!isReady || isLoading) return <h2>Loading...</h2>;
 
   const { instructions, items, hashtags, title, image } = idea;
 
