@@ -30,14 +30,8 @@ const StyledLink = styled(Link)`
   }
 `;
 
-const PreviousButton = styled.button`
+const PaginationButton = styled.button`
   margin-top: 10px;
-  display: ${(props) => (props.show ? "block" : "none")};
-`;
-
-const NextButton = styled.button`
-  margin-top: 10px;
-  display: ${(props) => (props.show ? "block" : "none")};
 `;
 
 const ButtonBox = styled.div`
@@ -119,19 +113,16 @@ export default function HomePage({ onToggleFavourites, favouriteIdeas }) {
             ))}
       </CardList>
       <ButtonBox>
-        <PreviousButton
-          onClick={() => setCurrentPage(currentPage - 1)}
-          show={currentPage > 1}
-        >
-          Previous Page
-        </PreviousButton>
-
-        <NextButton
-          onClick={() => setCurrentPage(currentPage + 1)}
-          show={currentPage < totalPages}
-        >
-          Next Page
-        </NextButton>
+        {currentPage > 1 ? (
+          <PaginationButton onClick={() => setCurrentPage(currentPage - 1)}>
+            Previous
+          </PaginationButton>
+        ) : null}
+        {currentPage < totalPages ? (
+          <PaginationButton onClick={() => setCurrentPage(currentPage + 1)}>
+            Next
+          </PaginationButton>
+        ) : null}
       </ButtonBox>
     </div>
   );
