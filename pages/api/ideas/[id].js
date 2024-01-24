@@ -4,22 +4,27 @@ import Idea from "@/db/models/Idea";
 export default async function handler(request, response) {
   await dbConnect();
   const { id } = request.query;
-  console.log("Received id:", id);
 
-  //GET Method
+  // GET-Methode
   if (request.method === "GET") {
-    const idea = await Idea.findById(id);
+    try {
+      const idea = await Idea.findById(id);
 
-    if (!idea) {
-      return response.status(404).json({ status: "Not Found" });
+      if (!idea) {
+        return response.status(404).json({ status: "Not Found" });
+      }
+
+      response.status(200).json(idea);
+    } catch (error) {
+      response.status(500).json({ message: "Error fetching idea" });
     }
-    response.status(200).json(idea);
   }
 
+  // PUT-Methode
   if (request.method === "PUT") {
     try {
       const idea = await Idea.findOneAndUpdate(
-        { _id: request.query.id },
+        { _id: id }, // Verwenden Sie den extrahierten Wert direkt hier
         request.body,
         { new: true }
       );
@@ -27,18 +32,18 @@ export default async function handler(request, response) {
     } catch (error) {
       response.status(500).json({ message: "Error updating idea" });
     }
-    return;
   }
 
+  // DELETE-Methode
   if (request.method === "DELETE") {
     try {
-      const idea = await Idea.findOneAndDelete({ _id: request.query.id });
+      const idea = await Idea.findOneAndDelete({ _id: id }); // Verwenden Sie den extrahierten Wert direkt hier
       response.status(200).json(idea);
     } catch (error) {
       response.status(500).json({ message: "Error deleting idea" });
     }
-    return;
   }
 
+  // Falls keine der erwarteten Methoden übereinstimmt
   response.status(405).json({ message: "Method not allowed" });
 }

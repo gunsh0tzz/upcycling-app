@@ -7,7 +7,7 @@ export default async function handler(request, response) {
   if (request.method === "GET") {
     try {
       const ideas = await Idea.find();
-      console.log("ideas" + ideas);
+
       return response.status(200).json(ideas);
     } catch (error) {
       console.error("Error fetching ideas:", error);
