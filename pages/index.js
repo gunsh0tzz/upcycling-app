@@ -1,12 +1,11 @@
 import styled from "styled-components";
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import useSWR from "swr";
 import Fuse from "fuse.js";
 
 import Card from "../components/Card";
 import Searchbar from "@/components/Searchbar";
-
-import { ideas as defaultIdeas } from "@/lib/db";
 
 const CardList = styled.ul`
   display: flex;
@@ -35,18 +34,21 @@ const StyledLink = styled(Link)`
   }
 `;
 
-export default function HomePage({
-  ideas,
-  onToggleFavourites,
-  favouriteIdeas,
-}) {
+export default function HomePage({ onToggleFavourites, favouriteIdeas }) {
+  const {
+    data: ideas,
+    isLoading,
+    error,
+  } = useSWR("/api/ideas", {
+    fallbackData: [],
+  });
   const [suggestions, setSuggestions] = useState([]);
   const [searchResults, setSearchResults] = useState(
     ideas.map((idea) => ({ item: idea }))
   );
   const [searchValue, setSearchValue] = useState("");
 
-  const fuse = new Fuse(defaultIdeas, {
+  const fuse = new Fuse(ideas, {
     keys: ["hashtags", "title"],
   });
 
@@ -70,31 +72,32 @@ export default function HomePage({
       <CardList>
         {suggestions.length > 0 && searchValue
           ? suggestions.map((suggestion) => (
-              <CardListItem key={suggestion.item.id}>
+              <CardListItem key={suggestion.item._id}>
                 <Card
                   image={suggestion.item.image}
                   title={suggestion.item.title}
                   hashtags={suggestion.item.hashtags}
                   onToggleFavourites={onToggleFavourites}
-                  isFavourite={suggestion.item.isFavourite}
-                  id={suggestion.item.id}
+                  favouriteIdeas={favouriteIdeas}
+                  id={suggestion.item._id}
                 />
-                <StyledLink href={`/ideaDetails/${suggestion.item.id}`}>
+                <StyledLink href={`/ideaDetails/${suggestion.item._id}`}>
                   See More
                 </StyledLink>
               </CardListItem>
             ))
           : ideas.map((idea) => (
-              <CardListItem key={idea.id}>
+              <CardListItem key={idea._id}>
                 <Card
                   image={idea.image}
                   title={idea.title}
                   hashtags={idea.hashtags}
                   onToggleFavourites={onToggleFavourites}
-                  isFavourite={idea.isFavourite}
-                  id={idea.id}
+                  favouriteIdeas={favouriteIdeas}
+                  id={idea._id}
+                  idea={idea}
                 />
-                <StyledLink href={`/ideaDetails/${idea.id}`}>
+                <StyledLink href={`/ideaDetails/${idea._id}`}>
                   See More
                 </StyledLink>
               </CardListItem>

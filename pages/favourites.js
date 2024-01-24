@@ -20,23 +20,29 @@ const CardListItem = styled.li`
   padding: 1rem;
 `;
 
-export default function FavouritePage({ ideas, onToggleFavourites }) {
-  const favouriteIdeas = ideas.filter((idea) => idea.isFavourite);
+export default function FavouritePage({
+  ideas,
+  onToggleFavourites,
+  favouriteIdeas,
+}) {
+  const ideasToDisplay = ideas.filter((idea) =>
+    favouriteIdeas.includes(idea._id)
+  );
 
   return (
     <div>
       <CardList>
-        {favouriteIdeas.map((idea) => (
-          <CardListItem key={idea.id}>
+        {ideasToDisplay.map((idea) => (
+          <CardListItem key={idea._id}>
             <Card
               image={idea.image}
               title={idea.title}
               hashtags={idea.hashtags}
               onToggleFavourites={onToggleFavourites}
-              isFavourite={idea.isFavourite}
-              id={idea.id}
+              favouriteIdeas={favouriteIdeas}
+              id={idea._id}
             />
-            <Link href={`/ideaDetails/${idea.id}`}>See More</Link>
+            <Link href={`/ideaDetails/${idea._id}`}>See More</Link>
           </CardListItem>
         ))}
       </CardList>

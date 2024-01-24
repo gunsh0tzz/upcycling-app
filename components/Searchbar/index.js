@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { useRouter } from "next/router";
+import useSWR from "swr";
 
 import Link from "next/link";
 
@@ -74,7 +75,7 @@ export default function Searchbar({
         {showSuggestions &&
           suggestions.map(({ item }, index) => (
             <StyledListItem key={index}>
-              <StyledLink href={"/ideaDetails/" + item.id}>
+              <StyledLink href={`/ideaDetails/${item._id}`}>
                 {item.title}
               </StyledLink>
             </StyledListItem>

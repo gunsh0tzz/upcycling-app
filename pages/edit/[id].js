@@ -2,23 +2,34 @@ import { useRouter } from "next/router";
 import Form from "@/components/Form";
 import Header from "@/components/Header";
 
-import { useEffect, useState } from "react";
 import useSWR from "swr";
 
 export default function EditIdeas({ ideas, editIdea }) {
   const router = useRouter();
   const { id } = router.query;
-  const ideaToEdit = ideas.find((idea) => idea.id === id);
+  const {
+    data: ideaToEdit,
+    isLoading,
+    mutate,
+  } = useSWR(id ? `/api/ideas/${id}` : null);
 
-  function handleEdit(updatedIdea) {
-    editIdea(updatedIdea);
+  async function onEdit(data) {
+    const response = await fetch(`/api/ideas/${id}`, {
+      method: "PUT",
+      body: JSON.stringify(data),
+      headers: { "Content-Type": "application/json" },
+    });
+    mutate(`/api/ideas`);
+    mutate(`/api/ideas/${id}`);
     router.push("/");
+  }
+  if (!ideaToEdit || isLoading) {
+    return "Loading";
   }
 
   return (
     <>
-      <Header />
-      <Form idea={ideaToEdit} onSubmit={handleEdit} />
+      <Form idea={ideaToEdit} onSubmit={onEdit} />
     </>
   );
 }
