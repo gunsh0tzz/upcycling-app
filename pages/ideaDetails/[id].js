@@ -57,7 +57,7 @@ export default function IdeaDetails() {
 
   if (!isReady || isLoading) return <h2>Loading...</h2>;
 
-  const { instructions, items, hashtags, title, image } = data;
+  const { instructions, items, hashtags, title, image } = idea;
 
   async function handleDelete(id) {
     const response = await fetch(`/api/ideas/${id}`, {
