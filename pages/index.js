@@ -112,18 +112,21 @@ export default function HomePage({ onToggleFavourites, favouriteIdeas }) {
               </CardListItem>
             ))}
       </CardList>
-      <ButtonBox>
-        {currentPage > 1 ? (
-          <PaginationButton onClick={() => setCurrentPage(currentPage - 1)}>
-            Previous
-          </PaginationButton>
-        ) : null}
-        {currentPage < totalPages ? (
-          <PaginationButton onClick={() => setCurrentPage(currentPage + 1)}>
-            Next
-          </PaginationButton>
-        ) : null}
-      </ButtonBox>
+
+      {!searchValue && (
+        <ButtonBox>
+          {currentPage > 1 ? (
+            <PaginationButton onClick={() => setCurrentPage(currentPage - 1)}>
+              Previous
+            </PaginationButton>
+          ) : null}
+          {currentPage < totalPages ? (
+            <PaginationButton onClick={() => setCurrentPage(currentPage + 1)}>
+              Next
+            </PaginationButton>
+          ) : null}
+        </ButtonBox>
+      )}
     </div>
   );
 }
