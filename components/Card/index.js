@@ -20,6 +20,7 @@ const StyledImage = styled(Image)`
 
 const Title = styled.h2`
   font-size: 1.05rem;
+  padding-left: 0.5rem;
 `;
 
 const Hashtags = styled.ul`

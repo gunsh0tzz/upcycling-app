@@ -11,7 +11,7 @@ export default createGlobalStyle`
 
   body {
     font-family: system-ui;
-    background-image: url("/background_cover.svg");
+    background-image: url("/cover_green.svg");
     background-size:cover;
     background-color: #FFFFFF;
     background-attachment: fixed;

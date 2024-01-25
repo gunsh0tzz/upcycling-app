@@ -7,10 +7,11 @@ import { faHouse, faPlus, faHeart } from "@fortawesome/free-solid-svg-icons";
 
 const StyledNavigation = styled.nav`
   position: fixed;
-  bottom: 0;
+  bottom: -1rem;
   width: 100%;
   margin-bottom: 1rem;
-  background: transparent;
+  background-image: url("/Rectangle.svg");
+  background-size: cover;
   z-index: 1;
 `;
 
