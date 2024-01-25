@@ -2,8 +2,6 @@ import Image from "next/image";
 import styled from "styled-components";
 import { v4 as uuidv4 } from "uuid";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart as solidHeart } from "@fortawesome/free-solid-svg-icons";
-import { faHeart as regularHeart } from "@fortawesome/free-regular-svg-icons";
 
 const Article = styled.article`
   display: flex;
@@ -58,21 +56,18 @@ export default function Card({
   id,
 }) {
   const isFavourite = favouriteIdeas && favouriteIdeas.includes(id);
+  // Begrenze die Anzahl der Hashtags auf die ersten drei
+  const limitedHashtags = hashtags.slice(0, 3);
 
   return (
     <Article>
       <StyledImage src={image} alt={title} width={200} height={145} />
       <Title>{title}</Title>
       <Hashtags>
-        {hashtags.map((hashtag) => (
+        {limitedHashtags.map((hashtag) => (
           <li key={uuidv4()}>#{hashtag}</li>
         ))}
       </Hashtags>
-      {/* <FavoriteButton
-        onClick={(event) => event && onToggleFavourites(id, event)}
-      >
-        <StyledIcon icon={isFavourite ? solidHeart : regularHeart} />
-      </FavoriteButton> */}
       <FavoriteButton
         onClick={(event) => event && onToggleFavourites(id, event)}
       >

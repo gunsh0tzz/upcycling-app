@@ -17,7 +17,7 @@ const StyledNavigation = styled.nav`
 
 const StyledUnorderedList = styled.ul`
   display: flex;
-  gap: 0.7rem;
+  gap: 0.2rem;
   justify-content: center;
   list-style: none;
   height: 14vh;

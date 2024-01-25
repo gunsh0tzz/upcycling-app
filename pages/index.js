@@ -14,6 +14,7 @@ const CardList = styled.ul`
   list-style-type: none;
   padding: 0;
   align-self: center;
+  position: relative;
 `;
 const CardListItem = styled.li`
   margin: auto;
@@ -28,6 +29,8 @@ const CardListItem = styled.li`
 `;
 const StyledLink = styled(Link)`
   text-decoration: none;
+  position: absolute;
+  bottom: 0;
   color: #7d7d7d;
   &:hover {
     text-decoration: underline;
