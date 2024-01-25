@@ -2,8 +2,7 @@ import styled from "styled-components";
 import Image from "next/image";
 
 const StyledHeader = styled.header`
-  margin-top: -1rem;
-  margin-bottom: -4rem;
+  padding: 2vh;
   text-align: center;
   position: relative;
 `;
@@ -11,7 +10,7 @@ const StyledHeader = styled.header`
 export default function Header() {
   return (
     <StyledHeader>
-      <Image src={"/logo.svg"} width={300} height={200} alt="logo reuse" />
+      <Image src={"/header.png"} width={130} height={60} alt="logo reuse" />
     </StyledHeader>
   );
 }

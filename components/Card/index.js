@@ -56,18 +56,18 @@ export default function Card({
 
   return (
     <Article>
-      <FavoriteButton
-        onClick={(event) => event && onToggleFavourites(id, event)}
-      >
-        <StyledIcon icon={isFavourite ? solidHeart : regularHeart} />
-      </FavoriteButton>
-      <StyledImage src={image} alt={title} width={150} height={120} />
+      <StyledImage src={image} alt={title} width={145} height={139} />
       <h2>{title}</h2>
       <Hashtags>
         {hashtags.map((hashtag) => (
           <li key={uuidv4()}>#{hashtag}</li>
         ))}
       </Hashtags>
+      <FavoriteButton
+        onClick={(event) => event && onToggleFavourites(id, event)}
+      >
+        <StyledIcon icon={isFavourite ? solidHeart : regularHeart} />
+      </FavoriteButton>
     </Article>
   );
 }

@@ -1,24 +1,51 @@
 import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faMagnifyingGlass,
+  faArrowsRotate,
+} from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
 import { useRouter } from "next/router";
-import useSWR from "swr";
 
 import Link from "next/link";
 
+const SearchContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 15rem;
+  width: 70vw;
+  height: 5vh;
+  background-color: #e8e8e8;
+  padding: 0.2rem;
+`;
+
 const StyledSearchbar = styled.input`
-  border: 1px solid black;
+  border: none;
   padding: 0.5rem;
-  width: 15rem;
+  padding-left: 1rem;
+  background: transparent;
 `;
 
 const StyledSearchButton = styled.button`
-  border: 1px solid black;
+  border: none;
+  border-radius: 100%;
   padding: 0.5rem;
+  background-color: #a97bb5;
+  transform: scale(0.9);
+`;
+
+const StyledIcon = styled(FontAwesomeIcon)`
+  color: white;
+`;
+
+const StyledPreviewSearch = styled.div`
+  background-color: white;
+  z-index: 1;
 `;
 
 const StyledListItem = styled.li`
   list-style: none;
-  border: 1px solid black;
   width: 15rem;
   padding: 0.25rem;
 
@@ -62,16 +89,23 @@ export default function Searchbar({
 
   return (
     <>
-      <div>
+      <SearchContainer>
         <StyledSearchbar
-          placeholder="Search for titles or hashtags"
+          placeholder="Search "
           value={inputValue}
           onChange={handleChangeEvent}
         />
-        <StyledSearchButton onClick={handleSearch}>Search</StyledSearchButton>
-        <StyledSearchButton onClick={handleReset}>reset</StyledSearchButton>
-      </div>
-      <ul>
+        {searchValue ? (
+          <StyledSearchButton onClick={handleReset}>
+            <StyledIcon icon={faArrowsRotate} />
+          </StyledSearchButton>
+        ) : (
+          <StyledSearchButton onClick={handleSearch}>
+            <StyledIcon icon={faMagnifyingGlass} />
+          </StyledSearchButton>
+        )}
+      </SearchContainer>
+      <StyledPreviewSearch>
         {showSuggestions &&
           suggestions.map(({ item }, index) => (
             <StyledListItem key={index}>
@@ -80,7 +114,7 @@ export default function Searchbar({
               </StyledLink>
             </StyledListItem>
           ))}
-      </ul>
+      </StyledPreviewSearch>
     </>
   );
 }

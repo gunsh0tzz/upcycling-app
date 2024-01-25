@@ -8,21 +8,23 @@ import Searchbar from "@/components/Searchbar";
 
 const CardList = styled.ul`
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
   gap: 1rem;
   list-style-type: none;
   padding: 0;
-  margin: 1rem 0rem 0rem 1rem;
+  align-self: center;
 `;
 const CardListItem = styled.li`
-  flex: 0 0 calc(90% - 1rem);
-  background-color: #fafafa;
-  max-width: 90%;
-  box-sizing: border-box;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
-  border-radius: 0.5rem;
-  padding: 1rem;
   margin: auto;
+  width: 65vw;
+  height: 47vh;
+  flex-shrink: 0;
+  background-color: #fafafa;
+  align-self: flex-end;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 0.8rem;
+  padding: 0.5rem;
 `;
 const StyledLink = styled(Link)`
   text-decoration: none;
@@ -72,7 +74,7 @@ export default function HomePage({ onToggleFavourites, favouriteIdeas }) {
     setSuggestions(fuse.search(item));
   }
   return (
-    <div>
+    <>
       <Searchbar
         suggestions={suggestions}
         onInputChange={handleInputChange}
@@ -129,6 +131,6 @@ export default function HomePage({ onToggleFavourites, favouriteIdeas }) {
           ) : null}
         </ButtonBox>
       )}
-    </div>
+    </>
   );
 }
