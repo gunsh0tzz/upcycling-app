@@ -15,12 +15,14 @@ const CardList = styled.ul`
   margin: 1rem 0rem 0rem 1rem;
 `;
 const CardListItem = styled.li`
-  flex: 0 0 calc(50% - 1rem);
-  max-width: calc(50% - 1rem);
+  flex: 0 0 calc(90% - 1rem);
+  background-color: #fafafa;
+  max-width: 90%;
   box-sizing: border-box;
-  border: 1px solid black;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
   border-radius: 0.5rem;
   padding: 1rem;
+  margin: auto;
 `;
 const StyledLink = styled(Link)`
   text-decoration: none;
@@ -39,7 +41,7 @@ const ButtonBox = styled.div`
   justify-content: space-between;
 `;
 
-const ideasPerPage = 2;
+const ideasPerPage = 1;
 export default function HomePage({ onToggleFavourites, favouriteIdeas }) {
   const {
     data: ideas,

@@ -13,6 +13,7 @@ export default createGlobalStyle`
     font-family: system-ui;
     background-image: url("/cover.svg");
     background-size:cover;
+    background-color: #FFFFFF;
     background-attachment: fixed;
   }
 `;
