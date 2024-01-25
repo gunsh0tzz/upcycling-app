@@ -22,9 +22,13 @@ const SearchContainer = styled.div`
 
 const StyledSearchbar = styled.input`
   border: none;
-  padding: 0.5rem;
+  width: 60vw;
+  padding: 0.4rem;
   padding-left: 1rem;
   background: transparent;
+  &:focus {
+    outline: none;
+  }
 `;
 
 const StyledSearchButton = styled.button`

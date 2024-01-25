@@ -24,11 +24,11 @@ const CardListItem = styled.li`
   align-self: flex-end;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
   border-radius: 0.8rem;
-  padding: 0.5rem;
+  padding: 0.7rem;
 `;
 const StyledLink = styled(Link)`
   text-decoration: none;
-  color: black;
+  color: #7d7d7d;
   &:hover {
     text-decoration: underline;
   }

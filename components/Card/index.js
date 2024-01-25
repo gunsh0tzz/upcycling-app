@@ -8,6 +8,7 @@ import { faHeart as regularHeart } from "@fortawesome/free-regular-svg-icons";
 const Article = styled.article`
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   gap: 0.5rem;
   align-items: center;
   position: relative;
@@ -17,20 +18,23 @@ const StyledImage = styled(Image)`
   border-radius: 0.5rem;
 `;
 
+const Title = styled.h2`
+  font-size: 1.05rem;
+`;
+
 const Hashtags = styled.ul`
   display: flex;
+  color: #7d7d7d;
   gap: 0.5rem;
   flex-wrap: wrap;
+  font-size: 0.9rem;
   list-style-type: none;
 `;
 
 const FavoriteButton = styled.button`
   border: none;
   background-color: transparent;
-
-  position: absolute;
-  top: 0.25rem;
-  right: 0.25rem;
+  align-self: flex-end;
 
   @media (max-width: 600px) {
     position: static;
@@ -40,7 +44,7 @@ const FavoriteButton = styled.button`
 `;
 
 const StyledIcon = styled(FontAwesomeIcon)`
-  color: red;
+  color: green;
   font-size: 2rem;
 `;
 
@@ -56,17 +60,31 @@ export default function Card({
 
   return (
     <Article>
-      <StyledImage src={image} alt={title} width={145} height={139} />
-      <h2>{title}</h2>
+      <StyledImage src={image} alt={title} width={200} height={145} />
+      <Title>{title}</Title>
       <Hashtags>
         {hashtags.map((hashtag) => (
           <li key={uuidv4()}>#{hashtag}</li>
         ))}
       </Hashtags>
-      <FavoriteButton
+      {/* <FavoriteButton
         onClick={(event) => event && onToggleFavourites(id, event)}
       >
         <StyledIcon icon={isFavourite ? solidHeart : regularHeart} />
+      </FavoriteButton> */}
+      <FavoriteButton
+        onClick={(event) => event && onToggleFavourites(id, event)}
+      >
+        {isFavourite ? (
+          <Image
+            src={"/plant_fav.svg"}
+            width={50}
+            height={50}
+            alt="plant icon"
+          />
+        ) : (
+          <Image src={"/plant.svg"} width={50} height={50} alt="plant icon" />
+        )}
       </FavoriteButton>
     </Article>
   );
