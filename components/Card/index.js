@@ -37,7 +37,7 @@ const FavoriteButton = styled.button`
 
   @media (max-width: 600px) {
     position: static;
-    top: auto;
+    bottom: auto;
     right: auto;
   }
 `;

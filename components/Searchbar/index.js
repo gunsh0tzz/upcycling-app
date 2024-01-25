@@ -44,14 +44,21 @@ const StyledIcon = styled(FontAwesomeIcon)`
 `;
 
 const StyledPreviewSearch = styled.div`
+  margin-top: -0.5rem;
   background-color: white;
   z-index: 1;
+  overflow-y: scroll;
+  max-height: 3rem;
 `;
 
 const StyledListItem = styled.li`
   list-style: none;
+  white-space: nowrap;
+  overflow: hidden;
+  font-size: 0.8rem;
   width: 15rem;
   padding: 0.25rem;
+  text-overflow: ellipsis;
 
   &:hover {
     background-color: rgba(0, 0, 0, 0.125);

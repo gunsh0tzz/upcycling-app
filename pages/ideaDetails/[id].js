@@ -10,9 +10,12 @@ const StyledArticle = styled.article`
   flex-wrap: wrap;
   gap: 1rem;
   list-style: none;
-  padding: 0;
-  margin-top: 1rem;
+  padding: 1rem;
+  margin: 1rem;
   flex-direction: column;
+  background-color: #fafafa;
+  border-radius: 0.8rem;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
 `;
 
 const StyledImage = styled(Image)`
@@ -26,6 +29,8 @@ const StyledContainer = styled.div`
 
 const Instruction = styled.ol`
   padding-left: 1rem;
+  overflow-y: scroll;
+  max-height: 8rem;
 `;
 
 const Hashtags = styled.ul`
@@ -35,16 +40,28 @@ const Hashtags = styled.ul`
   flex-wrap: wrap;
 `;
 
+const ItemsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
 const Items = styled.ul`
   list-style: none;
-  border: 1px solid black;
-  border-radius: 0.5rem;
+  font-size: 0.8rem;
   padding: 0.5rem;
+`;
+
+const ItemsTitle = styled.h4`
+  padding-left: 0.5rem;
 `;
 
 const StyledButton = styled.button`
   width: fit-content;
   padding: 0.5rem;
+`;
+
+const ButtonBox = styled.div`
+  display: flex;
+  justify-content: space-between;
 `;
 
 export default function IdeaDetails() {
@@ -83,14 +100,17 @@ export default function IdeaDetails() {
   return (
     <>
       <StyledArticle>
-        <h2>{title}</h2>
+        <h3>{title}</h3>
         <StyledContainer>
           <StyledImage src={image} alt={title} width={150} height={120} />
-          <Items>
-            {items.map((item) => (
-              <li key={uuidv4()}>{item}</li>
-            ))}
-          </Items>
+          <ItemsContainer>
+            <ItemsTitle>Items:</ItemsTitle>
+            <Items>
+              {items.map((item) => (
+                <li key={uuidv4()}>{item}</li>
+              ))}
+            </Items>
+          </ItemsContainer>
         </StyledContainer>
         <Instruction>
           {instructions.map((instruction) => (
@@ -103,11 +123,13 @@ export default function IdeaDetails() {
             <li key={uuidv4()}>#{hashtag}</li>
           ))}
         </Hashtags>
-        <Link href="/">Go Back</Link>
-        <Link href={`/edit/${data._id}`}>Edit</Link>
-        <StyledButton onClick={() => handleDelete(data._id)}>
-          Delete Idea
-        </StyledButton>
+        {/* <Link href="/">Go Back</Link> */}
+        <ButtonBox>
+          <Link href={`/edit/${data._id}`}>Edit</Link>
+          <StyledButton onClick={() => handleDelete(data._id)}>
+            Delete Idea
+          </StyledButton>
+        </ButtonBox>
       </StyledArticle>
     </>
   );
