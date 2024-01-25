@@ -5,7 +5,8 @@ import Header from "./Header";
 import Navigation from "./Navigation";
 
 const StyledMain = styled.main`
-  margin: 0 2rem;
+  position: absolute;
+  margin: 0.5rem;
 `;
 
 export default function Layout({ children }) {

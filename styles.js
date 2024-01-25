@@ -11,5 +11,8 @@ export default createGlobalStyle`
 
   body {
     font-family: system-ui;
+    background-image: url("/cover.svg");
+    background-size:cover;
+    background-attachment: fixed;
   }
 `;

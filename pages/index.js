@@ -39,7 +39,7 @@ const ButtonBox = styled.div`
   justify-content: space-between;
 `;
 
-const ideasPerPage = 4;
+const ideasPerPage = 2;
 export default function HomePage({ onToggleFavourites, favouriteIdeas }) {
   const {
     data: ideas,

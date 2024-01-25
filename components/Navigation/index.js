@@ -8,8 +8,10 @@ const StyledNavigation = styled.nav`
   position: fixed;
   bottom: 0;
   width: 100%;
-  border-top: 1px solid black;
-  background-color: white;
+
+  background: transparent;
+
+  z-index: 1;
 `;
 
 const StyledUnorderedList = styled.ul`
