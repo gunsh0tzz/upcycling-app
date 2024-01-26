@@ -9,8 +9,13 @@ export default createGlobalStyle`
     padding: 0;
   }
 
+  @font-face {
+  font-family: Inter;
+  src: url("/fonts/Inter-Regular.ttf");
+  }
+
   body {
-    font-family: system-ui;
+    font-family: Inter, Arial, Helvetica, sans-serif;
     background-image: url("/cover_green.svg");
     background-size:cover;
     background-color: #FFFFFF;
