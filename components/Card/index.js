@@ -6,7 +6,6 @@ import Link from "next/link";
 const Article = styled.article`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   gap: 0.5rem;
   align-items: center;
   position: relative;
@@ -14,12 +13,16 @@ const Article = styled.article`
 `;
 
 const StyledImage = styled(Image)`
-  border-radius: 0.5rem;
+  border-radius: 0.8rem;
 `;
 
 const StyledLink = styled(Link)`
   text-decoration: none;
   align-self: flex-start;
+  position: absolute;
+  bottom: 0rem;
+  left: 0rem;
+
   color: #7d7d7d;
   &:hover {
     text-decoration: underline;
@@ -29,6 +32,8 @@ const StyledLink = styled(Link)`
 const Title = styled.h2`
   font-size: 1.05rem;
   padding-left: 0.5rem;
+  align-self: flex-start;
+  /* margin-top: -1rem; */
 `;
 
 const Hashtags = styled.ul`
@@ -40,6 +45,7 @@ const Hashtags = styled.ul`
   list-style-type: none;
   max-width: 48vw;
   align-self: flex-start;
+  padding-left: 0.2rem;
 `;
 
 const FavoriteButton = styled.button`
@@ -69,7 +75,7 @@ export default function Card({
 
   return (
     <Article>
-      <StyledImage src={image} alt={title} width={200} height={155} />
+      <StyledImage src={image} alt={title} width={200} height={160} />
       <Title>{title}</Title>
       <Hashtags>
         {limitedHashtags.map((hashtag) => (

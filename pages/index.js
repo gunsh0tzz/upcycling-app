@@ -29,7 +29,7 @@ const CardListItem = styled.li`
   background-color: #fafafa;
   align-self: flex-end;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
-  border-radius: 0.8rem;
+  border-radius: 1rem;
   padding: 0.7rem;
   position: relative;
 `;
@@ -70,7 +70,7 @@ const DummyPrev = styled.div`
   height: 50vh;
   width: 9vw;
   border-top-right-radius: 0.8rem;
-  border-bottom-right-radius: 0.8rem;
+  border-bottom-right-radius: 1rem;
   position: fixed;
   bottom: 20vh;
   left: 0;
@@ -90,7 +90,7 @@ const DummyNext = styled.div`
   background-color: #fafafa;
   height: 50vh;
   width: 9vw;
-  border-top-left-radius: 0.8rem;
+  border-top-left-radius: 1rem;
   border-bottom-left-radius: 0.8rem;
   position: fixed;
   bottom: 20vh;
