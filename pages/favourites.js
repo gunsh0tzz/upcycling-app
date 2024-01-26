@@ -20,13 +20,13 @@ const CardList = styled.ul`
 `;
 const CardListItem = styled.li`
   margin: auto;
-  width: 65vw;
-  height: 47vh;
+  width: 63vw;
+  height: 50vh;
   flex-shrink: 0;
   background-color: #fafafa;
   align-self: flex-end;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
-  border-radius: 0.8rem;
+  border-radius: 1rem;
   padding: 0.7rem;
 `;
 const StyledLink = styled(Link)`
