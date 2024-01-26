@@ -107,6 +107,25 @@ const DummyNext = styled.div`
   }
 `;
 
+const StyledCount = styled.div`
+  font-size: 1rem;
+  display: flex;
+  gap: 0.2rem;
+  color: #fafafa;
+  margin-bottom: -1vh;
+`;
+const CountDiv = styled.div`
+  background-color: #fafafa;
+  padding: 0.1rem;
+  padding-left: 0.4rem;
+  padding-right: 0.4rem;
+  border-radius: 100%;
+  color: #000000;
+  font-size: 0.8rem;
+  font-weight: bold;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+`;
+
 const ideasPerPage = 1;
 export default function HomePage({ onToggleFavourites, favouriteIdeas }) {
   const {
@@ -146,6 +165,10 @@ export default function HomePage({ onToggleFavourites, favouriteIdeas }) {
         onClickEvent={handleClickEvent}
         setSearchValue={setSearchValue}
       />
+      <StyledCount>
+        <p>all ideas</p>
+        <CountDiv>{ideas.length}</CountDiv>{" "}
+      </StyledCount>
       <CardList>
         {suggestions.length > 0 && searchValue
           ? suggestions.map((suggestion) => (
