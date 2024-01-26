@@ -1,7 +1,6 @@
 import Image from "next/image";
 import styled from "styled-components";
 import { v4 as uuidv4 } from "uuid";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 
 const Article = styled.article`
@@ -39,6 +38,8 @@ const Hashtags = styled.ul`
   flex-wrap: wrap;
   font-size: 0.9rem;
   list-style-type: none;
+  max-width: 48vw;
+  align-self: flex-start;
 `;
 
 const FavoriteButton = styled.button`
@@ -58,12 +59,12 @@ export default function Card({
   id,
 }) {
   const isFavourite = favouriteIdeas && favouriteIdeas.includes(id);
-  // Begrenze die Anzahl der Hashtags auf die ersten drei
+
   const limitedHashtags = hashtags.slice(0, 3);
 
   return (
     <Article>
-      <StyledImage src={image} alt={title} width={200} height={145} />
+      <StyledImage src={image} alt={title} width={200} height={155} />
       <Title>{title}</Title>
       <Hashtags>
         {limitedHashtags.map((hashtag) => (

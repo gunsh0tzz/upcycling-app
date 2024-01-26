@@ -80,11 +80,10 @@ const StyledTextarea = styled.textarea`
 const StyledTextareaInstruction = styled.textarea`
   background-color: #f7f3f3;
   border-radius: 0.8rem;
-  height: 7vh;
-  /* width: 53vw; */
-  width: 27ch;
-  resize: none;
-  overflow-wrap: break-word;
+  min-height: 7vh;
+  width: 53vw;
+  resize: vertical;
+  overflow-y: auto;
   padding-left: 1rem;
   border: none;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
@@ -195,6 +194,8 @@ export default function Form({ idea = {}, onSubmit }) {
                   required
                   minLength={1}
                   maxLength={150}
+                  wrap="hard"
+                  rows={20}
                 />
                 <StyledInstructionButton
                   type="button"

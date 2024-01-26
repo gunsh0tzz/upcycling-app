@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Link from "next/link";
+import Image from "next/image";
 import { useState, useEffect } from "react";
 import useSWR from "swr";
 import Fuse from "fuse.js";
@@ -17,8 +18,8 @@ const CardList = styled.ul`
 `;
 const CardListItem = styled.li`
   margin: auto;
-  width: 65vw;
-  height: 47vh;
+  width: 63vw;
+  height: 50vh;
   flex-shrink: 0;
   background-color: #fafafa;
   align-self: flex-end;
@@ -37,13 +38,45 @@ const StyledLink = styled(Link)`
   }
 `;
 
-const PaginationButton = styled.button`
+const PaginationPrevButton = styled.button`
+  position: fixed;
+  bottom: 30rem;
+  left: 0;
+  margin-top: 10px;
+`;
+const PaginationNextButton = styled.button`
+  position: fixed;
+  bottom: 10rem;
+  right: 0;
   margin-top: 10px;
 `;
 
 const ButtonBox = styled.div`
-  display: flex;
-  justify-content: space-between;
+  border: 1px solid black;
+`;
+
+const DummyPrev = styled.div`
+  background-color: #fafafa;
+  height: 50vh;
+  width: 9vw;
+  border-top-right-radius: 0.8rem;
+  border-bottom-right-radius: 0.8rem;
+  position: fixed;
+  bottom: 20vh;
+  left: 0;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+`;
+
+const DummyNext = styled.div`
+  background-color: #fafafa;
+  height: 50vh;
+  width: 9vw;
+  border-top-left-radius: 0.8rem;
+  border-bottom-left-radius: 0.8rem;
+  position: fixed;
+  bottom: 20vh;
+  right: 0;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
 `;
 
 const ideasPerPage = 1;
@@ -123,14 +156,18 @@ export default function HomePage({ onToggleFavourites, favouriteIdeas }) {
       {!searchValue && (
         <ButtonBox>
           {currentPage > 1 ? (
-            <PaginationButton onClick={() => setCurrentPage(currentPage - 1)}>
-              Previous
-            </PaginationButton>
+            <PaginationPrevButton
+              onClick={() => setCurrentPage(currentPage - 1)}
+            >
+              <DummyPrev />
+            </PaginationPrevButton>
           ) : null}
           {currentPage < totalPages ? (
-            <PaginationButton onClick={() => setCurrentPage(currentPage + 1)}>
-              Next
-            </PaginationButton>
+            <PaginationNextButton
+              onClick={() => setCurrentPage(currentPage + 1)}
+            >
+              <DummyNext />
+            </PaginationNextButton>
           ) : null}
         </ButtonBox>
       )}
