@@ -60,7 +60,6 @@ export default function FavouritePage({
                 favouriteIdeas={favouriteIdeas}
                 id={idea._id}
               />
-              <Link href={`/ideaDetails/${idea._id}`}>See More</Link>
             </CardListItem>
           ))}
         </CardList>
