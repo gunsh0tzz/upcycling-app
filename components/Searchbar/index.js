@@ -43,12 +43,20 @@ const StyledIcon = styled(FontAwesomeIcon)`
   color: white;
 `;
 
-const StyledPreviewSearch = styled.div`
-  margin-top: -0.5rem;
-  background-color: white;
+const StyledContainer = styled.div`
+  position: absolute;
   z-index: 1;
+  overflow-y: auto;
+`;
+const StyledPreviewSearch = styled.div`
+  margin-top: 2rem;
+  background-color: white;
   overflow-y: scroll;
-  max-height: 3rem;
+  max-height: 5rem;
+
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
 `;
 
 const StyledListItem = styled.li`
@@ -67,10 +75,11 @@ const StyledListItem = styled.li`
 
 const StyledLink = styled(Link)`
   text-decoration: none;
-  color: black;
+  color: grey;
 
   &:hover {
-    text-decoration: underline;
+    text-decoration: none;
+    color: black;
   }
 `;
 
@@ -116,16 +125,18 @@ export default function Searchbar({
           </StyledSearchButton>
         )}
       </SearchContainer>
-      <StyledPreviewSearch>
-        {showSuggestions &&
-          suggestions.map(({ item }, index) => (
-            <StyledListItem key={index}>
-              <StyledLink href={`/ideaDetails/${item._id}`}>
-                {item.title}
-              </StyledLink>
-            </StyledListItem>
-          ))}
-      </StyledPreviewSearch>
+      <StyledContainer>
+        <StyledPreviewSearch>
+          {showSuggestions &&
+            suggestions.map(({ item }, index) => (
+              <StyledListItem key={index}>
+                <StyledLink href={`/ideaDetails/${item._id}`}>
+                  {item.title}
+                </StyledLink>
+              </StyledListItem>
+            ))}
+        </StyledPreviewSearch>
+      </StyledContainer>
     </>
   );
 }
