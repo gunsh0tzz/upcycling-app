@@ -2,6 +2,7 @@ import Image from "next/image";
 import styled from "styled-components";
 import { v4 as uuidv4 } from "uuid";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Link from "next/link";
 
 const Article = styled.article`
   display: flex;
@@ -10,10 +11,20 @@ const Article = styled.article`
   gap: 0.5rem;
   align-items: center;
   position: relative;
+  height: 100%;
 `;
 
 const StyledImage = styled(Image)`
   border-radius: 0.5rem;
+`;
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  align-self: flex-start;
+  color: #7d7d7d;
+  &:hover {
+    text-decoration: underline;
+  }
 `;
 
 const Title = styled.h2`
@@ -33,18 +44,9 @@ const Hashtags = styled.ul`
 const FavoriteButton = styled.button`
   border: none;
   background-color: transparent;
-  align-self: flex-end;
-
-  @media (max-width: 600px) {
-    position: static;
-    bottom: auto;
-    right: auto;
-  }
-`;
-
-const StyledIcon = styled(FontAwesomeIcon)`
-  color: green;
-  font-size: 2rem;
+  position: absolute;
+  bottom: 0rem;
+  right: 0rem;
 `;
 
 export default function Card({
@@ -68,6 +70,7 @@ export default function Card({
           <li key={uuidv4()}>#{hashtag}</li>
         ))}
       </Hashtags>
+      <StyledLink href={`/ideaDetails/${id}`}>See More</StyledLink>
       <FavoriteButton
         onClick={(event) => event && onToggleFavourites(id, event)}
       >

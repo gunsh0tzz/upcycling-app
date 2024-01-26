@@ -14,7 +14,6 @@ const CardList = styled.ul`
   list-style-type: none;
   padding: 0;
   align-self: center;
-  position: relative;
 `;
 const CardListItem = styled.li`
   margin: auto;
@@ -26,6 +25,7 @@ const CardListItem = styled.li`
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
   border-radius: 0.8rem;
   padding: 0.7rem;
+  position: relative;
 `;
 const StyledLink = styled(Link)`
   text-decoration: none;
@@ -113,9 +113,9 @@ export default function HomePage({ onToggleFavourites, favouriteIdeas }) {
                   id={idea._id}
                   idea={idea}
                 />
-                <StyledLink href={`/ideaDetails/${idea._id}`}>
+                {/* <StyledLink href={`/ideaDetails/${idea._id}`}>
                   See More
-                </StyledLink>
+                </StyledLink> */}
               </CardListItem>
             ))}
       </CardList>
