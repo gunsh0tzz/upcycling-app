@@ -2,9 +2,6 @@ import Link from "next/link";
 import styled from "styled-components";
 import Image from "next/image";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHouse, faPlus, faHeart } from "@fortawesome/free-solid-svg-icons";
-
 const StyledNavigation = styled.nav`
   position: fixed;
   bottom: -1rem;

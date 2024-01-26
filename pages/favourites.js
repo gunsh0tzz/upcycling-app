@@ -1,8 +1,10 @@
 import styled from "styled-components";
 import Link from "next/link";
 import Card from "@/components/Card";
+
 const CardListContainer = styled.div`
   height: 70vh;
+  width: 100vw;
   overflow-y: auto;
 `;
 const CardList = styled.ul`
