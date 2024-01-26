@@ -6,9 +6,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
 import { useRouter } from "next/router";
-
 import Link from "next/link";
-
 const SearchContainer = styled.div`
   display: flex;
   justify-content: space-between;
@@ -19,7 +17,6 @@ const SearchContainer = styled.div`
   background-color: #e8e8e8;
   padding: 0.2rem;
 `;
-
 const StyledSearchbar = styled.input`
   border: none;
   width: 60vw;
@@ -30,7 +27,6 @@ const StyledSearchbar = styled.input`
     outline: none;
   }
 `;
-
 const StyledSearchButton = styled.button`
   border: none;
   border-radius: 100%;
@@ -38,11 +34,9 @@ const StyledSearchButton = styled.button`
   background-color: #a97bb5;
   transform: scale(0.9);
 `;
-
 const StyledIcon = styled(FontAwesomeIcon)`
   color: white;
 `;
-
 const StyledContainer = styled.div`
   position: absolute;
   z-index: 1;
@@ -53,12 +47,10 @@ const StyledPreviewSearch = styled.div`
   background-color: white;
   overflow-y: scroll;
   max-height: 5rem;
-
   border-bottom-left-radius: 0.5rem;
   border-bottom-right-radius: 0.5rem;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
 `;
-
 const StyledListItem = styled.li`
   list-style: none;
   white-space: nowrap;
@@ -67,22 +59,18 @@ const StyledListItem = styled.li`
   width: 15rem;
   padding: 0.25rem;
   text-overflow: ellipsis;
-
   &:hover {
     background-color: rgba(0, 0, 0, 0.125);
   }
 `;
-
 const StyledLink = styled(Link)`
   text-decoration: none;
   color: grey;
-
   &:hover {
     text-decoration: none;
     color: black;
   }
 `;
-
 export default function Searchbar({
   suggestions,
   onInputChange,
@@ -92,7 +80,6 @@ export default function Searchbar({
   const [inputValue, setInputValue] = useState("");
   const [showSuggestions, setShowSuggestions] = useState(true);
   const router = useRouter();
-
   function handleChangeEvent(e) {
     onInputChange(e.target.value);
     setInputValue(e.target.value);
@@ -106,7 +93,6 @@ export default function Searchbar({
     setShowSuggestions(false);
     onClickEvent(inputValue);
   }
-
   return (
     <>
       <SearchContainer>
