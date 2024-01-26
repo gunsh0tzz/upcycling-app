@@ -48,6 +48,11 @@ const FavoriteButton = styled.button`
   position: absolute;
   bottom: 0rem;
   right: 0rem;
+
+  transition: transform 0.25s;
+  &:hover {
+    transform: scale(1.1);
+  }
 `;
 
 export default function Card({

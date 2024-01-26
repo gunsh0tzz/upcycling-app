@@ -1,9 +1,14 @@
 import styled from "styled-components";
 import Link from "next/link";
-import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import useSWR from "swr";
 import Fuse from "fuse.js";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faChevronLeft,
+  faChevronRight,
+} from "@fortawesome/free-solid-svg-icons";
+
 import Card from "../components/Card";
 import Searchbar from "@/components/Searchbar";
 
@@ -55,6 +60,11 @@ const ButtonBox = styled.div`
   border: 1px solid black;
 `;
 
+const StyledIcon = styled(FontAwesomeIcon)`
+  font-size: 1.5rem;
+  color: gray;
+`;
+
 const DummyPrev = styled.div`
   background-color: #fafafa;
   height: 50vh;
@@ -65,6 +75,15 @@ const DummyPrev = styled.div`
   bottom: 20vh;
   left: 0;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  transition: transform 0.25s;
+  &:hover {
+    transform: scale(1.1);
+  }
 `;
 
 const DummyNext = styled.div`
@@ -77,6 +96,15 @@ const DummyNext = styled.div`
   bottom: 20vh;
   right: 0;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  transition: transform 0.25s;
+  &:hover {
+    transform: scale(1.1);
+  }
 `;
 
 const ideasPerPage = 1;
@@ -159,14 +187,18 @@ export default function HomePage({ onToggleFavourites, favouriteIdeas }) {
             <PaginationPrevButton
               onClick={() => setCurrentPage(currentPage - 1)}
             >
-              <DummyPrev />
+              <DummyPrev>
+                <StyledIcon icon={faChevronLeft} />
+              </DummyPrev>
             </PaginationPrevButton>
           ) : null}
           {currentPage < totalPages ? (
             <PaginationNextButton
               onClick={() => setCurrentPage(currentPage + 1)}
             >
-              <DummyNext />
+              <DummyNext>
+                <StyledIcon icon={faChevronRight} />
+              </DummyNext>
             </PaginationNextButton>
           ) : null}
         </ButtonBox>

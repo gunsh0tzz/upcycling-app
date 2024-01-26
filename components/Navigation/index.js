@@ -38,6 +38,11 @@ const StyledCreateLink = styled(Link)`
   padding-top: 0.2rem;
   align-self: flex-start;
   border: 0.1px solid lightgray;
+
+  transition: transform 0.25s;
+  &:hover {
+    transform: scale(1.1);
+  }
 `;
 
 export default function Navigation() {

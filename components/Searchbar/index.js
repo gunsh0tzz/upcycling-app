@@ -33,6 +33,11 @@ const StyledSearchButton = styled.button`
   padding: 0.5rem;
   background-color: #a97bb5;
   transform: scale(0.9);
+
+  transition: transform 0.25s;
+  &:hover {
+    transform: scale(1);
+  }
 `;
 const StyledIcon = styled(FontAwesomeIcon)`
   color: white;
