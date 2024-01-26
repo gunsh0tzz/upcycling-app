@@ -3,6 +3,7 @@ import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import styled from "styled-components";
 import Image from "next/image";
+
 const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
@@ -11,20 +12,22 @@ const StyledForm = styled.form`
   background-color: #fafafa;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
   border-radius: 0.8rem;
+  border: 2px solid #fafafa;
   padding: 0.7rem;
   height: 60vh;
   max-height: 60vh;
-  width: 80vw;
+  width: 85vw;
   overflow-y: auto;
-  /* position: relative; */
 `;
 const StyledUnorderedList = styled.ul`
-  margin-left: 1rem;
   list-style: none;
 `;
 const StyledTitle = styled.h3`
-  margin-bottom: 1rem;
+  margin-bottom: 0.5;
   margin-top: 1rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  align-self: center;
 `;
 const StyledSaveButton = styled.button`
   display: flex;
@@ -39,8 +42,6 @@ const StyledSaveButton = styled.button`
   border: none;
   background-color: #44c67f;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
-  /* position: absolute;
-  bottom: 0; */
 `;
 const StyledButtonText = styled.p`
   padding: 0.2rem;
@@ -62,6 +63,7 @@ const StyledInput = styled.input`
   background-color: #f7f3f3;
   border-radius: 0.8rem;
   height: 4vh;
+  padding: 0.3rem;
   padding-left: 1rem;
   border: none;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
@@ -70,6 +72,7 @@ const StyledTextarea = styled.textarea`
   background-color: #f7f3f3;
   border-radius: 0.8rem;
   height: 4vh;
+  padding: 0.3rem;
   padding-left: 1rem;
   border: none;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
@@ -78,17 +81,21 @@ const StyledTextareaInstruction = styled.textarea`
   background-color: #f7f3f3;
   border-radius: 0.8rem;
   height: 7vh;
+  /* width: 53vw; */
+  width: 27ch;
+  resize: none;
+  overflow-wrap: break-word;
   padding-left: 1rem;
   border: none;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
 `;
 const StyledSpan = styled.span`
-  padding: 0%.2rem;
+  padding: 0.2rem;
 `;
 const StyledInstructionButton = styled.button`
   padding: 0.2rem;
   background: transparent;
-  margin-left: 0.3rem;
+  margin-left: 0.1rem;
   border: none;
 `;
 export default function Form({ idea = {}, onSubmit }) {
@@ -195,8 +202,8 @@ export default function Form({ idea = {}, onSubmit }) {
                 >
                   <Image
                     src={"/add_circle.svg"}
-                    width={30}
-                    height={30}
+                    width={25}
+                    height={25}
                     alt="plant icon"
                   />
                 </StyledInstructionButton>
@@ -206,8 +213,8 @@ export default function Form({ idea = {}, onSubmit }) {
                 >
                   <Image
                     src={"/recycling.svg"}
-                    width={30}
-                    height={30}
+                    width={25}
+                    height={25}
                     alt="plant icon"
                   />
                 </StyledInstructionButton>

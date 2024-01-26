@@ -14,7 +14,7 @@ const SearchContainer = styled.div`
   border-radius: 15rem;
   width: 70vw;
   height: 5vh;
-  background-color: #e8e8e8;
+  background-color: #eeeeee;
   padding: 0.2rem;
 `;
 const StyledSearchbar = styled.input`
