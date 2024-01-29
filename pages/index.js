@@ -21,18 +21,7 @@ const CardList = styled.ul`
   padding: 0;
   align-self: center;
 `;
-const CardListItem = styled.li`
-  margin: auto;
-  width: 63vw;
-  height: 50vh;
-  flex-shrink: 0;
-  background-color: #fafafa;
-  align-self: flex-end;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
-  border-radius: 1rem;
-  padding: 0.7rem;
-  position: relative;
-`;
+
 const StyledLink = styled(Link)`
   text-decoration: none;
   position: absolute;
@@ -113,6 +102,9 @@ const StyledCount = styled.div`
   gap: 0.2rem;
   color: #fafafa;
   margin-bottom: -1vh;
+  @media screen and (min-height: 800px) {
+    font-size: 1.3rem;
+  }
 `;
 const CountDiv = styled.div`
   background-color: #fafafa;
@@ -124,9 +116,34 @@ const CountDiv = styled.div`
   font-size: 0.8rem;
   font-weight: bold;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  @media screen and (min-height: 800px) {
+    font-size: 1.1rem;
+  }
+`;
+
+const CardListItem = styled.li`
+  margin: auto;
+  width: 63vw;
+  height: 50vh;
+  flex-shrink: 0;
+  background-color: #fafafa;
+  align-self: flex-end;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 1rem;
+  padding: 0.7rem;
+  position: relative;
 `;
 
 const ideasPerPage = 1;
+
+// let ideasPerPage;
+
+// if (typeof window !== "undefined" && window.innerWidth < 750) {
+//   ideasPerPage = 1;
+// } else {
+//   ideasPerPage = 3;
+// }
+
 export default function HomePage({ onToggleFavourites, favouriteIdeas }) {
   const {
     data: ideas,

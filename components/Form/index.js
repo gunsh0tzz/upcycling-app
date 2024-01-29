@@ -88,9 +88,7 @@ const StyledTextareaInstruction = styled.textarea`
   border: none;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
 `;
-const StyledSpan = styled.span`
-  padding: 0.2rem;
-`;
+
 const StyledInstructionButton = styled.button`
   padding: 0.2rem;
   background: transparent;
@@ -181,9 +179,8 @@ export default function Form({ idea = {}, onSubmit }) {
           <div key={instruction.id}>
             <StyledUnorderedList>
               <li>
-                <StyledSpan>{index + 1}. </StyledSpan>
+                <span>{index + 1}. </span>
                 <StyledTextareaInstruction
-                  as="input"
                   type="text"
                   id="instructions"
                   placeholder="instructions"
@@ -195,7 +192,7 @@ export default function Form({ idea = {}, onSubmit }) {
                   minLength={1}
                   maxLength={150}
                   wrap="hard"
-                  rows={20}
+                  rows={5}
                 />
                 <StyledInstructionButton
                   type="button"
@@ -208,7 +205,20 @@ export default function Form({ idea = {}, onSubmit }) {
                     alt="plant icon"
                   />
                 </StyledInstructionButton>
-                <StyledInstructionButton
+                {index > 0 && (
+                  <StyledInstructionButton
+                    type="button"
+                    onClick={() => handleRemoveInstruction(instruction.id)}
+                  >
+                    <Image
+                      src={"/recycling.svg"}
+                      width={25}
+                      height={25}
+                      alt="plant icon"
+                    />
+                  </StyledInstructionButton>
+                )}
+                {/* <StyledInstructionButton
                   type="button"
                   onClick={() => handleRemoveInstruction(instruction.id)}
                 >
@@ -218,7 +228,7 @@ export default function Form({ idea = {}, onSubmit }) {
                     height={25}
                     alt="plant icon"
                   />
-                </StyledInstructionButton>
+                </StyledInstructionButton> */}
               </li>
             </StyledUnorderedList>
           </div>

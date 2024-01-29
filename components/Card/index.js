@@ -3,15 +3,6 @@ import styled from "styled-components";
 import { v4 as uuidv4 } from "uuid";
 import Link from "next/link";
 
-const Article = styled.article`
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  align-items: center;
-  position: relative;
-  height: 100%;
-`;
-
 const StyledImage = styled(Image)`
   border-radius: 0.8rem;
 `;
@@ -33,7 +24,6 @@ const Title = styled.h2`
   font-size: 1.05rem;
   padding-left: 0.5rem;
   align-self: flex-start;
-  /* margin-top: -1rem; */
 `;
 
 const Hashtags = styled.ul`
@@ -58,6 +48,34 @@ const FavoriteButton = styled.button`
   transition: transform 0.25s;
   &:hover {
     transform: scale(1.1);
+  }
+`;
+
+const Article = styled.article`
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+  position: relative;
+  height: 100%;
+
+  @media screen and (min-height: 800px) {
+    ${StyledImage} {
+      height: 180px;
+    }
+
+    ${Title} {
+      margin-top: 1rem;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    ${Hashtags} {
+      font-size: 1.1rem;
+    }
+    ${StyledLink} {
+      font-size: 1.2rem;
+    }
   }
 `;
 

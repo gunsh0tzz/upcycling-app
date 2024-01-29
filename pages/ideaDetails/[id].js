@@ -11,35 +11,34 @@ const StyledArticle = styled.article`
   gap: 1rem;
   list-style: none;
   padding: 1rem;
-  margin: 1rem;
+  margin: 0 2rem;
   flex-direction: column;
   background-color: #fafafa;
-  border-radius: 0.8rem;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 1rem;
+  max-width: 100%;
+  box-shadow: 4px 2px 4px rgba(0, 0, 0, 0.2);
 `;
-
 const StyledImage = styled(Image)`
   border-radius: 0.5rem;
 `;
-
 const StyledContainer = styled.div`
   display: flex;
   gap: 1rem;
 `;
-
 const Instruction = styled.ol`
-  padding-left: 1rem;
   overflow-y: scroll;
-  max-height: 8rem;
+  max-height: 9rem;
+  list-style-position: inside;
+  font-size: 0.9rem;
 `;
-
 const Hashtags = styled.ul`
+  color: #7d7d7d;
   list-style: none;
   display: flex;
   gap: 0.5rem;
   flex-wrap: wrap;
+  font-size: 0.8rem;
 `;
-
 const ItemsContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -49,14 +48,22 @@ const Items = styled.ul`
   font-size: 0.8rem;
   padding: 0.5rem;
 `;
-
-const ItemsTitle = styled.h4`
+const ItemsTitle = styled.h3`
   padding-left: 0.5rem;
+  font-weight: bolder;
+  font-size: 1rem;
 `;
-
+const InstructionsTitle = styled.h3`
+  display: block;
+  font-weight: bolder;
+  font-size: 1rem;
+`;
 const StyledButton = styled.button`
   width: fit-content;
-  padding: 0.5rem;
+  padding-top: 0.5rem;
+  background: transparent;
+  border: none;
+  margin: -0.5rem;
 `;
 
 const ButtonBox = styled.div`
@@ -64,26 +71,25 @@ const ButtonBox = styled.div`
   justify-content: space-between;
 `;
 
+const StyledEditImage = styled(Image)`
+  margin-top: 0.6rem;
+  margin-right: 0.2rem;
+`;
+
 export default function IdeaDetails() {
   const router = useRouter();
   const { isReady } = router;
   const { id } = router.query;
-
   const { data, isLoading, error, mutate } = useSWR(
     id ? `/api/ideas/${id}` : null
   );
-
   if (error) return console.log(error);
-
   if (!isReady || isLoading) return <h2>Loading...</h2>;
-
   const { instructions, items, hashtags, title, image } = data;
-
   async function handleDelete(id) {
     const response = await fetch(`/api/ideas/${id}`, {
       method: "DELETE",
     });
-
     if (response.ok) {
       await response.json();
       mutate();
@@ -96,7 +102,6 @@ export default function IdeaDetails() {
       );
     }
   }
-
   return (
     <>
       <StyledArticle>
@@ -112,23 +117,35 @@ export default function IdeaDetails() {
             </Items>
           </ItemsContainer>
         </StyledContainer>
+
+        <InstructionsTitle>Instructions:</InstructionsTitle>
         <Instruction>
           {instructions.map((instruction) => (
             <li key={instruction.id}>{instruction.step}</li>
           ))}
         </Instruction>
-
         <Hashtags>
           {hashtags.map((hashtag) => (
             <li key={uuidv4()}>#{hashtag}</li>
           ))}
         </Hashtags>
-        {/* <Link href="/">Go Back</Link> */}
         <ButtonBox>
-          <Link href={`/edit/${data._id}`}>Edit</Link>
           <StyledButton onClick={() => handleDelete(data._id)}>
-            Delete Idea
+            <Image
+              src={"/recycling.svg"}
+              width={40}
+              height={40}
+              alt="plant icon"
+            />
           </StyledButton>
+          <Link href={`/edit/${data._id}`}>
+            <StyledEditImage
+              src={"/pencil.svg"}
+              width={28}
+              height={27}
+              alt="plant icon"
+            />
+          </Link>
         </ButtonBox>
       </StyledArticle>
     </>
