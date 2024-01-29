@@ -100,7 +100,6 @@ export default function Card({
           <li key={uuidv4()}>#{hashtag}</li>
         ))}
       </Hashtags>
-      <StyledLink href={`/ideaDetails/${id}`}>See More</StyledLink>
       <FavoriteButton
         onClick={(event) => event && onToggleFavourites(id, event)}
       >

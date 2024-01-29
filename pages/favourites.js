@@ -60,6 +60,9 @@ export default function FavouritePage({
                 favouriteIdeas={favouriteIdeas}
                 id={idea._id}
               />
+              <StyledLink href={`/ideaDetails/${idea._id}`}>
+                See More
+              </StyledLink>
             </CardListItem>
           ))}
         </CardList>

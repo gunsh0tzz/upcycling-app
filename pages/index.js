@@ -214,9 +214,9 @@ export default function HomePage({ onToggleFavourites, favouriteIdeas }) {
                   id={idea._id}
                   idea={idea}
                 />
-                {/* <StyledLink href={`/ideaDetails/${idea._id}`}>
+                <StyledLink href={`/ideaDetails/${idea._id}`}>
                   See More
-                </StyledLink> */}
+                </StyledLink>
               </CardListItem>
             ))}
       </CardList>
