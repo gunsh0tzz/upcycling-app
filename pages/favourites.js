@@ -3,7 +3,7 @@ import Link from "next/link";
 import Card from "@/components/Card";
 
 const CardListContainer = styled.div`
-  height: 70vh;
+  height: 73vh;
   width: 100vw;
   overflow-y: auto;
 `;
@@ -31,6 +31,7 @@ const CardListItem = styled.li`
   padding: 0.7rem;
   position: relative;
   min-height: 20rem;
+  margin-bottom: 2rem;
 `;
 const StyledLink = styled(Link)`
   text-decoration: none;
@@ -39,6 +40,10 @@ const StyledLink = styled(Link)`
   color: #7d7d7d;
   &:hover {
     text-decoration: underline;
+  }
+  @media screen and (min-width: 601px) {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
   }
 `;
 export default function FavouritePage({

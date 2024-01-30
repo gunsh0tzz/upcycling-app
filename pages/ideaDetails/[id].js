@@ -17,6 +17,13 @@ const StyledArticle = styled.article`
   border-radius: 1rem;
   max-width: 100%;
   box-shadow: 4px 2px 4px rgba(0, 0, 0, 0.2);
+  @media screen and (min-width: 601px) {
+    margin-top: 17vh;
+    transform: scale(1.35);
+  }
+  @media screen and (min-height: 1000px) {
+    margin-top: 16vh;
+  }
 `;
 const StyledImage = styled(Image)`
   border-radius: 0.5rem;

@@ -38,6 +38,9 @@ const StyledSearchButton = styled.button`
   &:hover {
     transform: scale(1);
   }
+  @media screen and (min-width: 601px) {
+    transform: scale(1.2);
+  }
 `;
 const StyledIcon = styled(FontAwesomeIcon)`
   color: white;
@@ -47,9 +50,16 @@ const StyledContainer = styled.div`
   z-index: 1;
   overflow-y: auto;
   top: 8.2rem;
-  /* height: fit-content; */
   width: fit-content;
   background-color: white;
+  @media screen and (min-width: 601px) {
+    top: 10.2rem;
+    width: 31rem;
+  }
+  @media screen and (min-width: 1024px) {
+    top: 13rem;
+    width: 31rem;
+  }
 `;
 const StyledPreviewSearch = styled.div`
   margin-top: 0.5rem;

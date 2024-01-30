@@ -5,6 +5,8 @@ import Link from "next/link";
 
 const StyledImage = styled(Image)`
   border-radius: 0.8rem;
+  width: 95%;
+  height: 55%;
 `;
 
 const StyledLink = styled(Link)`
@@ -29,7 +31,7 @@ const Title = styled.h2`
 const Hashtags = styled.ul`
   display: flex;
   color: #7d7d7d;
-  gap: 0.5rem;
+  gap: 0.2rem;
   flex-wrap: wrap;
   font-size: 0.9rem;
   list-style-type: none;
@@ -60,8 +62,26 @@ const Article = styled.article`
   height: 100%;
 
   @media screen and (min-height: 800px) {
+    ${Title} {
+      margin-top: 0.5rem;
+      font-size: 1.5rem;
+    }
+    ${Image} {
+      height: 56%;
+    }
+
+    ${Hashtags} {
+      font-size: 1rem;
+    }
+    ${StyledLink} {
+      font-size: 1.2rem;
+    }
+  }
+
+  @media screen and (min-width: 601px) {
     ${StyledImage} {
-      height: 180px;
+      height: 60%;
+      width: 100%;
     }
 
     ${Title} {
@@ -75,6 +95,9 @@ const Article = styled.article`
     }
     ${StyledLink} {
       font-size: 1.2rem;
+    }
+    ${StyledLink.p} {
+      font-size: 3.2rem;
     }
   }
 `;

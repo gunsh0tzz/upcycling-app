@@ -25,10 +25,14 @@ const CardList = styled.ul`
 const StyledLink = styled(Link)`
   text-decoration: none;
   position: absolute;
-  bottom: 0;
+  bottom: 1rem;
   color: #7d7d7d;
   &:hover {
     text-decoration: underline;
+  }
+  @media screen and (min-width: 601px) {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
   }
 `;
 
@@ -104,6 +108,11 @@ const StyledCount = styled.div`
   margin-bottom: -1vh;
   @media screen and (min-height: 800px) {
     font-size: 1.3rem;
+  }
+  @media screen and (min-width: 601px) {
+    background-color: #a97bb5;
+    border-radius: 1rem;
+    padding: 0.5rem;
   }
 `;
 const CountDiv = styled.div`

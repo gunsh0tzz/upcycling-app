@@ -10,6 +10,10 @@ const StyledNavigation = styled.nav`
   background-image: url("/Rectangle.svg");
   background-size: cover;
   z-index: 1;
+  @media screen and (min-width: 1024px) {
+    background-image: url("/Desktop_NavImage.svg");
+    margin-top: -6rem;
+  }
 `;
 
 const StyledUnorderedList = styled.ul`
@@ -18,6 +22,10 @@ const StyledUnorderedList = styled.ul`
   justify-content: center;
   list-style: none;
   height: 14vh;
+  margin-bottom: 1vh;
+  @media screen and (min-width: 1024px) {
+    margin-bottom: 1.5vh;
+  }
 `;
 
 const StyledListItem = styled.li`
@@ -28,6 +36,12 @@ const StyledLink = styled(Link)`
   width: 100%;
   display: flex;
   align-items: flex-end;
+`;
+
+const StyledImage = styled(Image)`
+  @media screen and (min-width: 1024px) {
+    transform: scale(1.6);
+  }
 `;
 
 const StyledCreateLink = styled(Link)`
@@ -43,6 +57,12 @@ const StyledCreateLink = styled(Link)`
   &:hover {
     transform: scale(1.1);
   }
+  @media screen and (min-width: 601px) {
+    transform: scale(1.3);
+  }
+  @media screen and (min-width: 1024px) {
+    transform: scale(1.7);
+  }
 `;
 
 export default function Navigation() {
@@ -51,7 +71,12 @@ export default function Navigation() {
       <StyledUnorderedList>
         <StyledListItem>
           <StyledLink href="/">
-            <Image src={"/home.svg"} width={60} height={60} alt="plant icon" />
+            <StyledImage
+              src={"/home.svg"}
+              width={60}
+              height={60}
+              alt="plant icon"
+            />
           </StyledLink>
         </StyledListItem>
         <StyledListItem>
@@ -66,7 +91,7 @@ export default function Navigation() {
         </StyledListItem>
         <StyledListItem>
           <StyledLink href="/favourites">
-            <Image
+            <StyledImage
               src={"/white_plant.svg"}
               width={60}
               height={60}
