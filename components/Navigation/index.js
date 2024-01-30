@@ -10,7 +10,7 @@ const StyledNavigation = styled.nav`
   background-image: url("/Rectangle.svg");
   background-size: cover;
   z-index: 1;
-  @media screen and (min-width: 1024px) {
+  @media screen and (min-width: 600px) {
     background-image: url("/Desktop_NavImage.svg");
     margin-top: -6rem;
   }
@@ -24,12 +24,21 @@ const StyledUnorderedList = styled.ul`
   height: 14vh;
   margin-bottom: 1vh;
   @media screen and (min-width: 1024px) {
-    margin-bottom: 1.5vh;
+    margin-top: 0.6rem;
   }
 `;
 
 const StyledListItem = styled.li`
   display: flex;
+  @media screen and (min-width: 600px) {
+    margin-bottom: 1.75vh;
+    padding-left: 1.2rem;
+  }
+  @media screen and (min-width: 1024px) {
+    padding-left: 3rem;
+    padding-top: 0.5rem;
+    margin-bottom: 2vh;
+  }
 `;
 
 const StyledLink = styled(Link)`
@@ -39,8 +48,11 @@ const StyledLink = styled(Link)`
 `;
 
 const StyledImage = styled(Image)`
+  @media screen and (min-width: 600px) {
+    transform: scale(1.3);
+  }
   @media screen and (min-width: 1024px) {
-    transform: scale(1.6);
+    transform: scale(1.2);
   }
 `;
 
@@ -58,10 +70,10 @@ const StyledCreateLink = styled(Link)`
     transform: scale(1.1);
   }
   @media screen and (min-width: 601px) {
-    transform: scale(1.3);
+    transform: scale(1.4);
   }
   @media screen and (min-width: 1024px) {
-    transform: scale(1.7);
+    transform: scale(1.4);
   }
 `;
 

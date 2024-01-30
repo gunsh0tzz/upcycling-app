@@ -7,6 +7,11 @@ import {
 import styled from "styled-components";
 import { useRouter } from "next/router";
 import Link from "next/link";
+
+const Container = styled.div`
+  position: relative;
+`;
+
 const SearchContainer = styled.div`
   display: flex;
   justify-content: space-between;
@@ -16,6 +21,12 @@ const SearchContainer = styled.div`
   height: 5vh;
   background-color: #eeeeee;
   padding: 0.2rem;
+  @media screen and (min-width: 600px) {
+    width: 50vw;
+  }
+  @media screen and (min-width: 1024px) {
+    width: 40vw;
+  }
 `;
 const StyledSearchbar = styled.input`
   border: none;
@@ -49,17 +60,13 @@ const StyledContainer = styled.div`
   position: absolute;
   z-index: 1;
   overflow-y: auto;
-  top: 8.2rem;
-  width: fit-content;
+  top: 2rem;
+  width: 70vw;
   background-color: white;
-  @media screen and (min-width: 601px) {
+  /* @media screen and (min-width: 601px) {
     top: 10.2rem;
     width: 31rem;
-  }
-  @media screen and (min-width: 1024px) {
-    top: 13rem;
-    width: 31rem;
-  }
+  } */
 `;
 const StyledPreviewSearch = styled.div`
   margin-top: 0.5rem;
@@ -114,7 +121,7 @@ export default function Searchbar({
     onClickEvent(inputValue);
   }
   return (
-    <>
+    <Container>
       <SearchContainer>
         <StyledSearchbar
           placeholder="Search "
@@ -143,6 +150,6 @@ export default function Searchbar({
             ))}
         </StyledPreviewSearch>
       </StyledContainer>
-    </>
+    </Container>
   );
 }

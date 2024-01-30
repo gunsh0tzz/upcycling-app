@@ -18,6 +18,9 @@ const StyledForm = styled.form`
   max-height: 60vh;
   width: 85vw;
   overflow-y: auto;
+  @media (min-width: 1024px) {
+    max-width: 50rem;
+  }
 `;
 const StyledUnorderedList = styled.ul`
   list-style: none;
@@ -42,6 +45,9 @@ const StyledSaveButton = styled.button`
   border: none;
   background-color: #44c67f;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  @media (min-width: 1024px) {
+    width: 20vw;
+  }
 `;
 const StyledButtonText = styled.p`
   padding: 0.2rem;
@@ -58,6 +64,9 @@ const StyledCancelButton = styled.button`
   border: none;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
   background-color: #ca92de;
+  @media (min-width: 1024px) {
+    width: 20vw;
+  }
 `;
 const StyledInput = styled.input`
   background-color: #f7f3f3;
@@ -87,6 +96,9 @@ const StyledTextareaInstruction = styled.textarea`
   padding-left: 1rem;
   border: none;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  @media (min-width: 1024px) {
+    max-width: 45vw;
+  }
 `;
 
 const StyledInstructionButton = styled.button`

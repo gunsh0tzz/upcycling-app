@@ -21,7 +21,7 @@ export default createGlobalStyle`
     background-color: #FFFFFF;
     background-attachment: fixed;
   }
-  @media screen and (min-width: 1024px){
+  @media screen and (min-width: 500px){
     body {
       background-image:url("/Desktop_Background.svg")
     

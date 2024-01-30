@@ -31,8 +31,13 @@ const StyledLink = styled(Link)`
     text-decoration: underline;
   }
   @media screen and (min-width: 601px) {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     margin-bottom: 0.5rem;
+  }
+  @media screen and (min-width: 1024px) {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    bottom: 0.75rem;
   }
 `;
 
@@ -77,6 +82,9 @@ const DummyPrev = styled.div`
   &:hover {
     transform: scale(1.1);
   }
+  @media screen and (min-width: 1024px) {
+    width: 4vw;
+  }
 `;
 
 const DummyNext = styled.div`
@@ -97,6 +105,9 @@ const DummyNext = styled.div`
   transition: transform 0.25s;
   &:hover {
     transform: scale(1.1);
+  }
+  @media screen and (min-width: 1024px) {
+    width: 4vw;
   }
 `;
 
@@ -141,6 +152,11 @@ const CardListItem = styled.li`
   border-radius: 1rem;
   padding: 0.7rem;
   position: relative;
+
+  @media screen and (min-width: 1024px) {
+    margin-top: 2rem;
+    width: 30vw;
+  }
 `;
 
 const ideasPerPage = 1;

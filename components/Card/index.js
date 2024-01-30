@@ -56,10 +56,14 @@ const FavoriteButton = styled.button`
 const Article = styled.article`
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.4rem;
   align-items: center;
   position: relative;
   height: 100%;
+  @media (min-width: 600px) {
+    gap: 0rem;
+    margin-top: 0rem;
+  }
 
   @media screen and (min-height: 800px) {
     ${Title} {

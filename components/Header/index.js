@@ -7,10 +7,22 @@ const StyledHeader = styled.header`
   position: relative;
 `;
 
+const StyledImage = styled(Image)`
+  @media screen and (min-width: 1240px) {
+    width: 180px;
+    height: 85px;
+  }
+`;
+
 export default function Header() {
   return (
     <StyledHeader>
-      <Image src={"/header.png"} width={130} height={60} alt="logo reuse" />
+      <StyledImage
+        src={"/header.png"}
+        width={130}
+        height={60}
+        alt="logo reuse"
+      />
     </StyledHeader>
   );
 }

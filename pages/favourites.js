@@ -32,6 +32,9 @@ const CardListItem = styled.li`
   position: relative;
   min-height: 20rem;
   margin-bottom: 2rem;
+  @media screen and (min-width: 1024px) {
+    width: 30vw;
+  }
 `;
 const StyledLink = styled(Link)`
   text-decoration: none;
