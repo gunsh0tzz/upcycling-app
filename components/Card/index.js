@@ -77,29 +77,6 @@ const Article = styled.article`
       font-size: 1.2rem;
     }
   }
-
-  @media screen and (min-height: 601px) {
-    ${StyledImage} {
-      height: 280px;
-      width: 100%;
-    }
-
-    ${Title} {
-      margin-top: 1rem;
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-    }
-
-    ${Hashtags} {
-      font-size: 1.1rem;
-    }
-    ${StyledLink} {
-      font-size: 1.2rem;
-    }
-    ${StyledLink.p} {
-      font-size: 3.2rem;
-    }
-  }
 `;
 
 export default function Card({
