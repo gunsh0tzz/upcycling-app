@@ -46,9 +46,14 @@ const StyledContainer = styled.div`
   position: absolute;
   z-index: 1;
   overflow-y: auto;
+  top: 8.2rem;
+  /* height: fit-content; */
+  width: fit-content;
+  background-color: white;
 `;
 const StyledPreviewSearch = styled.div`
-  margin-top: 2rem;
+  margin-top: 0.5rem;
+
   background-color: white;
   overflow-y: scroll;
   max-height: 5rem;

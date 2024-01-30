@@ -136,14 +136,6 @@ const CardListItem = styled.li`
 
 const ideasPerPage = 1;
 
-// let ideasPerPage;
-
-// if (typeof window !== "undefined" && window.innerWidth < 750) {
-//   ideasPerPage = 1;
-// } else {
-//   ideasPerPage = 3;
-// }
-
 export default function HomePage({ onToggleFavourites, favouriteIdeas }) {
   const {
     data: ideas,
@@ -182,10 +174,13 @@ export default function HomePage({ onToggleFavourites, favouriteIdeas }) {
         onClickEvent={handleClickEvent}
         setSearchValue={setSearchValue}
       />
-      <StyledCount>
-        <p>all ideas</p>
-        <CountDiv>{ideas.length}</CountDiv>{" "}
-      </StyledCount>
+      {!searchValue && (
+        <StyledCount>
+          <p>all ideas</p>
+          <CountDiv>{ideas.length}</CountDiv>{" "}
+        </StyledCount>
+      )}
+
       <CardList>
         {suggestions.length > 0 && searchValue
           ? suggestions.map((suggestion) => (

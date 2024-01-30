@@ -12,6 +12,7 @@ const CardList = styled.ul`
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
+  min-height: 20rem;
   gap: 1rem;
   list-style-type: none;
   padding: 0;
@@ -28,6 +29,8 @@ const CardListItem = styled.li`
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
   border-radius: 1rem;
   padding: 0.7rem;
+  position: relative;
+  min-height: 20rem;
 `;
 const StyledLink = styled(Link)`
   text-decoration: none;

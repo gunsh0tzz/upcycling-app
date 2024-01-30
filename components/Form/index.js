@@ -218,17 +218,6 @@ export default function Form({ idea = {}, onSubmit }) {
                     />
                   </StyledInstructionButton>
                 )}
-                {/* <StyledInstructionButton
-                  type="button"
-                  onClick={() => handleRemoveInstruction(instruction.id)}
-                >
-                  <Image
-                    src={"/recycling.svg"}
-                    width={25}
-                    height={25}
-                    alt="plant icon"
-                  />
-                </StyledInstructionButton> */}
               </li>
             </StyledUnorderedList>
           </div>
