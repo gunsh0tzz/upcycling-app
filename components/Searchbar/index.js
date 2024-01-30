@@ -50,6 +50,11 @@ const StyledContainer = styled.div`
   /* height: fit-content; */
   width: fit-content;
   background-color: white;
+
+  @media screen and (min-height: 601px) {
+    top: 10.2rem;
+    width: 31rem;
+  }
 `;
 const StyledPreviewSearch = styled.div`
   margin-top: 0.5rem;

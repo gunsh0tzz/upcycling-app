@@ -30,6 +30,11 @@ const StyledLink = styled(Link)`
   &:hover {
     text-decoration: underline;
   }
+
+  @media screen and (min-height: 601px) {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
 `;
 
 const PaginationPrevButton = styled.button`
@@ -104,6 +109,12 @@ const StyledCount = styled.div`
   margin-bottom: -1vh;
   @media screen and (min-height: 800px) {
     font-size: 1.3rem;
+  }
+  @media screen and (min-height: 601px) {
+    /* text-shadow: 0rem 0rem 0.25rem black; */
+    background-color: #a97bb5;
+    border-radius: 1rem;
+    padding: 0.5rem;
   }
 `;
 const CountDiv = styled.div`

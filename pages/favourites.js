@@ -40,6 +40,11 @@ const StyledLink = styled(Link)`
   &:hover {
     text-decoration: underline;
   }
+
+  @media screen and (min-height: 601px) {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
 `;
 export default function FavouritePage({
   ideas,
