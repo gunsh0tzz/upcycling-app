@@ -1,10 +1,10 @@
 import { useRouter } from "next/router";
-import Form from "@/components/Form";
-import Header from "@/components/Header";
-
 import useSWR from "swr";
+import { useSession, signIn, signOut } from "next-auth/react";
+import Form from "@/components/Form";
 
 export default function EditIdeas({ ideas, editIdea }) {
+  const { data: session, status } = useSession();
   const router = useRouter();
   const { id } = router.query;
   const {
@@ -12,6 +12,10 @@ export default function EditIdeas({ ideas, editIdea }) {
     isLoading,
     mutate,
   } = useSWR(id ? `/api/ideas/${id}` : null);
+
+  if (status !== "authenticated") {
+    return <h1>Access denied. You have to be logged in to view this page.</h1>;
+  }
 
   async function onEdit(data) {
     const response = await fetch(`/api/ideas/${id}`, {
