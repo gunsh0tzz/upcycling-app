@@ -7,16 +7,14 @@ import Card from "../components/Card";
 import Searchbar from "@/components/Searchbar";
 
 const CardList = styled.ul`
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 1rem;
   list-style-type: none;
   padding: 0;
-  margin: 1rem 0rem 0rem 1rem;
+  margin: 3rem 0rem 0rem 1rem;
 `;
 const CardListItem = styled.li`
-  flex: 0 0 calc(50% - 1rem);
-  max-width: calc(50% - 1rem);
   box-sizing: border-box;
   border: 1px solid black;
   border-radius: 0.5rem;
