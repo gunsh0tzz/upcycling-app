@@ -3,8 +3,6 @@ import Link from "next/link";
 import Card from "@/components/Card";
 
 const CardListContainer = styled.div`
-  height: 73vh;
-  width: 100vw;
   overflow-y: auto;
 `;
 const CardList = styled.ul`
@@ -12,7 +10,6 @@ const CardList = styled.ul`
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  min-height: 20rem;
   gap: 1rem;
   list-style-type: none;
   padding: 0;
@@ -27,7 +24,6 @@ const LinkWrapper = styled(Link)`
 const CardListItem = styled.li`
   margin: auto;
   width: 63vw;
-  min-height: 325px;
   flex-shrink: 0;
   background-color: #fafafa;
   align-self: flex-end;
@@ -35,11 +31,7 @@ const CardListItem = styled.li`
   border-radius: 1rem;
   padding: 0.7rem;
   position: relative;
-  min-height: 20rem;
   margin-bottom: 2rem;
-  @media screen and (min-width: 1024px) {
-    width: 30vw;
-  }
 `;
 const StyledLink = styled(Link)`
   text-decoration: none;

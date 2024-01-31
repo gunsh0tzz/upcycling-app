@@ -4,9 +4,8 @@ import { v4 as uuidv4 } from "uuid";
 
 const StyledImage = styled(Image)`
   border-radius: 0.8rem;
-  width: 95%;
+  width: 100%;
   min-height: 12rem;
-
   object-fit: cover;
 `;
 
@@ -50,7 +49,7 @@ const Article = styled.article`
   position: relative;
   height: 100%;
   @media (min-width: 600px) {
-    gap: 0rem;
+    gap: 0.5rem;
     margin-top: 0rem;
   }
 `;

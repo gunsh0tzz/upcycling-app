@@ -16,7 +16,12 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  min-height: 325px;
+  width: 100%;
+  padding: 0 3rem;
+
+  @media screen and (min-width: 600px) {
+    padding: 0 10rem;
+  }
 `;
 
 const StyledCount = styled.div`
@@ -25,13 +30,13 @@ const StyledCount = styled.div`
   gap: 0.2rem;
   color: #fafafa;
   margin-bottom: -1vh;
+  background-color: #a97bb5;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  width: fit-content;
+  
   @media screen and (min-height: 800px) {
     font-size: 1.3rem;
-  }
-  @media screen and (min-width: 601px) {
-    background-color: #a97bb5;
-    border-radius: 1rem;
-    padding: 0.5rem;
   }
 `;
 
@@ -56,13 +61,13 @@ const CardList = styled.ul`
   list-style-type: none;
   padding: 0;
   align-self: center;
+  width: 100%;
+  margin-top: 0.5rem;
 `;
 
 const CardListItem = styled.li`
   margin: auto;
-  width: 63vw;
-  min-height: 325px;
-  height: 50vh;
+  width: 100%;
   flex-shrink: 0;
   background-color: #fafafa;
   align-self: flex-end;
@@ -71,10 +76,9 @@ const CardListItem = styled.li`
   padding: 0.7rem;
   position: relative;
 
-  @media screen and (min-width: 1024px) {
+  @media screen and (min-width: 600px) {
     margin-top: 2rem;
-    min-height: 400px;
-    width: 30vw;
+    min-height: 20rem;
   }
 `;
 
@@ -84,20 +88,29 @@ const LinkWrapper = styled(Link)`
 `;
 
 const ButtonBox = styled.div`
-  /* border: 1px solid black; */
+pointer-events: none;
+position: absolute;
+display: flex;
+justify-content: space-between;
+width: 100%;
+height: 100%;
+left: 0;
+right: 0;
 `;
 
 const PaginationPrevButton = styled.button`
-  position: fixed;
   bottom: 30rem;
   left: 0;
   margin-top: 10px;
+  background: none;
+  border: 0;
 `;
 const PaginationNextButton = styled.button`
-  position: fixed;
   bottom: 10rem;
   right: 0;
   margin-top: 10px;
+  background: none;
+  border: 0;
 `;
 
 const StyledIcon = styled(FontAwesomeIcon)`
@@ -106,16 +119,16 @@ const StyledIcon = styled(FontAwesomeIcon)`
 `;
 
 const DummyPrev = styled.div`
+  pointer-events: all;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: #fafafa;
-  /* height: 50vh; */
-  min-height: 325px;
-  width: 9vw;
+  min-height: 15rem;
+  margin-top: 6rem;
+  width: 2rem;
   border-top-right-radius: 0.8rem;
   border-bottom-right-radius: 1rem;
-  position: fixed;
   bottom: 20vh;
   left: 0;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
@@ -123,22 +136,23 @@ const DummyPrev = styled.div`
   &:hover {
     transform: scale(1.1);
   }
-  @media screen and (min-width: 1024px) {
-    width: 4vw;
+
+  @media screen and (min-width: 600px) {
+    width: 4rem;
   }
 `;
 
 const DummyNext = styled.div`
+  pointer-events: all;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: #fafafa;
-  /* height: 50vh; */
-  min-height: 325px;
-  width: 9vw;
+  min-height: 15rem;
+  margin-top: 6rem;
+  width: 2rem;
   border-top-left-radius: 1rem;
   border-bottom-left-radius: 0.8rem;
-  position: fixed;
   bottom: 20vh;
   right: 0;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
@@ -146,8 +160,9 @@ const DummyNext = styled.div`
   &:hover {
     transform: scale(1.1);
   }
-  @media screen and (min-width: 1024px) {
-    width: 4vw;
+
+  @media screen and (min-width: 600px) {
+    width: 4rem;
   }
 `;
 
@@ -239,24 +254,22 @@ export default function HomePage({ onToggleFavourites, favouriteIdeas }) {
 
       {!searchValue && (
         <ButtonBox>
-          {currentPage > 1 ? (
             <PaginationPrevButton
               onClick={() => setCurrentPage(currentPage - 1)}
+              style={{visibility: currentPage > 1 ? 'visible' : 'hidden' }}
             >
               <DummyPrev>
                 <StyledIcon icon={faChevronLeft} />
               </DummyPrev>
             </PaginationPrevButton>
-          ) : null}
-          {currentPage < totalPages ? (
             <PaginationNextButton
               onClick={() => setCurrentPage(currentPage + 1)}
+              style={{visibility: currentPage < totalPages ? 'visible' : 'hidden' }}
             >
               <DummyNext>
                 <StyledIcon icon={faChevronRight} />
               </DummyNext>
             </PaginationNextButton>
-          ) : null}
         </ButtonBox>
       )}
     </Container>

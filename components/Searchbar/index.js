@@ -8,95 +8,66 @@ import styled from "styled-components";
 import { useRouter } from "next/router";
 import Link from "next/link";
 
-const Container = styled.div`
-  position: relative;
-`;
-
-const SearchContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-radius: 15rem;
-  width: 70vw;
-  height: 5vh;
-  background-color: #eeeeee;
-  padding: 0.2rem;
-  @media screen and (min-width: 600px) {
-    width: 50vw;
-  }
-  @media screen and (min-width: 1024px) {
-    width: 40vw;
-  }
-`;
-const StyledSearchbar = styled.input`
-  border: none;
-  width: 60vw;
-  padding: 0.4rem;
-  padding-left: 1rem;
-  background: transparent;
-  &:focus {
-    outline: none;
-  }
-`;
-const StyledSearchButton = styled.button`
-  border: none;
-  border-radius: 100%;
-  padding: 0.5rem;
-  background-color: #a97bb5;
-  transform: scale(0.9);
-
-  transition: transform 0.25s;
-  &:hover {
-    transform: scale(1);
-  }
-  @media screen and (min-width: 601px) {
-    transform: scale(1.2);
-  }
-`;
-const StyledIcon = styled(FontAwesomeIcon)`
-  color: white;
-`;
 const StyledContainer = styled.div`
-  position: absolute;
-  z-index: 1;
-  overflow-y: auto;
-  top: 2rem;
-  width: 70vw;
-  background-color: white;
-  /* @media screen and (min-width: 601px) {
-    top: 10.2rem;
-    width: 31rem;
-  } */
+  position: relative;
+  align-self: center;
+  display: flex;
+  justify-content: center;
+  background-color: #FAFAFA;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+  border-radius: 0.8rem;
+  @media (min-width: 600px) {
+    max-width: 400px;
+  }
 `;
-const StyledPreviewSearch = styled.div`
-  margin-top: 0.5rem;
 
-  background-color: white;
-  overflow-y: scroll;
-  max-height: 5rem;
-  border-bottom-left-radius: 0.5rem;
-  border-bottom-right-radius: 0.5rem;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+const StyledSearchbar = styled.input`
+  flex: 1;
+  border: 0;
+  border-radius: 0.8rem;
+  padding: 0.5rem;
+  padding-right: 2.5rem;
 `;
+
+const StyledSearchButton = styled.button`
+  background-color: #A97BB5;
+  padding: 0.4rem;
+  border-radius: 5rem;
+  border: none;
+  width: 2rem;
+  height: 2rem;
+  position: absolute;
+  right: -2px;
+`;
+
 const StyledListItem = styled.li`
   list-style: none;
-  white-space: nowrap;
-  overflow: hidden;
-  font-size: 0.8rem;
-  width: 15rem;
   padding: 0.25rem;
-  text-overflow: ellipsis;
   &:hover {
     background-color: rgba(0, 0, 0, 0.125);
   }
 `;
+
 const StyledLink = styled(Link)`
   text-decoration: none;
-  color: grey;
+  color: black;
   &:hover {
-    text-decoration: none;
-    color: black;
+    text-decoration: underline;
   }
+`;
+const StyledSearchPreview = styled.ul`
+  position: absolute;
+  top: 102%;
+  width: 100%;
+  justify-content: center;
+  background-color: #FAFAFA;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+  border-radius: 0.8rem;
+  padding: 0.5rem;
+  z-index: 1;
+`;
+const MainContainer = styled.div`
+  position: relative;
 `;
 export default function Searchbar({
   suggestions,
@@ -121,35 +92,34 @@ export default function Searchbar({
     onClickEvent(inputValue);
   }
   return (
-    <Container>
-      <SearchContainer>
+    <MainContainer>
+      <StyledContainer>
         <StyledSearchbar
-          placeholder="Search "
+          placeholder="Search for titles or hashtags"
           value={inputValue}
           onChange={handleChangeEvent}
         />
         {searchValue ? (
           <StyledSearchButton onClick={handleReset}>
-            <StyledIcon icon={faArrowsRotate} />
+            <FontAwesomeIcon icon={faArrowsRotate} />
           </StyledSearchButton>
         ) : (
           <StyledSearchButton onClick={handleSearch}>
-            <StyledIcon icon={faMagnifyingGlass} />
+            <FontAwesomeIcon icon={faMagnifyingGlass} />
           </StyledSearchButton>
         )}
-      </SearchContainer>
-      <StyledContainer>
-        <StyledPreviewSearch>
-          {showSuggestions &&
-            suggestions.map(({ item }, index) => (
-              <StyledListItem key={index}>
-                <StyledLink href={`/ideaDetails/${item._id}`}>
-                  {item.title}
-                </StyledLink>
-              </StyledListItem>
-            ))}
-        </StyledPreviewSearch>
       </StyledContainer>
-    </Container>
+      {showSuggestions && suggestions.length > 0 && (
+        <StyledSearchPreview>
+          {suggestions.map(({ item }, index) => (
+            <StyledListItem key={index}>
+              <StyledLink href={`/ideaDetails/${item._id}`}>
+                {item.title}
+              </StyledLink>
+            </StyledListItem>
+          ))}
+        </StyledSearchPreview>
+      )}
+    </MainContainer>
   );
 }

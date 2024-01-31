@@ -2,20 +2,26 @@ import Link from "next/link";
 import styled from "styled-components";
 import Image from "next/image";
 
-const StyledNavigation = styled.nav`
-  position: fixed;
-  bottom: -1.5rem;
+const StyledNavigationWrapper = styled.nav`
   width: 100%;
-  min-height: 105px;
-  margin-bottom: 1rem;
+  justify-content: center;
+  background-color: #fff;
+  position: fixed;
+  bottom: 0;
+`;
+
+const StyledNavigation = styled.div`
+  margin: auto;
+  height: 100%;
+  max-width: 42rem;
   background-image: url("/Rectangle.svg");
   background-size: cover;
   z-index: 1;
   @media screen and (min-width: 600px) {
     background-image: url("/Desktop_NavImage.svg");
-    margin-top: -6rem;
   }
 `;
+
 
 const StyledUnorderedList = styled.ul`
   display: flex;
@@ -69,48 +75,47 @@ const StyledCreateLink = styled(Link)`
     transform: scale(1.1);
   }
   @media screen and (min-width: 601px) {
-    transform: scale(1.4);
-  }
-  @media screen and (min-width: 1024px) {
-    transform: scale(1.4);
+    transform: scale(1.2);
   }
 `;
 
 export default function Navigation() {
   return (
-    <StyledNavigation>
-      <StyledUnorderedList>
-        <StyledListItem>
-          <StyledLink href="/">
-            <StyledImage
-              src={"/home.svg"}
-              width={60}
-              height={60}
-              alt="plant icon"
-            />
-          </StyledLink>
-        </StyledListItem>
-        <StyledListItem>
-          <StyledCreateLink href="/create">
-            <Image
-              src={"/add_circle.svg"}
-              width={60}
-              height={60}
-              alt="plant icon"
-            />
-          </StyledCreateLink>
-        </StyledListItem>
-        <StyledListItem>
-          <StyledLink href="/favourites">
-            <StyledImage
-              src={"/white_plant.svg"}
-              width={60}
-              height={60}
-              alt="plant icon"
-            />
-          </StyledLink>
-        </StyledListItem>
-      </StyledUnorderedList>
-    </StyledNavigation>
+    <StyledNavigationWrapper>
+      <StyledNavigation>
+        <StyledUnorderedList>
+          <StyledListItem>
+            <StyledLink href="/">
+              <StyledImage
+                src={"/home.svg"}
+                width={60}
+                height={60}
+                alt="plant icon"
+              />
+            </StyledLink>
+          </StyledListItem>
+          <StyledListItem>
+            <StyledCreateLink href="/create">
+              <Image
+                src={"/add_circle.svg"}
+                width={60}
+                height={60}
+                alt="plant icon"
+              />
+            </StyledCreateLink>
+          </StyledListItem>
+          <StyledListItem>
+            <StyledLink href="/favourites">
+              <StyledImage
+                src={"/white_plant.svg"}
+                width={60}
+                height={60}
+                alt="plant icon"
+              />
+            </StyledLink>
+          </StyledListItem>
+        </StyledUnorderedList>
+      </StyledNavigation>
+    </StyledNavigationWrapper>
   );
 }

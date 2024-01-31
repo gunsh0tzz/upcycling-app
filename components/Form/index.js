@@ -19,7 +19,7 @@ const StyledForm = styled.form`
   width: 85vw;
   overflow-y: auto;
   @media (min-width: 1024px) {
-    max-width: 50rem;
+    max-width: 42rem;
   }
 `;
 const StyledUnorderedList = styled.ul`

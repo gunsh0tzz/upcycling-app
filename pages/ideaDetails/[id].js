@@ -19,7 +19,6 @@ const StyledArticle = styled.article`
   box-shadow: 4px 2px 4px rgba(0, 0, 0, 0.2);
   @media screen and (min-width: 601px) {
     margin-top: 17vh;
-    transform: scale(1.35);
   }
   @media screen and (min-height: 1000px) {
     margin-top: 16vh;
@@ -27,6 +26,7 @@ const StyledArticle = styled.article`
 `;
 const StyledImage = styled(Image)`
   border-radius: 0.5rem;
+  object-fit: cover;
 `;
 const StyledContainer = styled.div`
   display: flex;
@@ -34,7 +34,7 @@ const StyledContainer = styled.div`
 `;
 const Instruction = styled.ol`
   overflow-y: scroll;
-  max-height: 9rem;
+  max-height: 7rem;
   list-style-position: inside;
   font-size: 0.9rem;
 `;
