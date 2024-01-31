@@ -8,20 +8,29 @@ import { faHeart as regularHeart } from "@fortawesome/free-regular-svg-icons";
 const Article = styled.article`
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.7rem;
   align-items: center;
   position: relative;
+  height: 100%;
+  padding-bottom: 1rem;
 `;
 
 const StyledImage = styled(Image)`
   border-radius: 0.5rem;
+  height: 72%;
+  width: 100%;
 `;
 
 const Hashtags = styled.ul`
   display: flex;
-  gap: 0.5rem;
+  gap: 0.4rem;
   flex-wrap: wrap;
   list-style-type: none;
+  width: 90%;
+  max-height: 20px;
+  margin-left: -1.8rem;
+  font-size: 0.9rem;
+  color: #7d7d7d;
 `;
 
 const FavoriteButton = styled.button`
@@ -39,9 +48,19 @@ const FavoriteButton = styled.button`
   }
 `;
 
+const Container = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  position: relative;
+`;
+
 const StyledIcon = styled(FontAwesomeIcon)`
   color: red;
   font-size: 2rem;
+`;
+const Title = styled.h3`
+  width: 90%;
 `;
 
 export default function Card({
@@ -56,13 +75,15 @@ export default function Card({
 
   return (
     <Article>
-      <FavoriteButton
-        onClick={(event) => event && onToggleFavourites(id, event)}
-      >
-        <StyledIcon icon={isFavourite ? solidHeart : regularHeart} />
-      </FavoriteButton>
       <StyledImage src={image} alt={title} width={150} height={120} />
-      <h2>{title}</h2>
+      <Container>
+        <Title>{title}</Title>
+        <FavoriteButton
+          onClick={(event) => event && onToggleFavourites(id, event)}
+        >
+          <StyledIcon icon={isFavourite ? solidHeart : regularHeart} />
+        </FavoriteButton>
+      </Container>
       <Hashtags>
         {hashtags.map((hashtag) => (
           <li key={uuidv4()}>#{hashtag}</li>

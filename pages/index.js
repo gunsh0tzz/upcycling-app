@@ -9,23 +9,20 @@ import Searchbar from "@/components/Searchbar";
 const CardList = styled.ul`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1rem;
+  gap: 3rem;
   list-style-type: none;
   padding: 0;
   margin: 3rem 0rem 0rem 1rem;
+  justify-content: center;
 `;
 const CardListItem = styled.li`
   box-sizing: border-box;
-  border: 1px solid black;
   border-radius: 0.5rem;
   padding: 1rem;
-`;
-const StyledLink = styled(Link)`
-  text-decoration: none;
-  color: black;
-  &:hover {
-    text-decoration: underline;
-  }
+  width: 300px;
+  height: 360px;
+  background-color: #fafafa;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
 `;
 
 const PaginationButton = styled.button`
@@ -35,6 +32,11 @@ const PaginationButton = styled.button`
 const ButtonBox = styled.div`
   display: flex;
   justify-content: space-between;
+`;
+
+const StyledLink = styled(Link)`
+  color: inherit;
+  text-decoration: none;
 `;
 
 const ideasPerPage = 4;
@@ -80,32 +82,31 @@ export default function HomePage({ onToggleFavourites, favouriteIdeas }) {
         {suggestions.length > 0 && searchValue
           ? suggestions.map((suggestion) => (
               <CardListItem key={suggestion.item._id}>
-                <Card
-                  image={suggestion.item.image}
-                  title={suggestion.item.title}
-                  hashtags={suggestion.item.hashtags}
-                  onToggleFavourites={onToggleFavourites}
-                  favouriteIdeas={favouriteIdeas}
-                  id={suggestion.item._id}
-                />
                 <StyledLink href={`/ideaDetails/${suggestion.item._id}`}>
-                  See More
+                  <Card
+                    image={suggestion.item.image}
+                    title={suggestion.item.title}
+                    hashtags={suggestion.item.hashtags}
+                    onToggleFavourites={onToggleFavourites}
+                    favouriteIdeas={favouriteIdeas}
+                    id={suggestion.item._id}
+                  />
                 </StyledLink>
               </CardListItem>
             ))
           : paginatedIdeas.map((idea) => (
               <CardListItem key={idea._id}>
-                <Card
-                  image={idea.image}
-                  title={idea.title}
-                  hashtags={idea.hashtags}
-                  onToggleFavourites={onToggleFavourites}
-                  favouriteIdeas={favouriteIdeas}
-                  id={idea._id}
-                  idea={idea}
-                />
+                {" "}
                 <StyledLink href={`/ideaDetails/${idea._id}`}>
-                  See More
+                  <Card
+                    image={idea.image}
+                    title={idea.title}
+                    hashtags={idea.hashtags}
+                    onToggleFavourites={onToggleFavourites}
+                    favouriteIdeas={favouriteIdeas}
+                    id={idea._id}
+                    idea={idea}
+                  />
                 </StyledLink>
               </CardListItem>
             ))}

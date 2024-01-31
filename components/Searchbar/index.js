@@ -1,19 +1,24 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { useRouter } from "next/router";
-import useSWR from "swr";
+import {
+  faMagnifyingGlass,
+  faArrowsRotate,
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import Link from "next/link";
 
 const StyledSearchbar = styled.input`
   border: 1px solid black;
   padding: 0.5rem;
-  width: 15rem;
+  width: 70%;
 `;
 
 const StyledSearchButton = styled.button`
   border: 1px solid black;
   padding: 0.5rem;
+  background-color: #a97bb5;
 `;
 
 const StyledListItem = styled.li`
@@ -34,6 +39,10 @@ const StyledLink = styled(Link)`
   &:hover {
     text-decoration: underline;
   }
+`;
+
+const Container = styled.div`
+  border: 1px solid black;
 `;
 
 export default function Searchbar({
@@ -62,15 +71,19 @@ export default function Searchbar({
 
   return (
     <>
-      <div>
+      <Container>
         <StyledSearchbar
           placeholder="Search for titles or hashtags"
           value={inputValue}
           onChange={handleChangeEvent}
         />
-        <StyledSearchButton onClick={handleSearch}>Search</StyledSearchButton>
-        <StyledSearchButton onClick={handleReset}>reset</StyledSearchButton>
-      </div>
+        <StyledSearchButton onClick={handleSearch}>
+          <FontAwesomeIcon icon={faMagnifyingGlass} />
+        </StyledSearchButton>
+        <StyledSearchButton onClick={handleReset}>
+          <FontAwesomeIcon icon={faArrowsRotate} />
+        </StyledSearchButton>
+      </Container>
       <ul>
         {showSuggestions &&
           suggestions.map(({ item }, index) => (
