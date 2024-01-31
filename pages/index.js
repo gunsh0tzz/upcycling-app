@@ -6,6 +6,12 @@ import Fuse from "fuse.js";
 import Card from "../components/Card";
 import Searchbar from "@/components/Searchbar";
 
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`;
+
 const CardList = styled.ul`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -70,7 +76,7 @@ export default function HomePage({ onToggleFavourites, favouriteIdeas }) {
     setSuggestions(fuse.search(item));
   }
   return (
-    <div>
+    <Container>
       <Searchbar
         suggestions={suggestions}
         onInputChange={handleInputChange}
@@ -126,6 +132,6 @@ export default function HomePage({ onToggleFavourites, favouriteIdeas }) {
           ) : null}
         </ButtonBox>
       )}
-    </div>
+    </Container>
   );
 }
