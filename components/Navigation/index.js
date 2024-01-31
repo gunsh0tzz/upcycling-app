@@ -8,8 +8,10 @@ const StyledNavigation = styled.nav`
   position: fixed;
   bottom: 0;
   width: 100%;
-  border-top: 1px solid black;
-  background-color: white;
+  height: 60px;
+  /* border-top: 1px solid black; */
+  /* background-color: #0a3c3a; */
+  background-color: #44c67f;
 `;
 
 const StyledUnorderedList = styled.ul`
@@ -31,7 +33,7 @@ const StyledLink = styled(Link)`
 `;
 
 const StyledIcon = styled(FontAwesomeIcon)`
-  color: black;
+  color: white;
   font-size: 2rem;
 `;
 

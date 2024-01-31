@@ -15,18 +15,20 @@ const Container = styled.div`
 const CardList = styled.ul`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 3rem;
+  gap: 1.8rem;
   list-style-type: none;
   padding: 0;
-  margin: 3rem 0rem 0rem 1rem;
+  margin: 2rem 0rem 0rem 1rem;
   justify-content: center;
 `;
 const CardListItem = styled.li`
   box-sizing: border-box;
   border-radius: 0.5rem;
+  margin-left: 0.7rem;
+  margin-bottom: 0.1rem;
   padding: 1rem;
-  width: 300px;
-  height: 360px;
+  width: 280px;
+  height: 362px;
   background-color: #fafafa;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
 `;

@@ -7,11 +7,13 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
+
 const Container = styled.div`
   position: relative;
-  width: 65%;
+  width: 67%;
   height: 20%;
   align-self: center;
+  padding: 0.2rem;
   display: flex;
   justify-content: center;
   background-color: #fafafa;
@@ -64,7 +66,7 @@ const StyledSearchPreview = styled.ul`
 `;
 const MainContainer = styled.div`
   position: relative;
-  margin-left: 2rem;
+  margin-left: 4rem;
 `;
 export default function Searchbar({
   suggestions,
@@ -92,7 +94,7 @@ export default function Searchbar({
     <MainContainer>
       <Container>
         <StyledSearchbar
-          placeholder="Search for titles or hashtags"
+          placeholder="Search "
           value={inputValue}
           onChange={handleChangeEvent}
         />

@@ -4,6 +4,7 @@ import styled from "styled-components";
 const StyledContainer = styled.div`
   display: flex;
   gap: 0.5rem;
+  color: #0a3c3a;
 `;
 
 const StyledButton = styled.button`
@@ -13,7 +14,7 @@ const StyledButton = styled.button`
   border: 1px solid black;
 
   background-color: white;
-  color: black;
+  color: #0a3c3a;
 `;
 
 export default function AuthButton() {

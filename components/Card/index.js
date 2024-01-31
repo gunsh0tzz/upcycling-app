@@ -17,13 +17,13 @@ const Article = styled.article`
 
 const StyledImage = styled(Image)`
   border-radius: 0.5rem;
-  height: 72%;
+  height: 70%;
   width: 100%;
 `;
 
 const Hashtags = styled.ul`
   display: flex;
-  gap: 0.4rem;
+  gap: 0.2rem;
   flex-wrap: wrap;
   list-style-type: none;
   width: 90%;
