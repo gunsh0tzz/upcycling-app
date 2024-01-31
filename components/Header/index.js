@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Image from "next/image";
+import AuthButton from "../AuthButton/AuthButton";
 
 const StyledHeader = styled.header`
   padding: 2vh;
@@ -23,6 +24,7 @@ export default function Header() {
         height={60}
         alt="logo reuse"
       />
+      <AuthButton />
     </StyledHeader>
   );
 }
