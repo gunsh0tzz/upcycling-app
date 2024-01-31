@@ -1,6 +1,7 @@
 import Image from "next/image";
 import styled from "styled-components";
 import { v4 as uuidv4 } from "uuid";
+import { useSession, signIn, signOut } from "next-auth/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart as solidHeart } from "@fortawesome/free-solid-svg-icons";
 import { faHeart as regularHeart } from "@fortawesome/free-regular-svg-icons";
@@ -52,15 +53,18 @@ export default function Card({
   onToggleFavourites,
   id,
 }) {
+  const { data: session } = useSession();
   const isFavourite = favouriteIdeas && favouriteIdeas.includes(id);
 
   return (
     <Article>
-      <FavoriteButton
-        onClick={(event) => event && onToggleFavourites(id, event)}
-      >
-        <StyledIcon icon={isFavourite ? solidHeart : regularHeart} />
-      </FavoriteButton>
+      {session && (
+        <FavoriteButton
+          onClick={(event) => event && onToggleFavourites(id, event)}
+        >
+          <StyledIcon icon={isFavourite ? solidHeart : regularHeart} />
+        </FavoriteButton>
+      )}
       <StyledImage src={image} alt={title} width={150} height={120} />
       <h2>{title}</h2>
       <Hashtags>
