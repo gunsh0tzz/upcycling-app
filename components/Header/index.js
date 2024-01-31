@@ -11,6 +11,7 @@ const StyledHeader = styled.header`
   width: 100%;
   padding: 0.5rem;
   height: 13vh;
+  min-height: 50px;
   background-color: #fafafa;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
 `;
