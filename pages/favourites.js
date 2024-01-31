@@ -19,10 +19,15 @@ const CardList = styled.ul`
   align-self: center;
   position: relative;
 `;
+
+const LinkWrapper = styled(Link)`
+  color: inherit;
+  text-decoration: none;
+`;
 const CardListItem = styled.li`
   margin: auto;
   width: 63vw;
-  height: 50vh;
+  min-height: 325px;
   flex-shrink: 0;
   background-color: #fafafa;
   align-self: flex-end;
@@ -62,19 +67,18 @@ export default function FavouritePage({
       <CardListContainer>
         <CardList>
           {ideasToDisplay.map((idea) => (
-            <CardListItem key={idea._id}>
-              <Card
-                image={idea.image}
-                title={idea.title}
-                hashtags={idea.hashtags}
-                onToggleFavourites={onToggleFavourites}
-                favouriteIdeas={favouriteIdeas}
-                id={idea._id}
-              />
-              <StyledLink href={`/ideaDetails/${idea._id}`}>
-                See More
-              </StyledLink>
-            </CardListItem>
+            <LinkWrapper href={`/ideaDetails/${idea._id}`}>
+              <CardListItem key={idea._id}>
+                <Card
+                  image={idea.image}
+                  title={idea.title}
+                  hashtags={idea.hashtags}
+                  onToggleFavourites={onToggleFavourites}
+                  favouriteIdeas={favouriteIdeas}
+                  id={idea._id}
+                />
+              </CardListItem>{" "}
+            </LinkWrapper>
           ))}
         </CardList>
       </CardListContainer>

@@ -20,10 +20,17 @@ export default createGlobalStyle`
     background-size:cover;
     background-color: #FFFFFF;
     background-attachment: fixed;
+    max-width: 750px;
+    margin: 0 auto;
+   
+
   }
   @media screen and (min-width: 500px){
     body {
-      background-image:url("/Desktop_Background.svg")
+    background-image:url("/Desktop_Background.svg");
+    max-width: 750px;
+    margin-left: auto;
+    margin-right:auto;
     
     }
   }

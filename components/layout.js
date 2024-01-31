@@ -11,6 +11,9 @@ const StyledMain = styled.main`
   min-height: 65vh;
   justify-content: space-between;
   align-items: center;
+  max-width: 750px;
+  margin-left: auto;
+  margin-right: auto;
 `;
 
 export default function Layout({ children }) {

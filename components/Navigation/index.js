@@ -4,8 +4,9 @@ import Image from "next/image";
 
 const StyledNavigation = styled.nav`
   position: fixed;
-  bottom: -1rem;
+  bottom: -1.5rem;
   width: 100%;
+  min-height: 105px;
   margin-bottom: 1rem;
   background-image: url("/Rectangle.svg");
   background-size: cover;
@@ -21,7 +22,7 @@ const StyledUnorderedList = styled.ul`
   gap: 0.2rem;
   justify-content: center;
   list-style: none;
-  height: 14vh;
+  height: 6rem;
   margin-bottom: 1vh;
   @media screen and (min-width: 1024px) {
     margin-top: 0.6rem;
@@ -59,9 +60,7 @@ const StyledImage = styled(Image)`
 const StyledCreateLink = styled(Link)`
   background-color: #fafafa;
   border-radius: 100%;
-  padding-left: 0.3rem;
-  padding-right: 0.3rem;
-  padding-top: 0.2rem;
+  padding: 0.2rem 0.3rem 0;
   align-self: flex-start;
   border: 0.1px solid lightgray;
 

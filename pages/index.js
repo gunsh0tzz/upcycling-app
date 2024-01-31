@@ -12,103 +12,11 @@ import {
 import Card from "../components/Card";
 import Searchbar from "@/components/Searchbar";
 
-const CardList = styled.ul`
+const Container = styled.div`
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
   gap: 1rem;
-  list-style-type: none;
-  padding: 0;
-  align-self: center;
-`;
-
-const StyledLink = styled(Link)`
-  text-decoration: none;
-  position: absolute;
-  bottom: 1rem;
-  color: #7d7d7d;
-  &:hover {
-    text-decoration: underline;
-  }
-  @media screen and (min-width: 601px) {
-    font-size: 1.2rem;
-    margin-bottom: 0.5rem;
-  }
-  @media screen and (min-width: 1024px) {
-    font-size: 1.3rem;
-    margin-bottom: 0.5rem;
-    bottom: 0.75rem;
-  }
-`;
-
-const PaginationPrevButton = styled.button`
-  position: fixed;
-  bottom: 30rem;
-  left: 0;
-  margin-top: 10px;
-`;
-const PaginationNextButton = styled.button`
-  position: fixed;
-  bottom: 10rem;
-  right: 0;
-  margin-top: 10px;
-`;
-
-const ButtonBox = styled.div`
-  border: 1px solid black;
-`;
-
-const StyledIcon = styled(FontAwesomeIcon)`
-  font-size: 1.5rem;
-  color: gray;
-`;
-
-const DummyPrev = styled.div`
-  background-color: #fafafa;
-  height: 50vh;
-  width: 9vw;
-  border-top-right-radius: 0.8rem;
-  border-bottom-right-radius: 1rem;
-  position: fixed;
-  bottom: 20vh;
-  left: 0;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  transition: transform 0.25s;
-  &:hover {
-    transform: scale(1.1);
-  }
-  @media screen and (min-width: 1024px) {
-    width: 4vw;
-  }
-`;
-
-const DummyNext = styled.div`
-  background-color: #fafafa;
-  height: 50vh;
-  width: 9vw;
-  border-top-left-radius: 1rem;
-  border-bottom-left-radius: 0.8rem;
-  position: fixed;
-  bottom: 20vh;
-  right: 0;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  transition: transform 0.25s;
-  &:hover {
-    transform: scale(1.1);
-  }
-  @media screen and (min-width: 1024px) {
-    width: 4vw;
-  }
+  min-height: 325px;
 `;
 
 const StyledCount = styled.div`
@@ -126,11 +34,10 @@ const StyledCount = styled.div`
     padding: 0.5rem;
   }
 `;
+
 const CountDiv = styled.div`
   background-color: #fafafa;
-  padding: 0.1rem;
-  padding-left: 0.4rem;
-  padding-right: 0.4rem;
+  padding: 0.1rem 0.4rem;
   border-radius: 100%;
   color: #000000;
   font-size: 0.8rem;
@@ -141,9 +48,20 @@ const CountDiv = styled.div`
   }
 `;
 
+const CardList = styled.ul`
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 1rem;
+  list-style-type: none;
+  padding: 0;
+  align-self: center;
+`;
+
 const CardListItem = styled.li`
   margin: auto;
   width: 63vw;
+  min-height: 325px;
   height: 50vh;
   flex-shrink: 0;
   background-color: #fafafa;
@@ -155,7 +73,81 @@ const CardListItem = styled.li`
 
   @media screen and (min-width: 1024px) {
     margin-top: 2rem;
+    min-height: 400px;
     width: 30vw;
+  }
+`;
+
+const LinkWrapper = styled(Link)`
+  color: inherit;
+  text-decoration: none;
+`;
+
+const ButtonBox = styled.div`
+  /* border: 1px solid black; */
+`;
+
+const PaginationPrevButton = styled.button`
+  position: fixed;
+  bottom: 30rem;
+  left: 0;
+  margin-top: 10px;
+`;
+const PaginationNextButton = styled.button`
+  position: fixed;
+  bottom: 10rem;
+  right: 0;
+  margin-top: 10px;
+`;
+
+const StyledIcon = styled(FontAwesomeIcon)`
+  font-size: 1.5rem;
+  color: gray;
+`;
+
+const DummyPrev = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fafafa;
+  /* height: 50vh; */
+  min-height: 325px;
+  width: 9vw;
+  border-top-right-radius: 0.8rem;
+  border-bottom-right-radius: 1rem;
+  position: fixed;
+  bottom: 20vh;
+  left: 0;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  transition: transform 0.25s;
+  &:hover {
+    transform: scale(1.1);
+  }
+  @media screen and (min-width: 1024px) {
+    width: 4vw;
+  }
+`;
+
+const DummyNext = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fafafa;
+  /* height: 50vh; */
+  min-height: 325px;
+  width: 9vw;
+  border-top-left-radius: 1rem;
+  border-bottom-left-radius: 0.8rem;
+  position: fixed;
+  bottom: 20vh;
+  right: 0;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  transition: transform 0.25s;
+  &:hover {
+    transform: scale(1.1);
+  }
+  @media screen and (min-width: 1024px) {
+    width: 4vw;
   }
 `;
 
@@ -191,7 +183,7 @@ export default function HomePage({ onToggleFavourites, favouriteIdeas }) {
     setSuggestions(fuse.search(item));
   }
   return (
-    <>
+    <Container>
       <Searchbar
         suggestions={suggestions}
         onInputChange={handleInputChange}
@@ -209,35 +201,39 @@ export default function HomePage({ onToggleFavourites, favouriteIdeas }) {
       <CardList>
         {suggestions.length > 0 && searchValue
           ? suggestions.map((suggestion) => (
-              <CardListItem key={suggestion.item._id}>
-                <Card
-                  image={suggestion.item.image}
-                  title={suggestion.item.title}
-                  hashtags={suggestion.item.hashtags}
-                  onToggleFavourites={onToggleFavourites}
-                  favouriteIdeas={favouriteIdeas}
-                  id={suggestion.item._id}
-                />
-                <StyledLink href={`/ideaDetails/${suggestion.item._id}`}>
+              <LinkWrapper href={`/ideaDetails/${suggestion.item._id}`}>
+                <CardListItem key={suggestion.item._id}>
+                  <Card
+                    image={suggestion.item.image}
+                    title={suggestion.item.title}
+                    hashtags={suggestion.item.hashtags}
+                    onToggleFavourites={onToggleFavourites}
+                    favouriteIdeas={favouriteIdeas}
+                    id={suggestion.item._id}
+                  />
+                  {/* <StyledLink href={`/ideaDetails/${suggestion.item._id}`}>
                   See More
-                </StyledLink>
-              </CardListItem>
+                </StyledLink> */}
+                </CardListItem>
+              </LinkWrapper>
             ))
           : paginatedIdeas.map((idea) => (
-              <CardListItem key={idea._id}>
-                <Card
-                  image={idea.image}
-                  title={idea.title}
-                  hashtags={idea.hashtags}
-                  onToggleFavourites={onToggleFavourites}
-                  favouriteIdeas={favouriteIdeas}
-                  id={idea._id}
-                  idea={idea}
-                />
-                <StyledLink href={`/ideaDetails/${idea._id}`}>
+              <LinkWrapper href={`/ideaDetails/${idea._id}`}>
+                <CardListItem key={idea._id}>
+                  <Card
+                    image={idea.image}
+                    title={idea.title}
+                    hashtags={idea.hashtags}
+                    onToggleFavourites={onToggleFavourites}
+                    favouriteIdeas={favouriteIdeas}
+                    id={idea._id}
+                    idea={idea}
+                  />
+                  {/* <StyledLink href={`/ideaDetails/${idea._id}`}>
                   See More
-                </StyledLink>
-              </CardListItem>
+                </StyledLink> */}
+                </CardListItem>
+              </LinkWrapper>
             ))}
       </CardList>
 
@@ -263,6 +259,6 @@ export default function HomePage({ onToggleFavourites, favouriteIdeas }) {
           ) : null}
         </ButtonBox>
       )}
-    </>
+    </Container>
   );
 }
