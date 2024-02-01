@@ -22,14 +22,12 @@ const StyledNavigation = styled.div`
   }
 `;
 
-
 const StyledUnorderedList = styled.ul`
   display: flex;
   gap: 0.2rem;
   justify-content: center;
   list-style: none;
   height: 6rem;
-  margin-bottom: 1vh;
   @media screen and (min-width: 1024px) {
     margin-top: 0.6rem;
   }
@@ -41,11 +39,6 @@ const StyledListItem = styled.li`
     margin-bottom: 1.75vh;
     padding-left: 1.2rem;
   }
-  @media screen and (min-width: 1024px) {
-    padding-left: 3rem;
-    padding-top: 0.5rem;
-    margin-bottom: 2vh;
-  }
 `;
 
 const StyledLink = styled(Link)`
@@ -56,10 +49,10 @@ const StyledLink = styled(Link)`
 
 const StyledImage = styled(Image)`
   @media screen and (min-width: 600px) {
-    transform: scale(1.3);
+    transform: scale(1.2);
   }
   @media screen and (min-width: 1024px) {
-    transform: scale(1.2);
+    transform: scale(1.3);
   }
 `;
 

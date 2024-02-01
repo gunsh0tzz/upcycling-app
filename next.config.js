@@ -35,6 +35,11 @@ const nextConfig = {
         hostname: "hotpotmedia.s3.us-east-2.amazonaws.com",
         port: "",
       },
+      {
+        protocol: "https",
+        hostname: "apumpkinandaprincess.com",
+        port: "",
+      },
     ],
   },
 };

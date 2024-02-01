@@ -8,33 +8,33 @@ const StyledMain = styled.main`
   flex: 1;
   margin: 0;
   max-width: 42rem;
-  //background-image: url("/cover_green.svg");
-  background-image:url("/Desktop_Background.svg");
-
-  background-size:cover;
-  background-color: #FFFFFF;
-  background-attachment: fixed;
+  width: 100%;
 
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-
-  /* Make sure one can scroll to bottom navigation */
-  padding-bottom: 7rem;
-
-  @media screen and (min-width: 42rem){
-    margin: 0 auto;
-  }
-
 `;
 
 const StyledContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const StyledBackgroundContainer = styled.div`
+  width: 100%;
+  min-height: 32rem;
+
+  background-image: url("/cover_green.svg");
+  background-size: cover;
+  background-color: #ffffff;
+  background-attachment: fixed;
+  @media screen and (min-width: 42rem) {
+    background-image: url("/Desktop_Background.svg");
+  }
+`;
 
 export default function Layout({ children }) {
   return (
@@ -43,7 +43,9 @@ export default function Layout({ children }) {
         <title>Reuse</title>
       </Head>
       <Header />
-      <StyledMain>{children}</StyledMain>
+      <StyledMain>
+        <StyledBackgroundContainer>{children}</StyledBackgroundContainer>
+      </StyledMain>
       <Navigation />
     </StyledContainer>
   );

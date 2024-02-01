@@ -6,6 +6,7 @@ const StyledHeader = styled.header`
   padding: 2vh;
   text-align: center;
   position: relative;
+  height: 17vh;
 `;
 
 const StyledImage = styled(Image)`

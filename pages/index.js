@@ -21,6 +21,7 @@ const Container = styled.div`
 
   @media screen and (min-width: 600px) {
     padding: 0 10rem;
+    min-width: 42rem;
   }
 `;
 
@@ -32,9 +33,10 @@ const StyledCount = styled.div`
   margin-bottom: -1vh;
   background-color: #a97bb5;
   border-radius: 1rem;
-  padding: 0.5rem;
   width: fit-content;
-  
+  padding: 0.2rem 0.4rem 0.2rem 0.5rem;
+  margin-left: 1.7rem;
+
   @media screen and (min-height: 800px) {
     font-size: 1.3rem;
   }
@@ -88,14 +90,14 @@ const LinkWrapper = styled(Link)`
 `;
 
 const ButtonBox = styled.div`
-pointer-events: none;
-position: absolute;
-display: flex;
-justify-content: space-between;
-width: 100%;
-height: 100%;
-left: 0;
-right: 0;
+  pointer-events: none;
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  right: 0;
 `;
 
 const PaginationPrevButton = styled.button`
@@ -254,22 +256,24 @@ export default function HomePage({ onToggleFavourites, favouriteIdeas }) {
 
       {!searchValue && (
         <ButtonBox>
-            <PaginationPrevButton
-              onClick={() => setCurrentPage(currentPage - 1)}
-              style={{visibility: currentPage > 1 ? 'visible' : 'hidden' }}
-            >
-              <DummyPrev>
-                <StyledIcon icon={faChevronLeft} />
-              </DummyPrev>
-            </PaginationPrevButton>
-            <PaginationNextButton
-              onClick={() => setCurrentPage(currentPage + 1)}
-              style={{visibility: currentPage < totalPages ? 'visible' : 'hidden' }}
-            >
-              <DummyNext>
-                <StyledIcon icon={faChevronRight} />
-              </DummyNext>
-            </PaginationNextButton>
+          <PaginationPrevButton
+            onClick={() => setCurrentPage(currentPage - 1)}
+            style={{ visibility: currentPage > 1 ? "visible" : "hidden" }}
+          >
+            <DummyPrev>
+              <StyledIcon icon={faChevronLeft} />
+            </DummyPrev>
+          </PaginationPrevButton>
+          <PaginationNextButton
+            onClick={() => setCurrentPage(currentPage + 1)}
+            style={{
+              visibility: currentPage < totalPages ? "visible" : "hidden",
+            }}
+          >
+            <DummyNext>
+              <StyledIcon icon={faChevronRight} />
+            </DummyNext>
+          </PaginationNextButton>
         </ButtonBox>
       )}
     </Container>

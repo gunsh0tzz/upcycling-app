@@ -18,7 +18,7 @@ const StyledArticle = styled.article`
   max-width: 100%;
   box-shadow: 4px 2px 4px rgba(0, 0, 0, 0.2);
   @media screen and (min-width: 601px) {
-    margin-top: 17vh;
+    margin-top: 6vh;
   }
   @media screen and (min-height: 1000px) {
     margin-top: 16vh;
@@ -94,19 +94,22 @@ export default function IdeaDetails() {
   if (!isReady || isLoading) return <h2>Loading...</h2>;
   const { instructions, items, hashtags, title, image } = data;
   async function handleDelete(id) {
-    const response = await fetch(`/api/ideas/${id}`, {
-      method: "DELETE",
-    });
-    if (response.ok) {
-      await response.json();
-      mutate();
-      router.push("/");
-    } else {
-      console.error(
-        "Error deleting idea:",
-        response.status,
-        response.statusText
-      );
+    const isConfirmed = window.confirm("Are you sure?");
+    if (isConfirmed) {
+      const response = await fetch(`/api/ideas/${id}`, {
+        method: "DELETE",
+      });
+      if (response.ok) {
+        await response.json();
+        mutate();
+        router.push("/");
+      } else {
+        console.error(
+          "Error deleting idea:",
+          response.status,
+          response.statusText
+        );
+      }
     }
   }
   return (

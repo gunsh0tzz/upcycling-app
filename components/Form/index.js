@@ -8,15 +8,12 @@ const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  margin-bottom: 0.5rem;
+  padding: 0.7rem;
   background-color: #fafafa;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
   border-radius: 0.8rem;
   border: 2px solid #fafafa;
-  padding: 0.7rem;
-  height: 60vh;
-  max-height: 60vh;
-  width: 85vw;
+  margin: 0 3rem;
   overflow-y: auto;
   @media (min-width: 1024px) {
     max-width: 42rem;
@@ -25,8 +22,14 @@ const StyledForm = styled.form`
 const StyledUnorderedList = styled.ul`
   list-style: none;
 `;
+const StyledListItem = styled.li`
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+`;
+
 const StyledTitle = styled.h3`
-  margin-bottom: 0.5;
+  margin-bottom: 0.5rem;
   margin-top: 1rem;
   font-size: 1.1rem;
   font-weight: bold;
@@ -35,38 +38,32 @@ const StyledTitle = styled.h3`
 const StyledSaveButton = styled.button`
   display: flex;
   justify-content: space-between;
+  align-items: center;
   text-align: center;
-  margin-top: 2rem;
-  margin-bottom: 1rem;
   align-self: center;
-  width: 30vw;
+  width: 10rem;
   padding: 0.2rem;
   border-radius: 0.8rem;
   border: none;
   background-color: #44c67f;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
-  @media (min-width: 1024px) {
-    width: 20vw;
-  }
 `;
 const StyledButtonText = styled.p`
-  padding: 0.2rem;
-  padding-left: 0.3rem;
+  width: 100%;
+  text-align: center;
 `;
 const StyledCancelButton = styled.button`
   display: flex;
   justify-content: space-between;
+  align-items: center;
   text-align: center;
   margin-top: 0.2rem;
-  width: 30vw;
+  width: 10rem;
   padding: 0.2rem;
   border-radius: 0.8rem;
   border: none;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
   background-color: #ca92de;
-  @media (min-width: 1024px) {
-    width: 20vw;
-  }
 `;
 const StyledInput = styled.input`
   background-color: #f7f3f3;
@@ -87,18 +84,16 @@ const StyledTextarea = styled.textarea`
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
 `;
 const StyledTextareaInstruction = styled.textarea`
+  flex: 1;
+
   background-color: #f7f3f3;
   border-radius: 0.8rem;
   min-height: 7vh;
-  width: 53vw;
   resize: vertical;
   overflow-y: auto;
   padding-left: 1rem;
   border: none;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
-  @media (min-width: 1024px) {
-    max-width: 45vw;
-  }
 `;
 
 const StyledInstructionButton = styled.button`
@@ -107,6 +102,20 @@ const StyledInstructionButton = styled.button`
   margin-left: 0.1rem;
   border: none;
 `;
+
+const StyledButtonContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+  gap: 1rem;
+`;
+
+const StyledInstructionButtonContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 5rem;
+`;
+
 export default function Form({ idea = {}, onSubmit }) {
   const [instructions, setInstructions] = useState(
     idea.instructions ? idea.instructions : [{ id: uuidv4(), value: "" }]
@@ -190,7 +199,7 @@ export default function Form({ idea = {}, onSubmit }) {
         {instructions.map((instruction, index) => (
           <div key={instruction.id}>
             <StyledUnorderedList>
-              <li>
+              <StyledListItem>
                 <span>{index + 1}. </span>
                 <StyledTextareaInstruction
                   type="text"
@@ -206,31 +215,33 @@ export default function Form({ idea = {}, onSubmit }) {
                   wrap="hard"
                   rows={5}
                 />
-                <StyledInstructionButton
-                  type="button"
-                  onClick={() => handleAddInstruction()}
-                >
-                  <Image
-                    src={"/add_circle.svg"}
-                    width={25}
-                    height={25}
-                    alt="plant icon"
-                  />
-                </StyledInstructionButton>
-                {index > 0 && (
+                <StyledInstructionButtonContainer>
                   <StyledInstructionButton
                     type="button"
-                    onClick={() => handleRemoveInstruction(instruction.id)}
+                    onClick={() => handleAddInstruction()}
                   >
                     <Image
-                      src={"/recycling.svg"}
+                      src={"/add_circle.svg"}
                       width={25}
                       height={25}
                       alt="plant icon"
                     />
                   </StyledInstructionButton>
-                )}
-              </li>
+                  {index > 0 && (
+                    <StyledInstructionButton
+                      type="button"
+                      onClick={() => handleRemoveInstruction(instruction.id)}
+                    >
+                      <Image
+                        src={"/recycling.svg"}
+                        width={25}
+                        height={25}
+                        alt="plant icon"
+                      />
+                    </StyledInstructionButton>
+                  )}
+                </StyledInstructionButtonContainer>
+              </StyledListItem>
             </StyledUnorderedList>
           </div>
         ))}
@@ -244,22 +255,24 @@ export default function Form({ idea = {}, onSubmit }) {
           minLength={1}
           maxLength={150}
         />
-        <StyledSaveButton>
-          <StyledButtonText>
-            {router.query.id ? "save" : "add"}{" "}
-          </StyledButtonText>
-          <Image src={"/check.svg"} width={25} height={25} alt="check icon" />
-        </StyledSaveButton>
+        <StyledButtonContainer>
+          <StyledSaveButton>
+            <StyledButtonText>
+              {router.query.id ? "save" : "add"}{" "}
+            </StyledButtonText>
+            <Image src={"/check.svg"} width={25} height={25} alt="check icon" />
+          </StyledSaveButton>
+          <StyledCancelButton onClick={handleCancel}>
+            <StyledButtonText>Cancel</StyledButtonText>
+            <Image
+              src={"/recycling_black.svg"}
+              width={25}
+              height={25}
+              alt="check icon"
+            />
+          </StyledCancelButton>
+        </StyledButtonContainer>
       </StyledForm>
-      <StyledCancelButton onClick={handleCancel}>
-        <StyledButtonText>Cancel</StyledButtonText>
-        <Image
-          src={"/recycling_black.svg"}
-          width={25}
-          height={25}
-          alt="check icon"
-        />
-      </StyledCancelButton>
     </>
   );
 }

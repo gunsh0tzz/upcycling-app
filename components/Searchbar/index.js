@@ -13,7 +13,7 @@ const StyledContainer = styled.div`
   align-self: center;
   display: flex;
   justify-content: center;
-  background-color: #FAFAFA;
+  background-color: #fafafa;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
   border-radius: 0.8rem;
   @media (min-width: 600px) {
@@ -30,7 +30,7 @@ const StyledSearchbar = styled.input`
 `;
 
 const StyledSearchButton = styled.button`
-  background-color: #A97BB5;
+  background-color: #a97bb5;
   padding: 0.4rem;
   border-radius: 5rem;
   border: none;
@@ -60,7 +60,7 @@ const StyledSearchPreview = styled.ul`
   top: 102%;
   width: 100%;
   justify-content: center;
-  background-color: #FAFAFA;
+  background-color: #fafafa;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
   border-radius: 0.8rem;
   padding: 0.5rem;
@@ -68,6 +68,8 @@ const StyledSearchPreview = styled.ul`
 `;
 const MainContainer = styled.div`
   position: relative;
+  width: 80%;
+  margin: auto;
 `;
 export default function Searchbar({
   suggestions,
