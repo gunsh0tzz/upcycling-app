@@ -13,19 +13,16 @@ export const authOptions = {
               type: "text",
               placeholder: "newfishes",
             },
-            password: {
-              label: "Password",
-              type: "password",
-            },
-            async authorize() {
-              return {
-                id: 1,
-                name: "New Fishes",
-                email: "new@fishes.com",
-                image:
-                  "https://avatars.githubusercontent.com/u/41701911?s=200&v=4",
-              };
-            },
+            password: { label: "Password", type: "password" },
+          },
+          async authorize() {
+            return {
+              id: 1,
+              name: "New Fishes",
+              email: "new@fishes.com",
+              image:
+                "https://avatars.githubusercontent.com/u/41701911?s=200&v=4",
+            };
           },
         })
       : GithubProvider({
