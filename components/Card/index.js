@@ -54,7 +54,6 @@ export default function Card({
   id,
 }) {
   const isFavourite = favouriteIdeas && favouriteIdeas.includes(id);
-  console.log(cover);
 
   return (
     <Article>

@@ -56,7 +56,7 @@ export default function IdeaDetails() {
     id ? `/api/ideas/${id}` : null
   );
 
-  if (error) return console.log(error);
+  if (error) return console.error(error);
 
   if (!isReady || isLoading) return <h2>Loading...</h2>;
 

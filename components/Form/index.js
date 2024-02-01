@@ -54,8 +54,6 @@ export default function Form({ idea = {}, onSubmit }) {
     event.preventDefault();
     const cover = await uploadImage(event.target.cover.files[0]);
 
-    console.log(cover);
-
     const data = Object.fromEntries(new FormData(event.target));
 
     data.items = data.items.split(",").map((item) => item.trim());
