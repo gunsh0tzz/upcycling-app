@@ -50,9 +50,11 @@ export default function Card({
   hashtags,
   favouriteIdeas,
   onToggleFavourites,
+  cover,
   id,
 }) {
   const isFavourite = favouriteIdeas && favouriteIdeas.includes(id);
+  console.log(cover);
 
   return (
     <Article>
@@ -61,7 +63,13 @@ export default function Card({
       >
         <StyledIcon icon={isFavourite ? solidHeart : regularHeart} />
       </FavoriteButton>
-      <StyledImage src={image} alt={title} width={150} height={120} />
+      <StyledImage
+        src={image ? image : cover.url}
+        alt={title}
+        width={150}
+        height={120}
+      />
+
       <h2>{title}</h2>
       <Hashtags>
         {hashtags.map((hashtag) => (

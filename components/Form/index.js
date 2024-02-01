@@ -53,13 +53,9 @@ export default function Form({ idea = {}, onSubmit }) {
   async function handleSubmit(event) {
     event.preventDefault();
     const cover = await uploadImage(event.target.cover.files[0]);
-    // try {
-    //   const file = event.target.cover.files[0];
 
-    //   const cover = await uploadImage(file);
-    // } catch (error) {
-    //   console.error("Error handling form submission:", error);
-    // }
+    console.log(cover);
+
     const data = Object.fromEntries(new FormData(event.target));
 
     data.items = data.items.split(",").map((item) => item.trim());
@@ -76,6 +72,10 @@ export default function Form({ idea = {}, onSubmit }) {
       }));
 
     onSubmit({ ...idea, ...data, cover });
+    // onSubmit({
+    //   ...Object.fromEntries(new FormData(event.target)),
+    //   cover,
+    // });
     window.alert("Your new idea has been added!");
     const form = event.target.elements;
     event.target.reset();
