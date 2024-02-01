@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Link from "next/link";
+import { useSession } from "next-auth/react";
 import Card from "@/components/Card";
 
 const CardList = styled.ul`
@@ -25,9 +26,14 @@ export default function FavouritePage({
   onToggleFavourites,
   favouriteIdeas,
 }) {
+  const { status } = useSession();
   const ideasToDisplay = ideas.filter((idea) =>
     favouriteIdeas.includes(idea._id)
   );
+
+  if (status !== "authenticated") {
+    return <h1>Access denied. You have to be logged in to view this page.</h1>;
+  }
 
   return (
     <div>

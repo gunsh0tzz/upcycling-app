@@ -1,8 +1,11 @@
 import dbConnect from "@/db/connect";
 import Idea from "@/db/models/Idea";
+import { getServerSession } from "next-auth/next";
+import { authOptions } from "../auth/[...nextauth]";
 
 export default async function handler(request, response) {
   await dbConnect();
+  const session = await getServerSession(request, response, authOptions);
 
   if (request.method === "GET") {
     try {
@@ -16,8 +19,12 @@ export default async function handler(request, response) {
   }
   if (request.method === "POST") {
     try {
-      const idea = await Idea.create(request.body);
-      response.status(201).json(idea);
+      if (session) {
+        const idea = await Idea.create(request.body);
+        response.status(201).json(idea);
+      } else {
+        response.status(401).json({ status: "Not authorized" });
+      }
     } catch (error) {
       response.status(500).json({ message: "Error creating idea" });
     }

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import styled from "styled-components";
+import { useSession } from "next-auth/react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHouse, faPlus, faHeart } from "@fortawesome/free-solid-svg-icons";
@@ -36,22 +37,38 @@ const StyledIcon = styled(FontAwesomeIcon)`
 `;
 
 export default function Navigation() {
+  const { data: session } = useSession();
+
+  if (session) {
+    return (
+      <StyledNavigation>
+        <StyledUnorderedList>
+          <StyledListItem>
+            <StyledLink href="/">
+              <StyledIcon icon={faHouse} />
+            </StyledLink>
+          </StyledListItem>
+          <StyledListItem>
+            <StyledLink href="/create">
+              <StyledIcon icon={faPlus} />
+            </StyledLink>
+          </StyledListItem>
+          <StyledListItem>
+            <StyledLink href="/favourites">
+              <StyledIcon icon={faHeart} />
+            </StyledLink>
+          </StyledListItem>
+        </StyledUnorderedList>
+      </StyledNavigation>
+    );
+  }
+
   return (
     <StyledNavigation>
       <StyledUnorderedList>
         <StyledListItem>
           <StyledLink href="/">
             <StyledIcon icon={faHouse} />
-          </StyledLink>
-        </StyledListItem>
-        <StyledListItem>
-          <StyledLink href="/create">
-            <StyledIcon icon={faPlus} />
-          </StyledLink>
-        </StyledListItem>
-        <StyledListItem>
-          <StyledLink href="/favourites">
-            <StyledIcon icon={faHeart} />
           </StyledLink>
         </StyledListItem>
       </StyledUnorderedList>
