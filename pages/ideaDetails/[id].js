@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { v4 as uuidv4 } from "uuid";
 import { useRouter } from "next/router.js";
 import useSWR from "swr";
+import { useSession } from "next-auth/react";
 
 const StyledArticle = styled.article`
   display: flex;
@@ -48,6 +49,7 @@ const StyledButton = styled.button`
 `;
 
 export default function IdeaDetails() {
+  const { data: session } = useSession();
   const router = useRouter();
   const { isReady } = router;
   const { id } = router.query;
@@ -109,10 +111,14 @@ export default function IdeaDetails() {
           ))}
         </Hashtags>
         <Link href="/">Go Back</Link>
-        <Link href={`/edit/${data._id}`}>Edit</Link>
-        <StyledButton onClick={() => handleDelete(data._id)}>
-          Delete Idea
-        </StyledButton>
+        {session && (
+          <>
+            <Link href={`/edit/${data._id}`}>Edit</Link>
+            <StyledButton onClick={() => handleDelete(data._id)}>
+              Delete Idea
+            </StyledButton>
+          </>
+        )}
       </StyledArticle>
     </>
   );
