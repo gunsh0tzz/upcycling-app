@@ -1,6 +1,6 @@
 import Link from "next/link";
 import styled from "styled-components";
-import { useSession, signIn, signOut } from "next-auth/react";
+import { useSession } from "next-auth/react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHouse, faPlus, faHeart } from "@fortawesome/free-solid-svg-icons";

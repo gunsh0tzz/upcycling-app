@@ -1,10 +1,10 @@
 import { useRouter } from "next/router";
 import useSWR from "swr";
-import { useSession, signIn, signOut } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import Form from "@/components/Form";
 
 export default function EditIdeas({ ideas, editIdea }) {
-  const { data: session, status } = useSession();
+  const { status } = useSession();
   const router = useRouter();
   const { id } = router.query;
   const {

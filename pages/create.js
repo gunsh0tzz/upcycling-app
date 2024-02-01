@@ -1,10 +1,10 @@
 import Form from "@/components/Form";
 import { mutate } from "swr";
 import { useRouter } from "next/router";
-import { useSession, signIn, signOut } from "next-auth/react";
+import { useSession } from "next-auth/react";
 
 export default function Create({ addIdea }) {
-  const { data: session, status } = useSession();
+  const { status } = useSession();
   const router = useRouter();
 
   if (status !== "authenticated") {

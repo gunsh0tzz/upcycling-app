@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { v4 as uuidv4 } from "uuid";
 import { useRouter } from "next/router.js";
 import useSWR from "swr";
-import { useSession, signIn, signOut } from "next-auth/react";
+import { useSession } from "next-auth/react";
 
 const StyledArticle = styled.article`
   display: flex;
@@ -49,7 +49,7 @@ const StyledButton = styled.button`
 `;
 
 export default function IdeaDetails() {
-  const { data: session, status } = useSession();
+  const { data: session } = useSession();
   const router = useRouter();
   const { isReady } = router;
   const { id } = router.query;

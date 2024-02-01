@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Link from "next/link";
-import { useSession, signIn, signOut } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import Card from "@/components/Card";
 
 const CardList = styled.ul`
@@ -26,7 +26,7 @@ export default function FavouritePage({
   onToggleFavourites,
   favouriteIdeas,
 }) {
-  const { data: session, status } = useSession();
+  const { status } = useSession();
   const ideasToDisplay = ideas.filter((idea) =>
     favouriteIdeas.includes(idea._id)
   );
