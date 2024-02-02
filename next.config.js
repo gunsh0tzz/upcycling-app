@@ -17,6 +17,8 @@ const nextConfig = {
     domains: [
       "unsplash.com",
       "images.unsplash.com",
+      "hotpot.ai",
+      "hotpotmedia.s3.us-east-2.amazonaws.com",
       "res.cloudinary.com",
       "apumpkinandaprincess.com",
     ],

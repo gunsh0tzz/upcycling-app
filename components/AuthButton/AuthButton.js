@@ -1,8 +1,16 @@
 import { useSession, signIn, signOut } from "next-auth/react";
 import styled from "styled-components";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+import {
+  faRightToBracket,
+  faDoorOpen,
+} from "@fortawesome/free-solid-svg-icons";
+
 const StyledContainer = styled.div`
   display: flex;
+  align-items: center;
   gap: 0.5rem;
 `;
 
@@ -10,10 +18,16 @@ const StyledButton = styled.button`
   padding: 0.25rem;
 
   border-radius: 0.25rem;
-  border: 1px solid black;
+  border: none;
 
-  background-color: white;
-  color: black;
+  font-size: 1.125rem;
+  background-color: #ca92de;
+  color: white;
+
+  transition: transform 0.25s;
+  &:hover {
+    transform: scale(1.1);
+  }
 `;
 
 export default function AuthButton() {
@@ -23,7 +37,9 @@ export default function AuthButton() {
     return (
       <StyledContainer>
         Signed in as {session.user.name} <br />
-        <StyledButton onClick={() => signOut()}>Sign out</StyledButton>
+        <StyledButton onClick={() => signOut()}>
+          <FontAwesomeIcon icon={faDoorOpen} />
+        </StyledButton>
       </StyledContainer>
     );
   }
@@ -31,7 +47,9 @@ export default function AuthButton() {
   return (
     <StyledContainer>
       Not signed in <br />
-      <StyledButton onClick={() => signIn()}>Sign in</StyledButton>
+      <StyledButton onClick={() => signIn()}>
+        <FontAwesomeIcon icon={faRightToBracket} />
+      </StyledButton>
     </StyledContainer>
   );
 }
