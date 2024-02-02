@@ -23,7 +23,8 @@ const LinkWrapper = styled(Link)`
 `;
 const CardListItem = styled.li`
   margin: auto;
-  width: 63vw;
+  width: auto;
+  max-width: 26rem;
   flex-shrink: 0;
   background-color: #fafafa;
   align-self: flex-end;
