@@ -14,6 +14,7 @@ const StyledForm = styled.form`
   border-radius: 0.8rem;
   border: 2px solid #fafafa;
   margin: 0 3rem;
+  margin-bottom: 7rem;
   overflow-y: auto;
   @media (min-width: 1024px) {
     max-width: 42rem;
