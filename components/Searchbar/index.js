@@ -31,6 +31,7 @@ const StyledSearchbar = styled.input`
 
 const StyledSearchButton = styled.button`
   background-color: #a97bb5;
+  color: white;
   padding: 0.4rem;
   border-radius: 5rem;
   border: none;

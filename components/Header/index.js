@@ -5,8 +5,17 @@ import AuthButton from "../AuthButton/AuthButton";
 const StyledHeader = styled.header`
   padding: 2vh;
   text-align: center;
-  position: relative;
+  position: sticky;
+  top: 0;
   height: 17vh;
+  z-index: 1;
+  background-color: white;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
 `;
 
 const StyledImage = styled(Image)`

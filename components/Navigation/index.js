@@ -86,25 +86,42 @@ export default function Navigation() {
 
   if (session) {
     return (
-      <StyledNavigation>
-        <StyledUnorderedList>
-          <StyledListItem>
-            <StyledLink href="/">
-              <StyledIcon icon={faHouse} />
-            </StyledLink>
-          </StyledListItem>
-          <StyledListItem>
-            <StyledLink href="/create">
-              <StyledIcon icon={faPlus} />
-            </StyledLink>
-          </StyledListItem>
-          <StyledListItem>
-            <StyledLink href="/favourites">
-              <StyledIcon icon={faHeart} />
-            </StyledLink>
-          </StyledListItem>
-        </StyledUnorderedList>
-      </StyledNavigation>
+      <StyledNavigationWrapper>
+        <StyledNavigation>
+          <StyledUnorderedList>
+            <StyledListItem>
+              <StyledLink href="/">
+                <StyledImage
+                  src={"/home.svg"}
+                  width={60}
+                  height={60}
+                  alt="plant icon"
+                />
+              </StyledLink>
+            </StyledListItem>
+            <StyledListItem>
+              <StyledCreateLink href="/create">
+                <Image
+                  src={"/add_circle.svg"}
+                  width={60}
+                  height={60}
+                  alt="plant icon"
+                />
+              </StyledCreateLink>
+            </StyledListItem>
+            <StyledListItem>
+              <StyledLink href="/favourites">
+                <StyledImage
+                  src={"/white_plant.svg"}
+                  width={60}
+                  height={60}
+                  alt="plant icon"
+                />
+              </StyledLink>
+            </StyledListItem>
+          </StyledUnorderedList>
+        </StyledNavigation>
+      </StyledNavigationWrapper>
     );
   }
 
@@ -116,26 +133,6 @@ export default function Navigation() {
             <StyledLink href="/">
               <StyledImage
                 src={"/home.svg"}
-                width={60}
-                height={60}
-                alt="plant icon"
-              />
-            </StyledLink>
-          </StyledListItem>
-          <StyledListItem>
-            <StyledCreateLink href="/create">
-              <Image
-                src={"/add_circle.svg"}
-                width={60}
-                height={60}
-                alt="plant icon"
-              />
-            </StyledCreateLink>
-          </StyledListItem>
-          <StyledListItem>
-            <StyledLink href="/favourites">
-              <StyledImage
-                src={"/white_plant.svg"}
                 width={60}
                 height={60}
                 alt="plant icon"
