@@ -49,26 +49,42 @@ export default function HomePage({ onToggleFavourites, favouriteIdeas }) {
     fallbackData: [],
   });
   const [suggestions, setSuggestions] = useState([]);
-  const [searchResults, setSearchResults] = useState(
-    ideas.map((idea) => ({ item: idea }))
-  );
+  const [searchResults, setSearchResults] = useState([]);
   const [searchValue, setSearchValue] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const totalPages = Math.ceil(ideas.length / ideasPerPage);
-  const paginatedIdeas = ideas.slice(
+  const totalPages = Math.ceil(searchResults.length / ideasPerPage);
+  const paginatedIdeas = searchResults.slice(
     (currentPage - 1) * ideasPerPage,
     currentPage * ideasPerPage
   );
   const fuse = new Fuse(ideas, {
     keys: ["hashtags", "title"],
   });
+
   function handleClickEvent(value) {
     setSearchValue(value);
-    setSearchResults(fuse.search(value));
+    const results = fuse.search(value);
+    const filteredResults = results.filter((result) => {
+      return (
+        result.item.title.toLowerCase() === value.toLowerCase() ||
+        result.item.hashtags.some(
+          (tag) => tag.toLowerCase() === value.toLowerCase()
+        )
+      );
+    });
+    setSearchResults(filteredResults.map((result) => result.item));
   }
+
   function handleInputChange(item) {
     setSuggestions(fuse.search(item));
   }
+
+  useEffect(() => {
+    if (!searchValue) {
+      setSearchResults(ideas);
+    }
+  }, [ideas, searchValue]);
+
   return (
     <div>
       <Searchbar
@@ -79,38 +95,20 @@ export default function HomePage({ onToggleFavourites, favouriteIdeas }) {
         setSearchValue={setSearchValue}
       />
       <CardList>
-        {suggestions.length > 0 && searchValue
-          ? suggestions.map((suggestion) => (
-              <CardListItem key={suggestion.item._id}>
-                <Card
-                  image={suggestion.item.image}
-                  title={suggestion.item.title}
-                  hashtags={suggestion.item.hashtags}
-                  onToggleFavourites={onToggleFavourites}
-                  favouriteIdeas={favouriteIdeas}
-                  id={suggestion.item._id}
-                />
-                <StyledLink href={`/ideaDetails/${suggestion.item._id}`}>
-                  See More
-                </StyledLink>
-              </CardListItem>
-            ))
-          : paginatedIdeas.map((idea) => (
-              <CardListItem key={idea._id}>
-                <Card
-                  image={idea.image}
-                  title={idea.title}
-                  hashtags={idea.hashtags}
-                  onToggleFavourites={onToggleFavourites}
-                  favouriteIdeas={favouriteIdeas}
-                  id={idea._id}
-                  idea={idea}
-                />
-                <StyledLink href={`/ideaDetails/${idea._id}`}>
-                  See More
-                </StyledLink>
-              </CardListItem>
-            ))}
+        {paginatedIdeas.map((idea) => (
+          <CardListItem key={idea._id}>
+            <Card
+              image={idea.image}
+              title={idea.title}
+              hashtags={idea.hashtags}
+              onToggleFavourites={onToggleFavourites}
+              favouriteIdeas={favouriteIdeas}
+              id={idea._id}
+              idea={idea}
+            />
+            <StyledLink href={`/ideaDetails/${idea._id}`}>See More</StyledLink>
+          </CardListItem>
+        ))}
       </CardList>
 
       {!searchValue && (
