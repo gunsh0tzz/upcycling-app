@@ -3,6 +3,9 @@ import styled from "styled-components";
 import Image from "next/image";
 import { useSession } from "next-auth/react";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHouse, faPlus, faHeart } from "@fortawesome/free-solid-svg-icons";
+
 const StyledNavigationWrapper = styled.nav`
   width: 100%;
   justify-content: center;
