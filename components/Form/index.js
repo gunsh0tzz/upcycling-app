@@ -158,7 +158,8 @@ export default function Form({ idea = {}, onSubmit }) {
     form.title.focus();
     router.push("/");
   }
-  function handleCancel() {
+  function handleCancel(event) {
+    event.preventDefault();
     const isConfirmed = window.confirm("Are you sure?");
     if (isConfirmed) {
       router.push("/");
@@ -217,7 +218,7 @@ export default function Form({ idea = {}, onSubmit }) {
                 />
                 <StyledInstructionButtonContainer>
                   <StyledInstructionButton
-                    type="button"
+                    type="submit"
                     onClick={() => handleAddInstruction()}
                   >
                     <Image
