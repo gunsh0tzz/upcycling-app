@@ -13,7 +13,7 @@ const CardListContainer = styled.div`
   align-self: center;
   width: 100%;
   margin-top: 0.5rem;
-  margin-bottom: 7rem;
+  margin-bottom: 8rem;
 `;
 
 const CardList = styled.ul`

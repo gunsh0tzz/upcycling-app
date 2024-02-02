@@ -31,7 +31,7 @@ const StyledBackgroundContainer = styled.div`
   background-size: cover;
   background-color: #ffffff;
   background-attachment: fixed;
-  @media screen and (min-width: 42rem) {
+  @media screen and (min-width: 35rem) {
     background-image: url("/Desktop_Background.svg");
   }
 `;
