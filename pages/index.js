@@ -65,6 +65,7 @@ const CardList = styled.ul`
   align-self: center;
   width: 100%;
   margin-top: 0.5rem;
+  margin-bottom: 7rem;
 `;
 
 const CardListItem = styled.li`

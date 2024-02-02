@@ -4,7 +4,18 @@ import Card from "@/components/Card";
 
 const CardListContainer = styled.div`
   overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 1rem;
+  list-style-type: none;
+  padding: 0;
+  align-self: center;
+  width: 100%;
+  margin-top: 0.5rem;
+  margin-bottom: 7rem;
 `;
+
 const CardList = styled.ul`
   margin-top: 1rem;
   display: flex;
@@ -15,7 +26,11 @@ const CardList = styled.ul`
   padding: 0;
   align-self: center;
   position: relative;
+  border:1px solid red;
+  
+
 `;
+
 
 const LinkWrapper = styled(Link)`
   color: inherit;
@@ -32,7 +47,8 @@ const CardListItem = styled.li`
   border-radius: 1rem;
   padding: 0.7rem;
   position: relative;
-  margin-bottom: 2rem;
+  min-height: 300px;
+  /* margin-bottom: 2rem; */
 `;
 const StyledLink = styled(Link)`
   text-decoration: none;
