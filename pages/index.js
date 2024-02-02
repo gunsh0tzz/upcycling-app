@@ -236,7 +236,7 @@ export default function HomePage({ onToggleFavourites, favouriteIdeas }) {
 
       <CardList>
         {paginatedIdeas.map((idea) => (
-          <LinkWrapper href={`/ideaDetails/${suggestion.item._id}`}>
+          <LinkWrapper href={`/ideaDetails/${idea._id}`}>
             <CardListItem key={idea._id}>
               <Card
                 image={idea.image}
