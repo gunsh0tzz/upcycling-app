@@ -9,6 +9,11 @@ const ideaSchema = new Schema({
   image: {
     type: String,
   },
+  cover: {
+    type: {
+      url: String,
+    },
+  },
   items: [String],
   instructions: [
     {
