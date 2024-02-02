@@ -8,6 +8,7 @@ const StyledNavigationWrapper = styled.nav`
   background-color: #fff;
   position: fixed;
   bottom: 0;
+ 
 `;
 
 const StyledNavigation = styled.div`

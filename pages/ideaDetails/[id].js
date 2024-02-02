@@ -8,6 +8,7 @@ import useSWR from "swr";
 const StyledArticle = styled.article`
   display: flex;
   flex-wrap: wrap;
+  max-height: 470px;
   gap: 1rem;
   list-style: none;
   padding: 1rem;
@@ -16,6 +17,7 @@ const StyledArticle = styled.article`
   background-color: #fafafa;
   border-radius: 1rem;
   max-width: 100%;
+  margin-bottom: 8rem;
   box-shadow: 4px 2px 4px rgba(0, 0, 0, 0.2);
   @media screen and (min-width: 601px) {
     margin-top: 6vh;
