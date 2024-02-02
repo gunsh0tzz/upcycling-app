@@ -70,10 +70,6 @@ export default function Form({ idea = {}, onSubmit }) {
       }));
 
     onSubmit({ ...idea, ...data, cover });
-    // onSubmit({
-    //   ...Object.fromEntries(new FormData(event.target)),
-    //   cover,
-    // });
     window.alert("Your new idea has been added!");
     const form = event.target.elements;
     event.target.reset();
