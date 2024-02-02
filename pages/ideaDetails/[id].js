@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { v4 as uuidv4 } from "uuid";
 import { useRouter } from "next/router.js";
 import useSWR from "swr";
+import { useSession } from "next-auth/react";
 
 const StyledArticle = styled.article`
   display: flex;
@@ -86,15 +87,20 @@ const StyledEditImage = styled(Image)`
 `;
 
 export default function IdeaDetails() {
+  const { data: session } = useSession();
   const router = useRouter();
   const { isReady } = router;
   const { id } = router.query;
   const { data, isLoading, error, mutate } = useSWR(
     id ? `/api/ideas/${id}` : null
   );
-  if (error) return console.log(error);
+
+  if (error) return console.error(error);
+
   if (!isReady || isLoading) return <h2>Loading...</h2>;
-  const { instructions, items, hashtags, title, image } = data;
+
+  const { instructions, items, hashtags, title, image, cover } = data;
+
   async function handleDelete(id) {
     const isConfirmed = window.confirm("Are you sure?");
     if (isConfirmed) {
@@ -119,7 +125,7 @@ export default function IdeaDetails() {
       <StyledArticle>
         <h3>{title}</h3>
         <StyledContainer>
-          <StyledImage src={image} alt={title} width={150} height={120} />
+          <StyledImage src={image ? image : cover.url} alt={title} width={150} height={120} />
           <ItemsContainer>
             <ItemsTitle>Items:</ItemsTitle>
             <Items>
@@ -142,7 +148,9 @@ export default function IdeaDetails() {
           ))}
         </Hashtags>
         <ButtonBox>
-          <StyledButton onClick={() => handleDelete(data._id)}>
+          {session && (
+           <>
+           <StyledButton onClick={() => handleDelete(data._id)}>
             <Image
               src={"/recycling.svg"}
               width={40}
@@ -158,6 +166,8 @@ export default function IdeaDetails() {
               alt="plant icon"
             />
           </Link>
+           </>
+           )}
         </ButtonBox>
       </StyledArticle>
     </>

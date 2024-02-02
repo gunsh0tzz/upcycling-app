@@ -1,6 +1,11 @@
 import Image from "next/image";
 import styled from "styled-components";
 import { v4 as uuidv4 } from "uuid";
+import { useSession } from "next-auth/react";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHeart as solidHeart } from "@fortawesome/free-solid-svg-icons";
+import { faHeart as regularHeart } from "@fortawesome/free-regular-svg-icons";
 
 const StyledImage = styled(Image)`
   border-radius: 0.8rem;
@@ -60,32 +65,35 @@ export default function Card({
   hashtags,
   favouriteIdeas,
   onToggleFavourites,
+  cover,
   id,
 }) {
+  const { data: session } = useSession();
   const isFavourite = favouriteIdeas && favouriteIdeas.includes(id);
 
   const limitedHashtags = hashtags.slice(0, 3);
 
   return (
     <Article>
-      <StyledImage src={image} alt={title} width={200} height={160} />
+      <StyledImage src={image ? image : cover.url} alt={title} width={200} height={160} />
 
       <Title>{title}</Title>
-      <FavoriteButton
+      {session && (
+        <FavoriteButton
         onClick={(event) => event && onToggleFavourites(id, event)}
-      >
-        {isFavourite ? (
-          <Image
-            src={"/plant_fav.svg"}
-            width={40}
-            height={40}
-            alt="plant icon"
-          />
-        ) : (
-          <Image src={"/plant.svg"} width={40} height={40} alt="plant icon" />
-        )}
-      </FavoriteButton>
-
+        >
+          {isFavourite ? (
+            <Image
+              src={"/plant_fav.svg"}
+              width={40}
+              height={40}
+              alt="plant icon"
+            />
+          ) : (
+            <Image src={"/plant.svg"} width={40} height={40} alt="plant icon" />
+          )}
+        </FavoriteButton>
+      )}
       <Hashtags>
         {limitedHashtags.map((hashtag) => (
           <li key={uuidv4()}>#{hashtag}</li>
