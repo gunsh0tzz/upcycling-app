@@ -8,17 +8,16 @@ const CardList = styled.ul`
   flex-wrap: wrap;
   gap: 1rem;
   list-style-type: none;
-  padding: 0;
-  margin: 1rem 0rem 0rem 1rem;
+  margin-bottom: 15vh;
+
+  @media (min-width: 950px) {
+    margin: 0 20vw;
+  }
 `;
 
 const CardListItem = styled.li`
   flex: 0 0 calc(50% - 1rem);
   max-width: calc(50% - 1rem);
-  box-sizing: border-box;
-  border: 1px solid black;
-  border-radius: 0.5rem;
-  padding: 1rem;
 `;
 
 export default function FavouritePage({
@@ -36,7 +35,7 @@ export default function FavouritePage({
   }
 
   return (
-    <div>
+    <>
       <CardList>
         {ideasToDisplay.map((idea) => (
           <CardListItem key={idea._id}>
@@ -48,10 +47,9 @@ export default function FavouritePage({
               favouriteIdeas={favouriteIdeas}
               id={idea._id}
             />
-            <Link href={`/ideaDetails/${idea._id}`}>See More</Link>
           </CardListItem>
         ))}
       </CardList>
-    </div>
+    </>
   );
 }

@@ -1,21 +1,20 @@
 import styled from "styled-components";
+import Image from "next/image";
 import AuthButton from "../AuthButton/AuthButton";
 
 const StyledHeader = styled.header`
-  margin-bottom: 2rem;
-
   display: flex;
-  gap: 0.5rem;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding: 0.5rem;
+  margin-bottom: 1.5rem;
+  padding: 1rem 2rem 0rem 2rem;
 `;
 
 export default function Header() {
   return (
     <StyledHeader>
-      <h1>Reuse</h1>
+      <Image src={"/header.png"} alt={"Reuse Logo"} width={130} height={60} />
       <AuthButton />
     </StyledHeader>
   );

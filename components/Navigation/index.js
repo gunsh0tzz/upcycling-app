@@ -9,8 +9,7 @@ const StyledNavigation = styled.nav`
   position: fixed;
   bottom: 0;
   width: 100%;
-  border-top: 1px solid black;
-  background-color: white;
+  background-color: #ca92de;
 `;
 
 const StyledUnorderedList = styled.ul`
@@ -20,20 +19,24 @@ const StyledUnorderedList = styled.ul`
 
 const StyledListItem = styled.li`
   flex: 1;
-  display: flex;
+  height: 3rem;
 `;
 
 const StyledLink = styled(Link)`
-  width: 100%;
   display: flex;
+  height: 100%;
   justify-content: center;
   align-items: center;
-  padding: 0.5rem;
 `;
 
 const StyledIcon = styled(FontAwesomeIcon)`
-  color: black;
-  font-size: 2rem;
+  color: white;
+  font-size: 1.75rem;
+
+  transition: font-size 0.25s;
+  &:hover {
+    font-size: 2rem;
+  }
 `;
 
 export default function Navigation() {
@@ -50,7 +53,17 @@ export default function Navigation() {
           </StyledListItem>
           <StyledListItem>
             <StyledLink href="/create">
-              <StyledIcon icon={faPlus} />
+              <StyledIcon
+                icon={faPlus}
+                style={{
+                  transform: "translate(0,-2rem)",
+                  backgroundColor: "white",
+                  color: "lightgreen",
+                  border: "0.5rem solid #ca92de",
+                  borderRadius: "100%",
+                  padding: "0.5rem",
+                }}
+              />
             </StyledLink>
           </StyledListItem>
           <StyledListItem>

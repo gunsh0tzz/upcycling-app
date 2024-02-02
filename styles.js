@@ -10,6 +10,10 @@ export default createGlobalStyle`
   }
 
   body {
-    font-family: system-ui;
+    font-family: Arial, Helvetica, sans-serif;
+
+    background-image: url("/background.svg");
+    background-size: cover;
+    background-attachment: fixed;
   }
 `;
