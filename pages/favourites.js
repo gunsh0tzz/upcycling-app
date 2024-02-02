@@ -20,17 +20,13 @@ const CardList = styled.ul`
   margin-top: 1rem;
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
-  gap: 1rem;
+  gap: 1.5rem;
   list-style-type: none;
   padding: 0;
   align-self: center;
   position: relative;
-  border:1px solid red;
-  
-
+  border: 1px solid red;
 `;
-
 
 const LinkWrapper = styled(Link)`
   color: inherit;
