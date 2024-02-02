@@ -63,13 +63,6 @@ const StyledIcon = styled(FontAwesomeIcon)`
 const StyledLink = styled(Link)`
   text-decoration: none;
   color: black;
-
-  /* position: sticky;
-  bottom: 1rem;
-
-  &:hover {
-    text-decoration: underline;
-  } */
 `;
 
 export default function Card({
@@ -108,7 +101,6 @@ export default function Card({
               <li key={uuidv4()}>#{hashtag}</li>
             ))}
           </Hashtags>
-          {/* <StyledLink href={`/ideaDetails/${id}`}>See More</StyledLink> */}
         </TextContainer>
       </CardContainer>
     </StyledLink>

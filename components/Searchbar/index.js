@@ -1,8 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { useRouter } from "next/router";
-import useSWR from "swr";
-
 import Link from "next/link";
 
 const SearchbarContainer = styled.div`

@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import Link from "next/link";
 import { useSession } from "next-auth/react";
 import Card from "@/components/Card";
 
