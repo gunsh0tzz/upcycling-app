@@ -84,6 +84,7 @@ export default function HomePage({ onToggleFavourites, favouriteIdeas }) {
               <CardListItem key={suggestion.item._id}>
                 <Card
                   image={suggestion.item.image}
+                  cover={suggestion.item.cover}
                   title={suggestion.item.title}
                   hashtags={suggestion.item.hashtags}
                   onToggleFavourites={onToggleFavourites}
@@ -99,6 +100,7 @@ export default function HomePage({ onToggleFavourites, favouriteIdeas }) {
               <CardListItem key={idea._id}>
                 <Card
                   image={idea.image}
+                  cover={idea.cover}
                   title={idea.title}
                   hashtags={idea.hashtags}
                   onToggleFavourites={onToggleFavourites}

@@ -58,11 +58,11 @@ export default function IdeaDetails() {
     id ? `/api/ideas/${id}` : null
   );
 
-  if (error) return console.log(error);
+  if (error) return console.error(error);
 
   if (!isReady || isLoading) return <h2>Loading...</h2>;
 
-  const { instructions, items, hashtags, title, image } = data;
+  const { instructions, items, hashtags, title, image, cover } = data;
 
   async function handleDelete(id) {
     const response = await fetch(`/api/ideas/${id}`, {
@@ -87,7 +87,12 @@ export default function IdeaDetails() {
       <StyledArticle>
         <h2>{title}</h2>
         <StyledContainer>
-          <StyledImage src={image} alt={title} width={150} height={120} />
+          <StyledImage
+            src={image ? image : cover.url}
+            alt={title}
+            width={150}
+            height={120}
+          />
           <Items>
             {items.map((item) => (
               <li key={uuidv4()}>{item}</li>

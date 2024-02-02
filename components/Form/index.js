@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import styled from "styled-components";
+import uploadImage from "@/lib/cloudinary";
 
 const StyledForm = styled.form`
   display: flex;
@@ -49,8 +50,10 @@ export default function Form({ idea = {}, onSubmit }) {
     setInstructions(newInstructions);
   }
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
+    const cover = await uploadImage(event.target.cover.files[0]);
+
     const data = Object.fromEntries(new FormData(event.target));
 
     data.items = data.items.split(",").map((item) => item.trim());
@@ -66,7 +69,7 @@ export default function Form({ idea = {}, onSubmit }) {
         step: instruction.step.trim(),
       }));
 
-    onSubmit({ ...idea, ...data });
+    onSubmit({ ...idea, ...data, cover });
     window.alert("Your new idea has been added!");
     const form = event.target.elements;
     event.target.reset();
@@ -89,6 +92,8 @@ export default function Form({ idea = {}, onSubmit }) {
         <input id="title" name="title" defaultValue={idea.title} required />
         <label htmlFor="image">image url:</label>
         <input id="image" name="image" defaultValue={idea.image} />
+        Cover
+        <input name="cover" type="file" accept=".png,.jpg,.jpeg" />
         <label htmlFor="items">items:</label>
         <textarea
           as="input"
@@ -99,7 +104,6 @@ export default function Form({ idea = {}, onSubmit }) {
           maxLength={150}
         />
         <label htmlFor="instructions">instructions:</label>
-
         {instructions.map((instruction, index) => (
           <div key={instruction.id}>
             <StyledUnorderedList>
