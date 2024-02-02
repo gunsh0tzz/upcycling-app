@@ -9,7 +9,6 @@ const StyledNavigationWrapper = styled.nav`
   background-color: #fff;
   position: fixed;
   bottom: 0;
- 
 `;
 
 const StyledNavigation = styled.div`
@@ -47,6 +46,11 @@ const StyledLink = styled(Link)`
   width: 100%;
   display: flex;
   align-items: flex-end;
+`;
+
+const StyledIcon = styled(FontAwesomeIcon)`
+  color: black;
+  font-size: 2rem;
 `;
 
 const StyledImage = styled(Image)`
