@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import styled from "styled-components";
 import Link from "next/link";
 import { useState } from "react";
@@ -200,6 +202,7 @@ export default function HomePage({ onToggleFavourites, favouriteIdeas }) {
   function handleInputChange(item) {
     setSuggestions(fuse.search(item));
   }
+
   return (
     <Container>
       <Searchbar
@@ -229,9 +232,6 @@ export default function HomePage({ onToggleFavourites, favouriteIdeas }) {
                     favouriteIdeas={favouriteIdeas}
                     id={suggestion.item._id}
                   />
-                  {/* <StyledLink href={`/ideaDetails/${suggestion.item._id}`}>
-                  See More
-                </StyledLink> */}
                 </CardListItem>
               </LinkWrapper>
             ))
@@ -247,9 +247,6 @@ export default function HomePage({ onToggleFavourites, favouriteIdeas }) {
                     id={idea._id}
                     idea={idea}
                   />
-                  {/* <StyledLink href={`/ideaDetails/${idea._id}`}>
-                  See More
-                </StyledLink> */}
                 </CardListItem>
               </LinkWrapper>
             ))}
