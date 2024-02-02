@@ -25,7 +25,6 @@ const CardList = styled.ul`
   padding: 0;
   align-self: center;
   position: relative;
-  border: 1px solid red;
 `;
 
 const LinkWrapper = styled(Link)`
@@ -44,7 +43,6 @@ const CardListItem = styled.li`
   padding: 0.7rem;
   position: relative;
   min-height: 300px;
-  /* margin-bottom: 2rem; */
 `;
 const StyledLink = styled(Link)`
   text-decoration: none;
