@@ -97,7 +97,7 @@ export default function Form({ idea = {}, onSubmit }) {
         <label htmlFor="image">image url:</label>
         <input id="image" name="image" defaultValue={idea.image} />
         Cover
-        <input name="cover" type="file" />
+        <input name="cover" type="file" accept=".png,.jpg,.jpeg" />
         <label htmlFor="items">items:</label>
         <textarea
           as="input"
