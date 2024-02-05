@@ -171,8 +171,6 @@ const DummyNext = styled.div`
   }
 `;
 
-const ideasPerPage = 1;
-
 export default function HomePage({ onToggleFavourites, favouriteIdeas }) {
   const {
     data: ideas,
@@ -187,14 +185,22 @@ export default function HomePage({ onToggleFavourites, favouriteIdeas }) {
   );
   const [searchValue, setSearchValue] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const totalPages = Math.ceil(ideas.length / ideasPerPage);
+
+  const totalPages = ideas.length
+
   const paginatedIdeas = ideas.slice(
-    (currentPage - 1) * ideasPerPage,
-    currentPage * ideasPerPage
+    (currentPage - 1),
+    currentPage
   );
+
+  console.log(paginatedIdeas);
+  console.log(suggestions.length);
+  console.log(searchValue);
+
   const fuse = new Fuse(ideas, {
     keys: ["hashtags", "title"],
   });
+
   function handleClickEvent(value) {
     setSearchValue(value);
     setSearchResults(fuse.search(value));
