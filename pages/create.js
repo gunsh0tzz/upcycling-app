@@ -2,13 +2,14 @@ import Form from "@/components/Form";
 import { mutate } from "swr";
 import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
+import AccessDeniedMessage from "@/lib/AccessDeniedMessage";
 
 export default function Create({ addIdea }) {
   const { status } = useSession();
   const router = useRouter();
 
   if (status !== "authenticated") {
-    return <h1>Access denied. You have to be logged in to view this page.</h1>;
+    return <AccessDeniedMessage />;
   }
 
   async function onSubmit(data) {
