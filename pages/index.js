@@ -51,6 +51,9 @@ const CountDiv = styled.div`
   color: #000000;
   font-size: 0.8rem;
   font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
   @media screen and (min-height: 800px) {
     font-size: 1.1rem;
@@ -171,8 +174,6 @@ const DummyNext = styled.div`
   }
 `;
 
-const ideasPerPage = 1;
-
 export default function HomePage({ onToggleFavourites, favouriteIdeas }) {
   const {
     data: ideas,
@@ -187,14 +188,17 @@ export default function HomePage({ onToggleFavourites, favouriteIdeas }) {
   );
   const [searchValue, setSearchValue] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const totalPages = Math.ceil(ideas.length / ideasPerPage);
-  const paginatedIdeas = ideas.slice(
-    (currentPage - 1) * ideasPerPage,
-    currentPage * ideasPerPage
-  );
+
+  const totalPages = ideas.length;
+
+  const paginatedIdeas = ideas.slice(currentPage - 1, currentPage);
+
   const fuse = new Fuse(ideas, {
     keys: ["hashtags", "title"],
+    minMatchCharLength: 3,
+    threshold: 0.0,
   });
+
   function handleClickEvent(value) {
     setSearchValue(value);
     setSearchResults(fuse.search(value));
@@ -212,10 +216,15 @@ export default function HomePage({ onToggleFavourites, favouriteIdeas }) {
         onClickEvent={handleClickEvent}
         setSearchValue={setSearchValue}
       />
-      {!searchValue && (
+      {!searchValue ? (
         <StyledCount>
-          <p>all ideas</p>
+          <p>All ideas</p>
           <CountDiv>{ideas.length}</CountDiv>{" "}
+        </StyledCount>
+      ) : (
+        <StyledCount>
+          <p>Matching ideas</p>
+          <CountDiv>{suggestions.length}</CountDiv>{" "}
         </StyledCount>
       )}
 
@@ -236,6 +245,14 @@ export default function HomePage({ onToggleFavourites, favouriteIdeas }) {
                 </CardListItem>
               </LinkWrapper>
             ))
+          : ""}
+        {searchValue && suggestions.length === 0 ? (
+          <h3>No matches found.</h3>
+        ) : (
+          ""
+        )}
+        {searchValue
+          ? ""
           : paginatedIdeas.map((idea) => (
               <LinkWrapper href={`/ideaDetails/${idea._id}`}>
                 <CardListItem key={idea._id}>
