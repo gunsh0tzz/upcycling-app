@@ -14,7 +14,8 @@ const StyledContainer = styled.div`
   display: flex;
   justify-content: center;
   background-color: #fafafa;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+  margin-top: 0.25rem;
   border-radius: 0.8rem;
   @media (min-width: 600px) {
     max-width: 400px;
