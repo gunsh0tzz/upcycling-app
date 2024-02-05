@@ -36,8 +36,10 @@ export default function AuthButton() {
   if (session) {
     return (
       <StyledContainer>
-        Signed in as {session.user.name} <br />
-        <StyledButton onClick={() => signOut()}>
+        <p>
+          Signed in as <span aria-label={session.user.name} tabIndex="0">{session.user.name}</span>
+        </p>
+        <StyledButton onClick={() => signOut()} aria-label="Sign Out">
           <FontAwesomeIcon icon={faDoorOpen} />
         </StyledButton>
       </StyledContainer>
@@ -46,8 +48,8 @@ export default function AuthButton() {
 
   return (
     <StyledContainer>
-      Not signed in <br />
-      <StyledButton onClick={() => signIn()}>
+      <p>Not signed in</p>
+      <StyledButton onClick={() => signIn()} aria-label="Sign In">
         <FontAwesomeIcon icon={faRightToBracket} />
       </StyledButton>
     </StyledContainer>

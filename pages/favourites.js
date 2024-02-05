@@ -80,7 +80,7 @@ export default function FavouritePage({
       <CardListContainer>
         <CardList>
           {ideasToDisplay.map((idea) => (
-            <LinkWrapper href={`/ideaDetails/${idea._id}`}>
+            <LinkWrapper href={`/ideaDetails/${idea._id}`} aria-label={`Link to ${idea.title}`}>
               <CardListItem key={idea._id}>
                 <Card
                   image={idea.image}
