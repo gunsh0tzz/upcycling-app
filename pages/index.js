@@ -186,12 +186,9 @@ export default function HomePage({ onToggleFavourites, favouriteIdeas }) {
   const [searchValue, setSearchValue] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
 
-  const totalPages = ideas.length
+  const totalPages = ideas.length;
 
-  const paginatedIdeas = ideas.slice(
-    (currentPage - 1),
-    currentPage
-  );
+  const paginatedIdeas = ideas.slice(currentPage - 1, currentPage);
 
   console.log(paginatedIdeas);
   console.log(suggestions.length);
@@ -199,6 +196,8 @@ export default function HomePage({ onToggleFavourites, favouriteIdeas }) {
 
   const fuse = new Fuse(ideas, {
     keys: ["hashtags", "title"],
+    minMatchCharLength: 3,
+    threshold: 0.0,
   });
 
   function handleClickEvent(value) {
