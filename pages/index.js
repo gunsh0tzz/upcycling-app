@@ -51,6 +51,9 @@ const CountDiv = styled.div`
   color: #000000;
   font-size: 0.8rem;
   font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
   @media screen and (min-height: 800px) {
     font-size: 1.1rem;
