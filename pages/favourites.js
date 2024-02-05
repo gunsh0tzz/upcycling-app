@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
 import Card from "@/components/Card";
+import AccessDeniedMessage from "@/lib/AccessDeniedMessage";
 
 const CardListContainer = styled.div`
   overflow-y: auto;
@@ -71,7 +72,7 @@ export default function FavouritePage({
   );
 
   if (status !== "authenticated") {
-    return <h1>Access denied. You have to be logged in to view this page.</h1>;
+    return <AccessDeniedMessage />;
   }
 
   return (

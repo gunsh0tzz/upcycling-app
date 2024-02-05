@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import useSWR from "swr";
 import { useSession } from "next-auth/react";
 import Form from "@/components/Form";
+import AccessDeniedMessage from "@/lib/AccessDeniedMessage";
 
 export default function EditIdeas({ ideas, editIdea }) {
   const { status } = useSession();
@@ -14,7 +15,7 @@ export default function EditIdeas({ ideas, editIdea }) {
   } = useSWR(id ? `/api/ideas/${id}` : null);
 
   if (status !== "authenticated") {
-    return <h1>Access denied. You have to be logged in to view this page.</h1>;
+    return <AccessDeniedMessage />;
   }
 
   async function onEdit(data) {
