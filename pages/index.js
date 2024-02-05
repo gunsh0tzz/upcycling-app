@@ -190,10 +190,6 @@ export default function HomePage({ onToggleFavourites, favouriteIdeas }) {
 
   const paginatedIdeas = ideas.slice(currentPage - 1, currentPage);
 
-  console.log(paginatedIdeas);
-  console.log(suggestions.length);
-  console.log(searchValue);
-
   const fuse = new Fuse(ideas, {
     keys: ["hashtags", "title"],
     minMatchCharLength: 3,
@@ -217,12 +213,6 @@ export default function HomePage({ onToggleFavourites, favouriteIdeas }) {
         onClickEvent={handleClickEvent}
         setSearchValue={setSearchValue}
       />
-      {/* {!searchValue && (
-        <StyledCount>
-          <p>all ideas</p>
-          <CountDiv>{ideas.length}</CountDiv>{" "}
-        </StyledCount>
-      )} */}
       {!searchValue ? (
         <StyledCount>
           <p>All ideas</p>
@@ -253,6 +243,11 @@ export default function HomePage({ onToggleFavourites, favouriteIdeas }) {
               </LinkWrapper>
             ))
           : ""}
+        {searchValue && suggestions.length === 0 ? (
+          <h3>No matches found.</h3>
+        ) : (
+          ""
+        )}
         {searchValue
           ? ""
           : paginatedIdeas.map((idea) => (
