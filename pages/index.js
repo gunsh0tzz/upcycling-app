@@ -217,10 +217,21 @@ export default function HomePage({ onToggleFavourites, favouriteIdeas }) {
         onClickEvent={handleClickEvent}
         setSearchValue={setSearchValue}
       />
-      {!searchValue && (
+      {/* {!searchValue && (
         <StyledCount>
           <p>all ideas</p>
           <CountDiv>{ideas.length}</CountDiv>{" "}
+        </StyledCount>
+      )} */}
+      {!searchValue ? (
+        <StyledCount>
+          <p>All ideas</p>
+          <CountDiv>{ideas.length}</CountDiv>{" "}
+        </StyledCount>
+      ) : (
+        <StyledCount>
+          <p>Matching ideas</p>
+          <CountDiv>{suggestions.length}</CountDiv>{" "}
         </StyledCount>
       )}
 
@@ -241,6 +252,9 @@ export default function HomePage({ onToggleFavourites, favouriteIdeas }) {
                 </CardListItem>
               </LinkWrapper>
             ))
+          : ""}
+        {searchValue
+          ? ""
           : paginatedIdeas.map((idea) => (
               <LinkWrapper href={`/ideaDetails/${idea._id}`}>
                 <CardListItem key={idea._id}>
