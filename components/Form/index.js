@@ -11,19 +11,21 @@ const StyledForm = styled.form`
   gap: 0.5rem;
   padding: 0.7rem;
   background-color: #fafafa;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 0px 0.5rem rgba(0, 0, 0, 0.3);
   border-radius: 0.8rem;
   border: 2px solid #fafafa;
-  margin: 0 3rem;
-  margin-bottom: 7rem;
+  margin: 0.5rem 3rem 7rem 3rem;
   overflow-y: auto;
+
   @media (min-width: 1024px) {
     max-width: 42rem;
   }
 `;
+
 const StyledUnorderedList = styled.ul`
   list-style: none;
 `;
+
 const StyledListItem = styled.li`
   display: flex;
   align-items: flex-start;
@@ -37,6 +39,7 @@ const StyledTitle = styled.h3`
   font-weight: bold;
   align-self: center;
 `;
+
 const StyledSaveButton = styled.button`
   display: flex;
   justify-content: space-between;
@@ -50,10 +53,12 @@ const StyledSaveButton = styled.button`
   background-color: #44c67f;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
 `;
+
 const StyledButtonText = styled.p`
   width: 100%;
   text-align: center;
 `;
+
 const StyledCancelButton = styled.button`
   display: flex;
   justify-content: space-between;
@@ -67,6 +72,7 @@ const StyledCancelButton = styled.button`
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
   background-color: #ca92de;
 `;
+
 const StyledInput = styled.input`
   background-color: #f7f3f3;
   border-radius: 0.8rem;
@@ -76,6 +82,7 @@ const StyledInput = styled.input`
   border: none;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
 `;
+
 const StyledTextarea = styled.textarea`
   background-color: #f7f3f3;
   border-radius: 0.8rem;
@@ -85,6 +92,7 @@ const StyledTextarea = styled.textarea`
   border: none;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
 `;
+
 const StyledTextareaInstruction = styled.textarea`
   flex: 1;
 
