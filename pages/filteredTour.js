@@ -48,12 +48,29 @@ export default function FilteredTour({
   };
 
   console.log(selectedMaterials);
+  console.log(selectedForms);
+  console.log(selectedDifficulties);
+
+  const isMaterialButtonHidden = () => {
+    return selectedMaterials.length > 0 ? { display: "none" } : {};
+  };
+
+  const isFormButtonHidden = () => {
+    return selectedForms.length > 0 ? { display: "none" } : {};
+  };
+
+  const isDifficultyButtonHidden = () => {
+    return selectedDifficulties.length > 0 ? { display: "none" } : {};
+  };
 
   return (
     <>
       <section>
         <h2>Material</h2>
-        <button onClick={() => handleMaterialButtonClick("wood")}>
+        <button
+          onClick={() => handleMaterialButtonClick("wood")}
+          style={isMaterialButtonHidden()}
+        >
           <Image
             src="https://images.unsplash.com/photo-1515446134809-993c501ca304?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             alt="wood"
@@ -61,7 +78,10 @@ export default function FilteredTour({
             height={100}
           />
         </button>
-        <button onClick={() => handleMaterialButtonClick("plastic")}>
+        <button
+          onClick={() => handleMaterialButtonClick("plastic")}
+          style={isMaterialButtonHidden()}
+        >
           <Image
             src="https://images.unsplash.com/photo-1576037728058-ab2c538ac8d0?q=80&w=2073&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             alt="plastic"
@@ -69,7 +89,10 @@ export default function FilteredTour({
             height={100}
           />
         </button>
-        <button onClick={() => handleMaterialButtonClick("cardboard")}>
+        <button
+          onClick={() => handleMaterialButtonClick("cardboard")}
+          style={isMaterialButtonHidden()}
+        >
           <Image
             src="https://images.unsplash.com/photo-1624137527136-66e631bdaa0e?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             alt="cardboard"
@@ -77,7 +100,10 @@ export default function FilteredTour({
             height={100}
           />
         </button>
-        <button onClick={() => handleMaterialButtonClick("glass")}>
+        <button
+          onClick={() => handleMaterialButtonClick("glass")}
+          style={isMaterialButtonHidden()}
+        >
           <Image
             src="https://images.unsplash.com/photo-1542661206-03e9001692de?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             alt="glass"
@@ -85,7 +111,10 @@ export default function FilteredTour({
             height={100}
           />
         </button>
-        <button onClick={() => handleMaterialButtonClick("metal")}>
+        <button
+          onClick={() => handleMaterialButtonClick("metal")}
+          style={isMaterialButtonHidden()}
+        >
           <Image
             src="https://images.unsplash.com/photo-1597227093570-eccc70d8a416?q=80&w=2574&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             alt="glass"
@@ -93,7 +122,10 @@ export default function FilteredTour({
             height={100}
           />
         </button>
-        <button onClick={() => handleMaterialButtonClick("paper")}>
+        <button
+          onClick={() => handleMaterialButtonClick("paper")}
+          style={isMaterialButtonHidden()}
+        >
           <Image
             src="https://images.unsplash.com/photo-1601662528567-526cd06f6582?q=80&w=2630&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             alt="glass"
@@ -101,7 +133,10 @@ export default function FilteredTour({
             height={100}
           />
         </button>
-        <button onClick={() => handleMaterialButtonClick("textile")}>
+        <button
+          onClick={() => handleMaterialButtonClick("textile")}
+          style={isMaterialButtonHidden()}
+        >
           <Image
             src="https://images.unsplash.com/photo-1534639077088-d702bcf685e7?q=80&w=2193&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             alt="glass"
@@ -113,7 +148,10 @@ export default function FilteredTour({
 
       <section>
         <h2>Form</h2>
-        <button onClick={() => handleFormButtonClick("bottle")}>
+        <button
+          onClick={() => handleFormButtonClick("bottle")}
+          style={isFormButtonHidden()}
+        >
           <Image
             src="https://images.unsplash.com/photo-1571727153934-b9e0059b7ab2?q=80&w=2574&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             alt="bottle"
@@ -121,7 +159,10 @@ export default function FilteredTour({
             height={100}
           />
         </button>
-        <button onClick={() => handleFormButtonClick("cup")}>
+        <button
+          onClick={() => handleFormButtonClick("cup")}
+          style={isFormButtonHidden()}
+        >
           <Image
             src="https://images.unsplash.com/photo-1575026469075-99e9e3433e72?q=80&w=2574&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             alt="cup"
@@ -129,7 +170,10 @@ export default function FilteredTour({
             height={100}
           />
         </button>
-        <button onClick={() => handleFormButtonClick("can")}>
+        <button
+          onClick={() => handleFormButtonClick("can")}
+          style={isFormButtonHidden()}
+        >
           <Image
             src="https://images.unsplash.com/photo-1561924018-4f213bdc7364?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             alt="can"
@@ -137,7 +181,10 @@ export default function FilteredTour({
             height={100}
           />
         </button>
-        <button onClick={() => handleFormButtonClick("bag")}>
+        <button
+          onClick={() => handleFormButtonClick("bag")}
+          style={isFormButtonHidden()}
+        >
           <Image
             src="https://images.unsplash.com/photo-1597348989645-46b190ce4918?q=80&w=2574&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             alt="bag"
@@ -148,7 +195,10 @@ export default function FilteredTour({
       </section>
       <section>
         <h2>Difficulty</h2>
-        <button onClick={() => handleDifficultyButtonClick("easy")}>
+        <button
+          onClick={() => handleDifficultyButtonClick("easy")}
+          style={isDifficultyButtonHidden()}
+        >
           <Image
             src="https://images.unsplash.com/photo-1588421357574-87938a86fa28?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             alt="easy"
@@ -156,7 +206,10 @@ export default function FilteredTour({
             height={100}
           />
         </button>
-        <button onClick={() => handleDifficultyButtonClick("medium")}>
+        <button
+          onClick={() => handleDifficultyButtonClick("medium")}
+          style={isDifficultyButtonHidden()}
+        >
           <Image
             src="https://images.unsplash.com/photo-1508898578281-774ac4893c0c?q=80&w=2574&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             alt="medium"
@@ -164,7 +217,10 @@ export default function FilteredTour({
             height={100}
           />
         </button>
-        <button onClick={() => handleDifficultyButtonClick("difficult")}>
+        <button
+          onClick={() => handleDifficultyButtonClick("difficult")}
+          style={isDifficultyButtonHidden()}
+        >
           <Image
             src="https://images.unsplash.com/photo-1544914379-806667cd9489?q=80&w=2531&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             alt="difficult"
@@ -172,7 +228,10 @@ export default function FilteredTour({
             height={100}
           />
         </button>
-        <button onClick={() => handleDifficultyButtonClick("profi")}>
+        <button
+          onClick={() => handleDifficultyButtonClick("profi")}
+          style={isDifficultyButtonHidden()}
+        >
           <Image
             src="https://images.unsplash.com/photo-1548504769-900b70ed122e?q=80&w=2680&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             alt="profi"
