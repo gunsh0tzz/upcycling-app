@@ -4,6 +4,11 @@ import { useState } from "react";
 import Card from "@/components/Card";
 import styled from "styled-components";
 import Link from "next/link";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faBackward,
+  faMagnifyingGlass,
+} from "@fortawesome/free-solid-svg-icons";
 
 const Selection = styled.div`
   margin: 1rem 0.5rem 0.5rem 1rem;
@@ -105,6 +110,26 @@ const PrevButton = styled.button`
   border-radius: 0.8rem;
   border: none;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+`;
+
+const ResultsButton = styled.button`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 110px;
+  height: 50px;
+  padding: 0.5rem;
+  color: white;
+  background-color: #a97bb5;
+  align-self: center;
+  margin-top: 3rem;
+  border-radius: 0.8rem;
+  border: none;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+`;
+
+const StyledIcon = styled(FontAwesomeIcon)`
+  font-size: 1.2rem;
 `;
 
 export default function FilteredTour({
@@ -265,7 +290,9 @@ export default function FilteredTour({
             Bag
           </StyledButton>{" "}
         </ButtonContainer>
-        <PrevButton onClick={handleFormPrevious}>Previous</PrevButton>
+        <PrevButton onClick={handleFormPrevious}>
+          <FontAwesomeIcon icon={faBackward} />
+        </PrevButton>
       </Section>
     );
   };
@@ -278,7 +305,7 @@ export default function FilteredTour({
             What level of difficulty should the upcycling ideas have?
           </Question>
         ) : (
-          <h2>Your filtered ideas</h2>
+          ""
         )}
         <ButtonContainer>
           <StyledButton
@@ -310,15 +337,19 @@ export default function FilteredTour({
             Profi
           </StyledButton>
         </ButtonContainer>
-        {selectedDifficulties.length > 0 ? (
-          <button onClick={searchMaterials}>Results</button>
+        {selectedDifficulties.length > 0 && !filteredIdeas.length > 0 ? (
+          <ResultsButton onClick={searchMaterials}>
+            Show my Results <StyledIcon icon={faMagnifyingGlass} />
+          </ResultsButton>
         ) : (
           ""
         )}
         {selectedDifficulties.length > 0 ? (
           ""
         ) : (
-          <PrevButton onClick={handleDifficultyPrevious}>Previous</PrevButton>
+          <PrevButton onClick={handleDifficultyPrevious}>
+            <FontAwesomeIcon icon={faBackward} />
+          </PrevButton>
         )}
       </Section>
     );
