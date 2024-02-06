@@ -60,6 +60,13 @@ export default function FilteredTour({
     return selectedDifficulties.length > 0 ? { display: "none" } : {};
   };
 
+  function handleFormPrevious() {
+    setCurrentSection("materials"), setSelectedMaterials([]);
+  }
+  function handleDifficultyPrevious() {
+    setCurrentSection("forms"), setSelectedForms([]);
+  }
+
   const renderMaterialsSection = () => {
     return (
       <section>
@@ -195,7 +202,7 @@ export default function FilteredTour({
           />
         </button>
         <button onClick={() => setCurrentSection("difficulties")}>Next</button>
-        <button onClick={() => setCurrentSection("materials")}>Previous</button>
+        <button onClick={handleFormPrevious}>Previous</button>
       </section>
     );
   };
@@ -249,7 +256,7 @@ export default function FilteredTour({
           />
         </button>
         <button onClick={searchMaterials}>Results</button>
-        <button onClick={() => setCurrentSection("forms")}>Previous</button>
+        <button onClick={handleDifficultyPrevious}>Previous</button>
       </section>
     );
   };
