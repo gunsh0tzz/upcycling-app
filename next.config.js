@@ -21,6 +21,7 @@ const nextConfig = {
       "hotpotmedia.s3.us-east-2.amazonaws.com",
       "res.cloudinary.com",
       "apumpkinandaprincess.com",
+      "avatars.githubusercontent.com",
     ],
   },
 };

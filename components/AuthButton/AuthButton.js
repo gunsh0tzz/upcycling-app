@@ -4,30 +4,35 @@ import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import {
-  faRightToBracket,
   faDoorOpen,
+  faRightFromBracket,
 } from "@fortawesome/free-solid-svg-icons";
 
-const StyledContainer = styled.div`
+const Button = styled.button`
   display: flex;
   align-items: center;
   gap: 0.5rem;
-`;
+  padding: 0.5rem;
 
-const StyledButton = styled.button`
-  padding: 0.25rem;
-
-  border-radius: 0.25rem;
   border: none;
+  border-radius: 0.5rem;
 
-  font-size: 1.125rem;
   background-color: #ca92de;
   color: white;
+  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5);
 
   transition: transform 0.25s;
   &:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
   }
+`;
+
+const Icon = styled(FontAwesomeIcon)`
+  border-radius: 0.5rem;
+  border: none;
+
+  font-size: 1.125rem;
+  color: white;
 `;
 
 export default function AuthButton() {
@@ -35,23 +40,17 @@ export default function AuthButton() {
 
   if (session) {
     return (
-      <StyledContainer>
-        <p>
-          Signed in as <span aria-label={session.user.name} tabIndex="0">{session.user.name}</span>
-        </p>
-        <StyledButton onClick={() => signOut()} aria-label="Sign Out">
-          <FontAwesomeIcon icon={faDoorOpen} />
-        </StyledButton>
-      </StyledContainer>
+      <Button aria-label="Sign Out" onClick={() => signOut()}>
+        Logout
+        <Icon icon={faDoorOpen} />
+      </Button>
     );
   }
 
   return (
-    <StyledContainer>
-      <p>Not signed in</p>
-      <StyledButton onClick={() => signIn()} aria-label="Sign In">
-        <FontAwesomeIcon icon={faRightToBracket} />
-      </StyledButton>
-    </StyledContainer>
+    <Button aria-label="Sign In" onClick={() => signIn()}>
+      Login
+      <Icon icon={faRightFromBracket} />
+    </Button>
   );
 }
