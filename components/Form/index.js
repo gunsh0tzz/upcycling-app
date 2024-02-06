@@ -193,16 +193,28 @@ export default function Form({ idea = {}, onSubmit }) {
           placeholder="title"
           aria-labelledby="title"
         />
-        <label htmlFor="image" />
-        <StyledInput
-          id="image"
-          name="image"
-          defaultValue={idea.image}
-          placeholder="image"
-          aria-labelledby="image"
-        />
-        <label htmlFor="cover" />
-        <input id="cover" name="cover" type="file" accept=".png,.jpg,.jpeg" />
+        {router.query.id ? (
+          ""
+        ) : (
+          <>
+            <label htmlFor="image" />
+            <StyledInput
+              id="image"
+              name="image"
+              defaultValue={idea.image}
+              placeholder="image"
+              aria-labelledby="image"
+            />
+            <label htmlFor="cover" />
+            <input
+              id="cover"
+              name="cover"
+              type="file"
+              accept=".png,.jpg,.jpeg"
+              defaultValue={idea.cover.url}
+            />
+          </>
+        )}
         <label htmlFor="items" />
         <StyledTextarea
           as="input"
