@@ -150,7 +150,9 @@ export default function Form({ idea = {}, onSubmit }) {
 
   async function handleSubmit(event) {
     event.preventDefault();
-    const cover = await uploadImage(event.target.cover.files[0]);
+    const cover = idea.cover
+      ? idea.cover
+      : await uploadImage(event.target.cover.files[0]);
 
     const data = Object.fromEntries(new FormData(event.target));
     data.items = data.items.split(",").map((item) => item.trim());
@@ -165,7 +167,9 @@ export default function Form({ idea = {}, onSubmit }) {
         step: instruction.step.trim(),
       }));
     onSubmit({ ...idea, ...data, cover });
-    window.alert("Your new idea has been added!");
+    window.alert(
+      idea.title ? "The idea was edited." : "Your new idea has been added!"
+    );
     const form = event.target.elements;
     event.target.reset();
     form.title.focus();
