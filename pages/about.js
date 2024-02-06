@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import styled from "styled-components";
+import { v4 as uuidv4 } from "uuid";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
@@ -132,7 +133,7 @@ export default function AboutPage() {
       <h2>Built by</h2>
       <StyledContainer>
         {team.map((member) => (
-          <AboutCard>
+          <AboutCard key={uuidv4()}>
             <StyledImage
               src={member.image}
               alt={"Avatar from " + member.forename}
@@ -150,7 +151,7 @@ export default function AboutPage() {
       <h2>Tech stack</h2>
       <StyledContainer>
         {techs.map((tech) => (
-          <TechBadge>{tech}</TechBadge>
+          <TechBadge key={uuidv4()}>{tech}</TechBadge>
         ))}
       </StyledContainer>
     </Wrapper>
