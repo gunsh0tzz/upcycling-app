@@ -191,6 +191,7 @@ export default function Form({ idea = {}, onSubmit }) {
           defaultValue={idea.title}
           required
           placeholder="title"
+          aria-labelledby="title"
         />
         <label htmlFor="image" />
         <StyledInput
@@ -198,6 +199,7 @@ export default function Form({ idea = {}, onSubmit }) {
           name="image"
           defaultValue={idea.image}
           placeholder="image"
+          aria-labelledby="image"
         />
         <label htmlFor="cover" />
         <input id="cover" name="cover" type="file" accept=".png,.jpg,.jpeg" />
@@ -272,13 +274,13 @@ export default function Form({ idea = {}, onSubmit }) {
           maxLength={150}
         />
         <StyledButtonContainer>
-          <StyledSaveButton>
+          <StyledSaveButton aria-label="Save Idea">
             <StyledButtonText>
               {router.query.id ? "save" : "add"}{" "}
             </StyledButtonText>
             <Image src={"/check.svg"} width={25} height={25} alt="check icon" />
           </StyledSaveButton>
-          <StyledCancelButton onClick={handleCancel}>
+          <StyledCancelButton onClick={handleCancel} aria-label="Cancel">
             <StyledButtonText>Cancel</StyledButtonText>
             <Image
               src={"/recycling_black.svg"}

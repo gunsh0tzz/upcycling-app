@@ -53,10 +53,6 @@ const Article = styled.article`
   align-items: center;
   position: relative;
   height: 100%;
-  @media (min-width: 600px) {
-    gap: 0.5rem;
-    margin-top: 0rem;
-  }
 `;
 
 export default function Card({
@@ -80,18 +76,15 @@ export default function Card({
       <Title>{title}</Title>
       {session && (
         <FavoriteButton
-        onClick={(event) => event && onToggleFavourites(id, event)}
+          onClick={(event) => event && onToggleFavourites(id, event)}
+          aria-label={isFavourite ? "Remove from favorites" : "Add to favorites"}
         >
-          {isFavourite ? (
-            <Image
-              src={"/plant_fav.svg"}
-              width={40}
-              height={40}
-              alt="plant icon"
-            />
-          ) : (
-            <Image src={"/plant.svg"} width={40} height={40} alt="plant icon" />
-          )}
+          <Image
+            src={isFavourite ? "/plant_fav.svg" : "/plant.svg"}
+            width={40}
+            height={40}
+            alt={isFavourite ? "Favorited" : "Not Favorited"}
+          />
         </FavoriteButton>
       )}
       <Hashtags>

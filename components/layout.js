@@ -38,13 +38,13 @@ const StyledBackgroundContainer = styled.div`
 
 export default function Layout({ children }) {
   return (
-    <StyledContainer>
+    <StyledContainer aria-label="Main Layout Container">
       <Head>
         <title>Reuse</title>
       </Head>
       <Header />
       <StyledMain>
-        <StyledBackgroundContainer>{children}</StyledBackgroundContainer>
+        <StyledBackgroundContainer aria-label="Background Container">{children}</StyledBackgroundContainer>
       </StyledMain>
       <Navigation />
     </StyledContainer>
