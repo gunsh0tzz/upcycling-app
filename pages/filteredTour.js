@@ -12,6 +12,7 @@ export default function FilteredTour({
   const [selectedForms, setSelectedForms] = useState([]);
   const [selectedDifficulties, setSelectedDifficulties] = useState([]);
   const [filteredIdeas, setFilteredIdeas] = useState([]);
+  const [currentSection, setCurrentSection] = useState("materials");
 
   const fuse = new Fuse(ideas, {
     keys: ["hashtags"],
@@ -47,10 +48,6 @@ export default function FilteredTour({
     setFilteredIdeas(filteredIdeas);
   };
 
-  console.log(selectedMaterials);
-  console.log(selectedForms);
-  console.log(selectedDifficulties);
-
   const isMaterialButtonHidden = () => {
     return selectedMaterials.length > 0 ? { display: "none" } : {};
   };
@@ -63,8 +60,8 @@ export default function FilteredTour({
     return selectedDifficulties.length > 0 ? { display: "none" } : {};
   };
 
-  return (
-    <>
+  const renderMaterialsSection = () => {
+    return (
       <section>
         <h2>Material</h2>
         <button
@@ -144,8 +141,13 @@ export default function FilteredTour({
             height={100}
           />
         </button>
+        <button onClick={() => setCurrentSection("forms")}>Next</button>
       </section>
+    );
+  };
 
+  const renderFormsSection = () => {
+    return (
       <section>
         <h2>Form</h2>
         <button
@@ -192,7 +194,14 @@ export default function FilteredTour({
             height={100}
           />
         </button>
+        <button onClick={() => setCurrentSection("difficulties")}>Next</button>
+        <button onClick={() => setCurrentSection("materials")}>Previous</button>
       </section>
+    );
+  };
+
+  const renderDifficultiesSection = () => {
+    return (
       <section>
         <h2>Difficulty</h2>
         <button
@@ -239,9 +248,17 @@ export default function FilteredTour({
             height={100}
           />
         </button>
+        <button onClick={searchMaterials}>Results</button>
+        <button onClick={() => setCurrentSection("forms")}>Previous</button>
       </section>
+    );
+  };
 
-      <button onClick={searchMaterials}>Results</button>
+  return (
+    <>
+      {currentSection === "materials" && renderMaterialsSection()}
+      {currentSection === "forms" && renderFormsSection()}
+      {currentSection === "difficulties" && renderDifficultiesSection()}
 
       {filteredIdeas.length > 0 && (
         <Card
