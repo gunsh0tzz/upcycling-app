@@ -40,7 +40,7 @@ export default function AuthButton() {
 
   if (session) {
     return (
-      <Button onClick={() => signOut()}>
+      <Button aria-label="Sign Out" onClick={() => signOut()}>
         Logout
         <Icon icon={faDoorOpen} />
       </Button>
@@ -48,7 +48,7 @@ export default function AuthButton() {
   }
 
   return (
-    <Button onClick={() => signIn()}>
+    <Button aria-label="Sign In" onClick={() => signIn()}>
       Login
       <Icon icon={faRightFromBracket} />
     </Button>

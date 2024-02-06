@@ -73,6 +73,7 @@ const MainContainer = styled.div`
   width: 80%;
   margin: auto;
 `;
+
 export default function Searchbar({
   suggestions,
   onInputChange,
@@ -82,19 +83,23 @@ export default function Searchbar({
   const [inputValue, setInputValue] = useState("");
   const [showSuggestions, setShowSuggestions] = useState(true);
   const router = useRouter();
+
   function handleChangeEvent(e) {
     onInputChange(e.target.value);
     setInputValue(e.target.value);
     setShowSuggestions(true);
   }
+
   function handleReset() {
     setInputValue("");
     router.reload();
   }
+
   function handleSearch() {
     setShowSuggestions(false);
     onClickEvent(inputValue);
   }
+
   return (
     <MainContainer>
       <StyledContainer>
@@ -102,19 +107,20 @@ export default function Searchbar({
           placeholder="Search for titles or hashtags"
           value={inputValue}
           onChange={handleChangeEvent}
+          aria-label="Search Input"
         />
         {searchValue ? (
-          <StyledSearchButton onClick={handleReset}>
+          <StyledSearchButton onClick={handleReset} aria-label="Reset Search">
             <FontAwesomeIcon icon={faArrowsRotate} />
           </StyledSearchButton>
         ) : (
-          <StyledSearchButton onClick={handleSearch}>
+          <StyledSearchButton onClick={handleSearch} aria-label="Submit Search">
             <FontAwesomeIcon icon={faMagnifyingGlass} />
           </StyledSearchButton>
         )}
       </StyledContainer>
       {showSuggestions && suggestions.length > 0 && (
-        <StyledSearchPreview>
+        <StyledSearchPreview aria-label="Search Suggestions">
           {suggestions.map(({ item }, index) => (
             <StyledListItem key={index}>
               <StyledLink href={`/ideaDetails/${item._id}`}>

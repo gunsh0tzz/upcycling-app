@@ -27,20 +27,24 @@ const StyledArticle = styled.article`
     margin-top: 16vh;
   }
 `;
+
 const StyledImage = styled(Image)`
   border-radius: 0.5rem;
   object-fit: cover;
 `;
+
 const StyledContainer = styled.div`
   display: flex;
   gap: 1rem;
 `;
+
 const Instruction = styled.ol`
   overflow-y: scroll;
   max-height: 7rem;
   list-style-position: inside;
   font-size: 0.9rem;
 `;
+
 const Hashtags = styled.ul`
   color: #7d7d7d;
   list-style: none;
@@ -49,25 +53,30 @@ const Hashtags = styled.ul`
   flex-wrap: wrap;
   font-size: 0.8rem;
 `;
+
 const ItemsContainer = styled.div`
   display: flex;
   flex-direction: column;
 `;
+
 const Items = styled.ul`
   list-style: none;
   font-size: 0.8rem;
   padding: 0.5rem;
 `;
+
 const ItemsTitle = styled.h3`
   padding-left: 0.5rem;
   font-weight: bolder;
   font-size: 1rem;
 `;
+
 const InstructionsTitle = styled.h3`
   display: block;
   font-weight: bolder;
   font-size: 1rem;
 `;
+
 const StyledButton = styled.button`
   width: fit-content;
   padding-top: 0.5rem;
@@ -120,12 +129,18 @@ export default function IdeaDetails() {
       }
     }
   }
+
   return (
     <>
       <StyledArticle>
         <h3>{title}</h3>
         <StyledContainer>
-          <StyledImage src={image ? image : cover.url} alt={title} width={150} height={120} />
+          <StyledImage
+            src={image ? image : cover.url}
+            alt={title}
+            width={150}
+            height={120}
+          />
           <ItemsContainer>
             <ItemsTitle>Items:</ItemsTitle>
             <Items>
@@ -149,25 +164,28 @@ export default function IdeaDetails() {
         </Hashtags>
         <ButtonBox>
           {session && (
-           <>
-           <StyledButton onClick={() => handleDelete(data._id)}>
-            <Image
-              src={"/recycling.svg"}
-              width={40}
-              height={40}
-              alt="plant icon"
-            />
-          </StyledButton>
-          <Link href={`/edit/${data._id}`}>
-            <StyledEditImage
-              src={"/pencil.svg"}
-              width={28}
-              height={27}
-              alt="plant icon"
-            />
-          </Link>
-           </>
-           )}
+            <>
+              <StyledButton
+                onClick={() => handleDelete(data._id)}
+                aria-label="Delete Button"
+              >
+                <Image
+                  src={"/recycling.svg"}
+                  width={40}
+                  height={40}
+                  alt="Delete Icon"
+                />
+              </StyledButton>
+              <Link href={`/edit/${data._id}`}>
+                <StyledEditImage
+                  src={"/pencil.svg"}
+                  width={28}
+                  height={27}
+                  alt="Edit Icon"
+                />
+              </Link>
+            </>
+          )}
         </ButtonBox>
       </StyledArticle>
     </>

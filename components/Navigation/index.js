@@ -95,7 +95,7 @@ export default function Navigation() {
                   src={"/home.svg"}
                   width={60}
                   height={60}
-                  alt="plant icon"
+                  alt="Home Icon"
                 />
               </StyledLink>
             </StyledListItem>
@@ -105,7 +105,7 @@ export default function Navigation() {
                   src={"/add_circle.svg"}
                   width={60}
                   height={60}
-                  alt="plant icon"
+                  alt="Create Icon"
                 />
               </StyledCreateLink>
             </StyledListItem>
@@ -115,7 +115,7 @@ export default function Navigation() {
                   src={"/white_plant.svg"}
                   width={60}
                   height={60}
-                  alt="plant icon"
+                  alt="Favorites Icon"
                 />
               </StyledLink>
             </StyledListItem>
@@ -135,7 +135,7 @@ export default function Navigation() {
                 src={"/home.svg"}
                 width={60}
                 height={60}
-                alt="plant icon"
+                alt="Home Icon"
               />
             </StyledLink>
           </StyledListItem>
