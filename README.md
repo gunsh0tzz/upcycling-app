@@ -2,7 +2,7 @@
 
 # Reuse (an Upcycling App)
 
-An App for sharing upcycling ideas and improving sustainability
+An App for sharing upcycling ideas and improving sustainability.
 
 <details>
   <br/>
