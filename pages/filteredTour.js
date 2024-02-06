@@ -142,6 +142,8 @@ export default function FilteredTour({
   const [selectedDifficulties, setSelectedDifficulties] = useState([]);
   const [filteredIdeas, setFilteredIdeas] = useState([]);
   const [currentSection, setCurrentSection] = useState("materials");
+  const [showNoIdeasMessage, setShowNoIdeasMessage] = useState(false);
+  const [showResultsButton, setShowResultsButton] = useState(true);
 
   const fuse = new Fuse(ideas, {
     keys: ["hashtags"],
@@ -176,6 +178,8 @@ export default function FilteredTour({
       );
     });
     setFilteredIdeas(filteredIdeas);
+    setShowNoIdeasMessage(filteredIdeas.length === 0);
+    setShowResultsButton(false);
   };
 
   const isMaterialButtonHidden = () => {
@@ -192,9 +196,13 @@ export default function FilteredTour({
 
   function handleFormPrevious() {
     setCurrentSection("materials"), setSelectedMaterials([]);
+    setShowNoIdeasMessage(false);
+    setShowResultsButton(true);
   }
   function handleDifficultyPrevious() {
     setCurrentSection("forms"), setSelectedForms([]);
+    setShowNoIdeasMessage(false);
+    setShowResultsButton(true);
   }
 
   const renderMaterialsSection = () => {
@@ -337,7 +345,9 @@ export default function FilteredTour({
             Profi
           </StyledButton>
         </ButtonContainer>
-        {selectedDifficulties.length > 0 && !filteredIdeas.length > 0 ? (
+        {showResultsButton &&
+        selectedDifficulties.length > 0 &&
+        !filteredIdeas.length > 0 ? (
           <ResultsButton onClick={searchMaterials}>
             Show my Results <StyledIcon icon={faMagnifyingGlass} />
           </ResultsButton>
@@ -384,6 +394,12 @@ export default function FilteredTour({
                 </CardListItem>
               </LinkWrapper>
             ))}
+          {showNoIdeasMessage && (
+            <>
+              <h3>No ideas found</h3>
+              <Link href="/">Homepage</Link>
+            </>
+          )}
         </CardList>
       </Container>
     </>
