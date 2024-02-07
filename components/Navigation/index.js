@@ -149,6 +149,11 @@ export default function Navigation() {
               />
             </StyledLink>
           </StyledListItem>
+          <StyledListItem>
+            <StyledLink href="/filteredTour">
+              <StyledIcon icon={faSignsPost} />
+            </StyledLink>
+          </StyledListItem>
         </StyledUnorderedList>
       </StyledNavigation>
     </StyledNavigationWrapper>
