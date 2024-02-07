@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useSession } from "next-auth/react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHouse, faPlus, faHeart } from "@fortawesome/free-solid-svg-icons";
+import { faCircleInfo } from "@fortawesome/free-solid-svg-icons";
 
 const StyledNavigationWrapper = styled.nav`
   width: 100%;
@@ -21,6 +21,7 @@ const StyledNavigation = styled.div`
   background-image: url("/Rectangle.svg");
   background-size: cover;
   z-index: 1;
+  position: relative;
   @media screen and (min-width: 600px) {
     background-image: url("/Desktop_NavImage.svg");
   }
@@ -81,6 +82,22 @@ const StyledCreateLink = styled(Link)`
   }
 `;
 
+const AboutButton = styled(Link)`
+  color: white;
+  text-decoration: none;
+  border-radius: 0.5rem;
+  height: fit-content;
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  font-size: 2.5rem;
+
+  transition: transform 0.25s;
+  &:hover {
+    transform: scale(1.125);
+  }
+`;
+
 export default function Navigation() {
   const { data: session } = useSession();
 
@@ -120,6 +137,9 @@ export default function Navigation() {
               </StyledLink>
             </StyledListItem>
           </StyledUnorderedList>
+          <AboutButton href="/about">
+            <FontAwesomeIcon icon={faCircleInfo} />
+          </AboutButton>
         </StyledNavigation>
       </StyledNavigationWrapper>
     );
@@ -140,6 +160,9 @@ export default function Navigation() {
             </StyledLink>
           </StyledListItem>
         </StyledUnorderedList>
+        <AboutButton href="/about">
+          <FontAwesomeIcon icon={faCircleInfo} />
+        </AboutButton>
       </StyledNavigation>
     </StyledNavigationWrapper>
   );

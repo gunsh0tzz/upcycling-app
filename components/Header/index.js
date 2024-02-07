@@ -37,15 +37,6 @@ const ButtonContainer = styled.div`
   gap: 1rem;
 `;
 
-const AboutButton = styled(Link)`
-  padding: 0.5rem;
-  background-color: #44c67f;
-  color: white;
-  text-decoration: none;
-  border-radius: 0.5rem;
-  height: fit-content;
-`;
-
 export default function Header() {
   return (
     <StyledHeader>
@@ -56,7 +47,6 @@ export default function Header() {
         alt="logo reuse"
       />
       <ButtonContainer>
-        <AboutButton href="/about">About</AboutButton>
         <ProfileButton />
       </ButtonContainer>
     </StyledHeader>
