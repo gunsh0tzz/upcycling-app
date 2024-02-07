@@ -22,6 +22,7 @@ const nextConfig = {
       "res.cloudinary.com",
       "apumpkinandaprincess.com",
       "avatars.githubusercontent.com",
+      "cdn.pixabay.com",
     ],
   },
 };

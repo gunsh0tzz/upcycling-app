@@ -190,12 +190,12 @@ export default function Form({ idea = {}, onSubmit }) {
 
   const handleImageInputChange = (event) => {
     setImageValue(event.target.value);
-    setShowCoverInput(!event.target.value); // Verstecke das Cover-Input, wenn ein Wert im Image-Input liegt
+    setShowCoverInput(!event.target.value);
   };
 
   const handleCoverInputChange = (event) => {
     setCoverValue(event.target.value);
-    setShowImageInput(!event.target.value); // Verstecke das Image-Input, wenn ein Wert im Cover-Input liegt
+    setShowImageInput(!event.target.value);
   };
 
   return (

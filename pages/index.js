@@ -13,6 +13,7 @@ import {
 
 import Card from "../components/Card";
 import Searchbar from "@/components/Searchbar";
+import Router, { useRouter } from "next/router";
 
 const Container = styled.div`
   display: flex;
@@ -193,6 +194,8 @@ export default function HomePage({ onToggleFavourites, favouriteIdeas }) {
 
   const paginatedIdeas = ideas.slice(currentPage - 1, currentPage);
 
+  const router = useRouter();
+
   const fuse = new Fuse(ideas, {
     keys: ["hashtags", "title"],
     minMatchCharLength: 3,
@@ -205,6 +208,10 @@ export default function HomePage({ onToggleFavourites, favouriteIdeas }) {
   }
   function handleInputChange(item) {
     setSuggestions(fuse.search(item));
+  }
+
+  function handleGuidedTour() {
+    router.push("/filteredTour");
   }
 
   return (
@@ -231,7 +238,10 @@ export default function HomePage({ onToggleFavourites, favouriteIdeas }) {
       <CardList>
         {suggestions.length > 0 && searchValue
           ? suggestions.map((suggestion) => (
-              <LinkWrapper href={`/ideaDetails/${suggestion.item._id}`} aria-label={`Link to idea: ${suggestion.item.title}`}>
+              <LinkWrapper
+                href={`/ideaDetails/${suggestion.item._id}`}
+                aria-label={`Link to idea: ${suggestion.item.title}`}
+              >
                 <CardListItem key={suggestion.item._id}>
                   <Card
                     image={suggestion.item.image}
@@ -254,7 +264,10 @@ export default function HomePage({ onToggleFavourites, favouriteIdeas }) {
         {searchValue
           ? ""
           : paginatedIdeas.map((idea) => (
-              <LinkWrapper href={`/ideaDetails/${idea._id}`} aria-label={`Link to idea: ${idea.title}`}>
+              <LinkWrapper
+                href={`/ideaDetails/${idea._id}`}
+                aria-label={`Link to idea: ${idea.title}`}
+              >
                 <CardListItem key={idea._id}>
                   <Card
                     image={idea.image}
