@@ -5,7 +5,8 @@ import { SWRConfig } from "swr";
 import { SessionProvider } from "next-auth/react";
 
 import useLocalStorageState from "use-local-storage-state";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import LoadingAnimation from "@/components/LoadingAnimation";
 
 const fetcher = (url) => fetch(url).then((response) => response.json());
 
@@ -25,6 +26,19 @@ export default function App({
     fallbackData: [],
   });
 
+  const [showLoader, setShowLoader] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowLoader(false);
+    }, 1000);
+    return () => clearTimeout(timer);
+  });
+
+  if (isLoading || showLoader) {
+    return <LoadingAnimation fullScreen={true} showLogo={true} />;
+  }
+
   if (!ideas) {
     return <p>ideas not found!</p>;
   }
@@ -37,13 +51,6 @@ export default function App({
       setFavourites([...favourites, id]);
     }
   }
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const loader = document.getElementById("globalLoader");
-      if (loader) loader.remove();
-    }
-  }, []);
 
   return (
     <>

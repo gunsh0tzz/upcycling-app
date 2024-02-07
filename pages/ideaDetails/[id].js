@@ -5,7 +5,10 @@ import { v4 as uuidv4 } from "uuid";
 import { useRouter } from "next/router.js";
 import useSWR from "swr";
 import { useSession } from "next-auth/react";
+/* import LoadingAnimation from "@/components/LoadingAnimation";
+import { useEffect, useState } from "react";
 
+*/
 const StyledArticle = styled.article`
   display: flex;
   flex-wrap: wrap;
@@ -103,10 +106,22 @@ export default function IdeaDetails() {
   const { data, isLoading, error, mutate } = useSWR(
     id ? `/api/ideas/${id}` : null
   );
+  // const [showLoader, setShowLoader] = useState(true);
 
   if (error) return console.error(error);
 
-  if (!isReady || isLoading) return <h2>Loading...</h2>;
+  /* 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowLoader(false);
+    }, 800);
+    return () => clearTimeout(timer);
+  });
+  */
+
+  if (!isReady || isLoading) {
+    return <h2>Loading...</h2>;
+  }
 
   const { instructions, items, hashtags, title, image, cover } = data;
 

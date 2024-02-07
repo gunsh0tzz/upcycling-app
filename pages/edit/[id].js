@@ -10,7 +10,7 @@ export default function EditIdeas({ ideas, editIdea }) {
   const { id } = router.query;
   const {
     data: ideaToEdit,
-    isLoading,
+    is,
     mutate,
   } = useSWR(id ? `/api/ideas/${id}` : null);
 
@@ -28,8 +28,8 @@ export default function EditIdeas({ ideas, editIdea }) {
     mutate(`/api/ideas/${id}`);
     router.push("/");
   }
-  if (!ideaToEdit || isLoading) {
-    return "Loading";
+  if (!ideaToEdit || is) {
+    return "";
   }
 
   return (

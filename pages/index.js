@@ -14,6 +14,8 @@ import {
 import Card from "../components/Card";
 import Searchbar from "@/components/Searchbar";
 
+import LoadingAnimation from "@/components/LoadingAnimation";
+
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -231,7 +233,10 @@ export default function HomePage({ onToggleFavourites, favouriteIdeas }) {
       <CardList>
         {suggestions.length > 0 && searchValue
           ? suggestions.map((suggestion) => (
-              <LinkWrapper href={`/ideaDetails/${suggestion.item._id}`} aria-label={`Link to idea: ${suggestion.item.title}`}>
+              <LinkWrapper
+                href={`/ideaDetails/${suggestion.item._id}`}
+                aria-label={`Link to idea: ${suggestion.item.title}`}
+              >
                 <CardListItem key={suggestion.item._id}>
                   <Card
                     image={suggestion.item.image}
@@ -254,7 +259,10 @@ export default function HomePage({ onToggleFavourites, favouriteIdeas }) {
         {searchValue
           ? ""
           : paginatedIdeas.map((idea) => (
-              <LinkWrapper href={`/ideaDetails/${idea._id}`} aria-label={`Link to idea: ${idea.title}`}>
+              <LinkWrapper
+                href={`/ideaDetails/${idea._id}`}
+                aria-label={`Link to idea: ${idea.title}`}
+              >
                 <CardListItem key={idea._id}>
                   <Card
                     image={idea.image}
