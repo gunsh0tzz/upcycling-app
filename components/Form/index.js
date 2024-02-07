@@ -182,6 +182,22 @@ export default function Form({ idea = {}, onSubmit }) {
       router.push("/");
     }
   }
+
+  const [imageValue, setImageValue] = useState(idea.image);
+  const [coverValue, setCoverValue] = useState(idea.cover);
+  const [showImageInput, setShowImageInput] = useState(true);
+  const [showCoverInput, setShowCoverInput] = useState(true);
+
+  const handleImageInputChange = (event) => {
+    setImageValue(event.target.value);
+    setShowCoverInput(!event.target.value); // Verstecke das Cover-Input, wenn ein Wert im Image-Input liegt
+  };
+
+  const handleCoverInputChange = (event) => {
+    setCoverValue(event.target.value);
+    setShowImageInput(!event.target.value); // Verstecke das Image-Input, wenn ein Wert im Cover-Input liegt
+  };
+
   return (
     <>
       <StyledForm onSubmit={handleSubmit}>
@@ -198,23 +214,32 @@ export default function Form({ idea = {}, onSubmit }) {
           aria-labelledby="title"
         />
         <label htmlFor="image" />
-        <StyledInput
-          id="image"
-          name="image"
-          defaultValue={idea.image}
-          placeholder="image"
-          aria-labelledby="image"
-        />
-        {!idea.cover && !idea.image ? (
-          <>
-            <label htmlFor="cover" />
-            <input
-              id="cover"
-              name="cover"
-              type="file"
-              accept=".png,.jpg,.jpeg"
-            />
-          </>
+        {showImageInput && (
+          <StyledInput
+            id="image"
+            name="image"
+            value={imageValue}
+            placeholder="image"
+            aria-labelledby="image"
+            onChange={handleImageInputChange}
+          />
+        )}
+        {showCoverInput ? (
+          !idea.cover && !idea.image ? (
+            <>
+              <label htmlFor="cover" />
+              <input
+                id="cover"
+                name="cover"
+                value={coverValue}
+                type="file"
+                accept=".png,.jpg,.jpeg"
+                onChange={handleCoverInputChange}
+              />
+            </>
+          ) : (
+            ""
+          )
         ) : (
           ""
         )}
