@@ -1,5 +1,3 @@
-/* eslint-disable */
-
 import styled from "styled-components";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
@@ -80,8 +78,12 @@ export default function FavouritePage({
       <CardListContainer>
         <CardList>
           {ideasToDisplay.map((idea) => (
-            <LinkWrapper href={`/ideaDetails/${idea._id}`} aria-label={`Link to ${idea.title}`}>
-              <CardListItem key={idea._id}>
+            <LinkWrapper
+              key={idea._id}
+              href={`/ideaDetails/${idea._id}`}
+              aria-label={`Link to ${idea.title}`}
+            >
+              <CardListItem>
                 <Card
                   image={idea.image}
                   cover={idea.cover}
