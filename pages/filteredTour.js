@@ -235,7 +235,7 @@ export default function FilteredTour({
           <StyledButton
             onClick={() => handleMaterialButtonClick("wood")}
             style={isMaterialButtonHidden()}
-            backgroundImageUrl="https://images.unsplash.com/photo-1515446134809-993c501ca304?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            backgroundImageUrl="https://images.unsplash.com/photo-1632199495802-18f7d21f323b?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
           >
             Wood
           </StyledButton>
