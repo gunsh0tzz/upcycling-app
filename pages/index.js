@@ -1,5 +1,3 @@
-/* eslint-disable */
-
 import styled from "styled-components";
 import Link from "next/link";
 import { useState } from "react";
@@ -239,10 +237,11 @@ export default function HomePage({ onToggleFavourites, favouriteIdeas }) {
         {suggestions.length > 0 && searchValue
           ? suggestions.map((suggestion) => (
               <LinkWrapper
+                key={suggestion.item._id}
                 href={`/ideaDetails/${suggestion.item._id}`}
                 aria-label={`Link to idea: ${suggestion.item.title}`}
               >
-                <CardListItem key={suggestion.item._id}>
+                <CardListItem>
                   <Card
                     image={suggestion.item.image}
                     cover={suggestion.item.cover}
@@ -265,6 +264,7 @@ export default function HomePage({ onToggleFavourites, favouriteIdeas }) {
           ? ""
           : paginatedIdeas.map((idea) => (
               <LinkWrapper
+                key={idea._id}
                 href={`/ideaDetails/${idea._id}`}
                 aria-label={`Link to idea: ${idea.title}`}
               >
