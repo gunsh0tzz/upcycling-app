@@ -170,6 +170,11 @@ export default function Navigation() {
               />
             </StyledLink>
           </StyledListItem>
+          <StyledListItem>
+            <StyledLink href="/filteredTour">
+              <StyledIcon icon={faSignsPost} />
+            </StyledLink>
+          </StyledListItem>
         </StyledUnorderedList>
         <AboutButton href="/about">
           <FontAwesomeIcon icon={faCircleInfo} />
