@@ -94,8 +94,6 @@ const StyledTextarea = styled.textarea`
 `;
 
 const StyledTextareaInstruction = styled.textarea`
-  flex: 1;
-
   background-color: #f7f3f3;
   border-radius: 0.8rem;
   min-height: 7vh;
@@ -103,6 +101,7 @@ const StyledTextareaInstruction = styled.textarea`
   overflow-y: auto;
   padding-left: 1rem;
   border: none;
+  width: 90%;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
 `;
 
@@ -126,11 +125,41 @@ const StyledInstructionButtonContainer = styled.div`
   width: 5rem;
 `;
 
+const ResetContainer = styled.div`
+  display: flex;
+  gap: 0.4rem;
+  width: 72%;
+`;
+const ImageContainer = styled.div`
+  display: flex;
+  flex: 2;
+  flex-direction: column;
+  width: 100%;
+  margin-right: 1rem;
+  gap: 0.3rem;
+`;
+
+const ResetButton = styled.button`
+  width: fit-content;
+  align-self: flex-end;
+  background: transparent;
+  border: none;
+`;
+
+const StyledCoverInput = styled.input`
+  border-radius: 0.8rem;
+
+  padding: 0.3rem;
+  margin-left: 0.2rem;
+`;
+
 export default function Form({ idea = {}, onSubmit }) {
   const [instructions, setInstructions] = useState(
     idea.instructions ? idea.instructions : [{ id: uuidv4(), value: "" }]
   );
+
   const router = useRouter();
+
   function handleInstructionChange(id, value) {
     const newInstructions = instructions.map((instruction) =>
       instruction.id === id ? { ...instruction, step: value } : instruction
@@ -147,6 +176,11 @@ export default function Form({ idea = {}, onSubmit }) {
     );
     setInstructions(newInstructions);
   }
+
+  const handleResetButtonClick = () => {
+    setImageValue("");
+    setCoverValue("");
+  };
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -190,12 +224,12 @@ export default function Form({ idea = {}, onSubmit }) {
 
   const handleImageInputChange = (event) => {
     setImageValue(event.target.value);
-    setShowCoverInput(!event.target.value); // Verstecke das Cover-Input, wenn ein Wert im Image-Input liegt
+    setShowCoverInput(!event.target.value);
   };
 
   const handleCoverInputChange = (event) => {
     setCoverValue(event.target.value);
-    setShowImageInput(!event.target.value); // Verstecke das Image-Input, wenn ein Wert im Cover-Input liegt
+    setShowImageInput(!event.target.value);
   };
 
   return (
@@ -213,36 +247,48 @@ export default function Form({ idea = {}, onSubmit }) {
           placeholder="title"
           aria-labelledby="title"
         />
-        <label htmlFor="image" />
-        {showImageInput && (
-          <StyledInput
-            id="image"
-            name="image"
-            value={imageValue}
-            placeholder="image"
-            aria-labelledby="image"
-            onChange={handleImageInputChange}
-          />
-        )}
-        {showCoverInput ? (
-          !idea.cover && !idea.image ? (
-            <>
-              <label htmlFor="cover" />
-              <input
-                id="cover"
-                name="cover"
-                value={coverValue}
-                type="file"
-                accept=".png,.jpg,.jpeg"
-                onChange={handleCoverInputChange}
+        <ResetContainer>
+          <ImageContainer>
+            <label htmlFor="image" />
+            {showImageInput && (
+              <StyledInput
+                id="image"
+                name="image"
+                value={imageValue}
+                placeholder="image"
+                aria-labelledby="image"
+                onChange={handleImageInputChange}
               />
-            </>
-          ) : (
-            ""
-          )
-        ) : (
-          ""
-        )}
+            )}
+            {showCoverInput ? (
+              !idea.cover && !idea.image ? (
+                <>
+                  <label htmlFor="cover" />
+                  <StyledCoverInput
+                    id="cover"
+                    name="cover"
+                    value={coverValue}
+                    type="file"
+                    accept=".png,.jpg,.jpeg"
+                    onChange={handleCoverInputChange}
+                  />
+                </>
+              ) : (
+                ""
+              )
+            ) : (
+              ""
+            )}
+          </ImageContainer>
+          <ResetButton onClick={handleResetButtonClick}>
+            <Image
+              src={"/recycling.svg"}
+              width={30}
+              height={30}
+              alt="reset icon"
+            />
+          </ResetButton>
+        </ResetContainer>
         <label htmlFor="items" />
         <StyledTextarea
           as="input"
@@ -282,7 +328,7 @@ export default function Form({ idea = {}, onSubmit }) {
                       src={"/add_circle.svg"}
                       width={25}
                       height={25}
-                      alt="plant icon"
+                      alt="delete icon"
                     />
                   </StyledInstructionButton>
                   {index > 0 && (
