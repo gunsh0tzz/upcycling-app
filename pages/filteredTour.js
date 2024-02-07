@@ -12,7 +12,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 const Selection = styled.div`
-  margin: 1rem 0.5rem 0.5rem 1rem;
+  margin: 0.75rem 0.5rem 0.5rem 0.75rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -47,6 +47,14 @@ const Container = styled.div`
 
 const Question = styled.h3`
   text-align: center;
+  margin: 0 auto;
+  background-color: #fafafa;
+  padding: 0.3rem;
+  width: fit-content;
+  height: fit-content;
+  border-radius: 0.5rem;
+  font-weight: bold;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.3);
 `;
 
 const CardList = styled.ul`
@@ -92,8 +100,28 @@ const StyledButton = styled.button`
   border: none;
   outline: none;
   cursor: pointer;
-  font-size: 1.2rem;
-  /* color: white; */
+  font-size: 1.1rem;
+  color: black;
+  transition: transform 0.25s;
+  border-radius: 0.8rem;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+  &:hover {
+    transform: scale(1.025);
+  }
+`;
+
+const StyledDifficultyButton = styled.button`
+  background-color: ${(props) => props.backgroundColor};
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100px;
+  width: 100px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 1.1rem;
+  color: black;
+
   transition: transform 0.25s;
   border-radius: 0.8rem;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
@@ -117,8 +145,8 @@ const ResultsButton = styled.button`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 110px;
-  height: 50px;
+  width: 160px;
+  height: 60px;
   padding: 0.5rem;
   color: white;
   background-color: #a97bb5;
@@ -126,6 +154,7 @@ const ResultsButton = styled.button`
   margin-top: 3rem;
   border-radius: 0.8rem;
   border: none;
+  font-size: 1.1rem;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
 `;
 
@@ -137,6 +166,7 @@ const StyledLink = styled(Link)`
   padding: 0.5rem;
   background-color: #fafafa;
   display: flex;
+  margin: 0 auto;
   justify-content: space-between;
   width: 200px;
   background-color: #a97bb5;
@@ -151,6 +181,30 @@ const StyledLink = styled(Link)`
 `;
 
 const StyledMessage = styled.h3`
+  font-size: 1.2rem;
+  padding: 0.2rem;
+  margin-bottom: 0.7rem;
+  text-align: center;
+`;
+
+const TextBackground = styled.div`
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 0.5rem;
+  width: fit-content;
+  margin: 0 auto;
+  padding: 0.2rem;
+`;
+
+const MessageContainer = styled.div`
+  padding: 0.7rem;
+  border-radius: 0.8rem;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.3);
+  background-color: #fafafa;
+`;
+
+const PrevIcon = styled(FontAwesomeIcon)`
+  color: white;
   font-size: 1.2rem;
 `;
 
@@ -235,51 +289,51 @@ export default function FilteredTour({
           <StyledButton
             onClick={() => handleMaterialButtonClick("wood")}
             style={isMaterialButtonHidden()}
-            backgroundImageUrl="https://images.unsplash.com/photo-1632199495802-18f7d21f323b?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            backgroundImageUrl="https://images.unsplash.com/photo-1515446134809-993c501ca304?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
           >
-            Wood
+            <TextBackground> Wood</TextBackground>
           </StyledButton>
           <StyledButton
             onClick={() => handleMaterialButtonClick("plastic")}
             style={isMaterialButtonHidden()}
-            backgroundImageUrl="https://images.unsplash.com/photo-1576037728058-ab2c538ac8d0?q=80&w=2073&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            backgroundImageUrl="https://cdn.pixabay.com/photo/2020/05/04/10/31/the-bottle-5128607_1280.jpg"
           >
-            Plastic
+            <TextBackground> Plastic</TextBackground>
           </StyledButton>
           <StyledButton
             onClick={() => handleMaterialButtonClick("cardboard")}
             style={isMaterialButtonHidden()}
-            backgroundImageUrl="https://images.unsplash.com/photo-1624137527136-66e631bdaa0e?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            backgroundImageUrl="https://cdn.pixabay.com/photo/2019/02/07/12/17/packaging-3981072_1280.jpg"
           >
-            Cardboard
+            <TextBackground> Cardboard</TextBackground>
           </StyledButton>
           <StyledButton
             onClick={() => handleMaterialButtonClick("glass")}
             style={isMaterialButtonHidden()}
-            backgroundImageUrl="https://images.unsplash.com/photo-1542661206-03e9001692de?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            backgroundImageUrl="https://images.unsplash.com/photo-1569075857556-6e707cccc11f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
           >
-            Glass
+            <TextBackground> Glass</TextBackground>
           </StyledButton>
           <StyledButton
             onClick={() => handleMaterialButtonClick("metal")}
             style={isMaterialButtonHidden()}
             backgroundImageUrl="https://images.unsplash.com/photo-1612058237353-6213b412a1c4?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
           >
-            Metal
+            <TextBackground> Metal</TextBackground>
           </StyledButton>
           <StyledButton
             onClick={() => handleMaterialButtonClick("paper")}
             style={isMaterialButtonHidden()}
             backgroundImageUrl="https://images.unsplash.com/photo-1603484477859-abe6a73f9366?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
           >
-            Paper
+            <TextBackground> Paper</TextBackground>
           </StyledButton>
           <StyledButton
             onClick={() => handleMaterialButtonClick("textile")}
             style={isMaterialButtonHidden()}
-            backgroundImageUrl="https://images.unsplash.com/photo-1591195854242-8804547cdcab?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            backgroundImageUrl="https://cdn.pixabay.com/photo/2015/12/19/02/12/texture-1099399_1280.jpg"
           >
-            Textile
+            <TextBackground> Textile</TextBackground>
           </StyledButton>
         </ButtonContainer>
       </Section>
@@ -289,39 +343,39 @@ export default function FilteredTour({
   const renderFormsSection = () => {
     return (
       <Section>
-        <Question>What shape has your recycling object?</Question>{" "}
+        <Question>What shape is your recycling object?</Question>{" "}
         <ButtonContainer>
           <StyledButton
             onClick={() => handleFormButtonClick("bottle")}
             style={isFormButtonHidden()}
-            backgroundImageUrl="https://images.unsplash.com/photo-1571727153934-b9e0059b7ab2?q=80&w=2574&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            backgroundImageUrl="https://images.unsplash.com/photo-1629227071576-e91767cc3024?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
           >
-            Bottle
+            <TextBackground>Bottle</TextBackground>
           </StyledButton>
           <StyledButton
             onClick={() => handleFormButtonClick("cup")}
             style={isFormButtonHidden()}
-            backgroundImageUrl="https://images.unsplash.com/photo-1575026469075-99e9e3433e72?q=80&w=2574&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            backgroundImageUrl="https://images.unsplash.com/photo-1615485736894-a2d2e6d4cd9a?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
           >
-            Cup
+            <TextBackground>Cup</TextBackground>
           </StyledButton>
           <StyledButton
             onClick={() => handleFormButtonClick("can")}
             style={isFormButtonHidden()}
             backgroundImageUrl="https://images.unsplash.com/photo-1561924018-4f213bdc7364?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
           >
-            Can
+            <TextBackground>Can</TextBackground>
           </StyledButton>
           <StyledButton
             onClick={() => handleFormButtonClick("bag")}
             style={isFormButtonHidden()}
             backgroundImageUrl="https://images.unsplash.com/photo-1597348989645-46b190ce4918?q=80&w=2574&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
           >
-            Bag
+            <TextBackground>Bag</TextBackground>
           </StyledButton>{" "}
         </ButtonContainer>
         <PrevButton onClick={handleFormPrevious}>
-          <FontAwesomeIcon icon={faBackward} />
+          <PrevIcon icon={faBackward} />
         </PrevButton>
       </Section>
     );
@@ -338,34 +392,34 @@ export default function FilteredTour({
           ""
         )}
         <ButtonContainer>
-          <StyledButton
+          <StyledDifficultyButton
             onClick={() => handleDifficultyButtonClick("easy")}
             style={isDifficultyButtonHidden()}
-            backgroundImageUrl="https://images.unsplash.com/photo-1519606247872-0440aae9b827?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            backgroundColor="#6cbd76"
           >
-            Easy
-          </StyledButton>
-          <StyledButton
+            <TextBackground>Easy</TextBackground>
+          </StyledDifficultyButton>
+          <StyledDifficultyButton
             onClick={() => handleDifficultyButtonClick("medium")}
             style={isDifficultyButtonHidden()}
-            backgroundImageUrl="https://images.unsplash.com/photo-1519606247872-0440aae9b827?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            backgroundColor="#e0792f"
           >
-            Medium
-          </StyledButton>
-          <StyledButton
+            <TextBackground> Medium</TextBackground>
+          </StyledDifficultyButton>
+          <StyledDifficultyButton
             onClick={() => handleDifficultyButtonClick("difficult")}
             style={isDifficultyButtonHidden()}
-            backgroundImageUrl="https://images.unsplash.com/photo-1519606247872-0440aae9b827?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            backgroundColor="#e6413c"
           >
-            Difficult
-          </StyledButton>
-          <StyledButton
+            <TextBackground> Difficult</TextBackground>
+          </StyledDifficultyButton>
+          <StyledDifficultyButton
             onClick={() => handleDifficultyButtonClick("profi")}
             style={isDifficultyButtonHidden()}
-            backgroundImageUrl="https://images.unsplash.com/photo-1519606247872-0440aae9b827?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            backgroundColor="#a760e0"
           >
-            Profi
-          </StyledButton>
+            <TextBackground>Profi</TextBackground>
+          </StyledDifficultyButton>
         </ButtonContainer>
         {showResultsButton &&
         selectedDifficulties.length > 0 &&
@@ -380,7 +434,7 @@ export default function FilteredTour({
           ""
         ) : (
           <PrevButton onClick={handleDifficultyPrevious}>
-            <FontAwesomeIcon icon={faBackward} />
+            <PrevIcon icon={faBackward} />
           </PrevButton>
         )}
       </Section>
@@ -417,14 +471,14 @@ export default function FilteredTour({
               </LinkWrapper>
             ))}
           {showNoIdeasMessage && (
-            <>
+            <MessageContainer>
               <StyledMessage>Sorry, no matching idea found</StyledMessage>
 
               <StyledLink href="/">
                 <p>Homepage</p>
                 <FontAwesomeIcon icon={faSignsPost} />
               </StyledLink>
-            </>
+            </MessageContainer>
           )}
         </CardList>
       </Container>

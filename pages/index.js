@@ -306,10 +306,6 @@ export default function HomePage({ onToggleFavourites, favouriteIdeas }) {
           </PaginationNextButton>
         </ButtonBox>
       )}
-      <div>
-        <button onClick={handleGuidedTour}>Guided</button>
-        <button>Not guided</button>
-      </div>
     </Container>
   );
 }
