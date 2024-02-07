@@ -205,18 +205,19 @@ export default function Form({ idea = {}, onSubmit }) {
           placeholder="image"
           aria-labelledby="image"
         />
-        {!idea.cover ||
-          (!idea.image && (
-            <>
-              <label htmlFor="cover" />
-              <input
-                id="cover"
-                name="cover"
-                type="file"
-                accept=".png,.jpg,.jpeg"
-              />
-            </>
-          ))}
+        {!idea.cover && !idea.image ? (
+          <>
+            <label htmlFor="cover" />
+            <input
+              id="cover"
+              name="cover"
+              type="file"
+              accept=".png,.jpg,.jpeg"
+            />
+          </>
+        ) : (
+          ""
+        )}
         <label htmlFor="items" />
         <StyledTextarea
           as="input"
