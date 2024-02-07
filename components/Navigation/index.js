@@ -5,6 +5,7 @@ import { useSession } from "next-auth/react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleInfo } from "@fortawesome/free-solid-svg-icons";
+import { faSignsPost } from "@fortawesome/free-solid-svg-icons";
 
 const StyledNavigationWrapper = styled.nav`
   width: 100%;
@@ -20,6 +21,7 @@ const StyledNavigation = styled.div`
   max-width: 42rem;
   background-image: url("/Rectangle.svg");
   background-size: cover;
+  position: relative;
   z-index: 1;
   position: relative;
   @media screen and (min-width: 600px) {
@@ -53,8 +55,12 @@ const StyledLink = styled(Link)`
 `;
 
 const StyledIcon = styled(FontAwesomeIcon)`
-  color: black;
+  color: white;
   font-size: 2rem;
+  padding: 0.5rem;
+  position: absolute;
+  bottom: 0;
+  right: 0;
 `;
 
 const StyledImage = styled(Image)`
@@ -134,6 +140,11 @@ export default function Navigation() {
                   height={60}
                   alt="Favorites Icon"
                 />
+              </StyledLink>
+            </StyledListItem>
+            <StyledListItem>
+              <StyledLink href="/filteredTour">
+                <StyledIcon icon={faSignsPost} />
               </StyledLink>
             </StyledListItem>
           </StyledUnorderedList>

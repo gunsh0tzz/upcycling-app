@@ -19,7 +19,7 @@ const StyledArticle = styled.article`
   border-radius: 1rem;
   max-width: 100%;
   margin-bottom: 8rem;
-  box-shadow: 4px 2px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
   @media screen and (min-width: 601px) {
     margin-top: 6vh;
   }

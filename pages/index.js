@@ -11,6 +11,7 @@ import {
 
 import Card from "../components/Card";
 import Searchbar from "@/components/Searchbar";
+import Router, { useRouter } from "next/router";
 
 const Container = styled.div`
   display: flex;
@@ -191,6 +192,8 @@ export default function HomePage({ onToggleFavourites, favouriteIdeas }) {
 
   const paginatedIdeas = ideas.slice(currentPage - 1, currentPage);
 
+  const router = useRouter();
+
   const fuse = new Fuse(ideas, {
     keys: ["hashtags", "title"],
     minMatchCharLength: 3,
@@ -203,6 +206,10 @@ export default function HomePage({ onToggleFavourites, favouriteIdeas }) {
   }
   function handleInputChange(item) {
     setSuggestions(fuse.search(item));
+  }
+
+  function handleGuidedTour() {
+    router.push("/filteredTour");
   }
 
   return (
