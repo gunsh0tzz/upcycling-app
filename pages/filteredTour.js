@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBackward,
   faMagnifyingGlass,
+  faSignsPost,
 } from "@fortawesome/free-solid-svg-icons";
 
 const Selection = styled.div`
@@ -91,8 +92,8 @@ const StyledButton = styled.button`
   border: none;
   outline: none;
   cursor: pointer;
-  font-size: 1rem;
-  color: white;
+  font-size: 1.2rem;
+  /* color: white; */
   transition: transform 0.25s;
   border-radius: 0.8rem;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
@@ -129,6 +130,27 @@ const ResultsButton = styled.button`
 `;
 
 const StyledIcon = styled(FontAwesomeIcon)`
+  font-size: 1.2rem;
+`;
+
+const StyledLink = styled(Link)`
+  padding: 0.5rem;
+  background-color: #fafafa;
+  display: flex;
+  justify-content: space-between;
+  width: 200px;
+  background-color: #a97bb5;
+  color: white;
+  text-decoration: none;
+  border-radius: 0.8rem;
+  font-size: 1.2rem;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+  &:hover {
+    transform: scale(1.025);
+  }
+`;
+
+const StyledMessage = styled.h3`
   font-size: 1.2rem;
 `;
 
@@ -241,21 +263,21 @@ export default function FilteredTour({
           <StyledButton
             onClick={() => handleMaterialButtonClick("metal")}
             style={isMaterialButtonHidden()}
-            backgroundImageUrl="https://images.unsplash.com/photo-1597227093570-eccc70d8a416?q=80&w=2574&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            backgroundImageUrl="https://images.unsplash.com/photo-1612058237353-6213b412a1c4?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
           >
             Metal
           </StyledButton>
           <StyledButton
             onClick={() => handleMaterialButtonClick("paper")}
             style={isMaterialButtonHidden()}
-            backgroundImageUrl="https://images.unsplash.com/photo-1601662528567-526cd06f6582?q=80&w=2630&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            backgroundImageUrl="https://images.unsplash.com/photo-1603484477859-abe6a73f9366?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
           >
             Paper
           </StyledButton>
           <StyledButton
             onClick={() => handleMaterialButtonClick("textile")}
             style={isMaterialButtonHidden()}
-            backgroundImageUrl="https://images.unsplash.com/photo-1534639077088-d702bcf685e7?q=80&w=2193&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            backgroundImageUrl="https://images.unsplash.com/photo-1591195854242-8804547cdcab?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
           >
             Textile
           </StyledButton>
@@ -396,8 +418,12 @@ export default function FilteredTour({
             ))}
           {showNoIdeasMessage && (
             <>
-              <h3>No ideas found</h3>
-              <Link href="/">Homepage</Link>
+              <StyledMessage>Sorry, no matching idea found</StyledMessage>
+
+              <StyledLink href="/">
+                <p>Homepage</p>
+                <FontAwesomeIcon icon={faSignsPost} />
+              </StyledLink>
             </>
           )}
         </CardList>
