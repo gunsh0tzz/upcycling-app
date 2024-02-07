@@ -5,6 +5,7 @@ import { SWRConfig } from "swr";
 import { SessionProvider } from "next-auth/react";
 
 import useLocalStorageState from "use-local-storage-state";
+import { useEffect } from "react";
 
 const fetcher = (url) => fetch(url).then((response) => response.json());
 
@@ -36,6 +37,13 @@ export default function App({
       setFavourites([...favourites, id]);
     }
   }
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const loader = document.getElementById("globalLoader");
+      if (loader) loader.remove();
+    }
+  }, []);
 
   return (
     <>

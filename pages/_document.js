@@ -26,8 +26,18 @@ export default class MyDocument extends Document {
   render() {
     return (
       <Html lang="en">
-        <Head />
+        <Head>
+          <link rel="stylesheet" href="global-loader.css" />
+        </Head>
         <body>
+          <div id="globalLoader">
+            <div class="corners">
+              <div class="corner corner--1"></div>
+              <div class="corner corner--2"></div>
+              <div class="corner corner--3"></div>
+              <div class="corner corner--4"></div>
+            </div>
+          </div>
           <Main />
           <NextScript />
         </body>
