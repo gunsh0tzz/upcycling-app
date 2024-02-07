@@ -94,10 +94,25 @@ const AboutButton = styled(Link)`
   border-radius: 0.5rem;
   height: fit-content;
   position: absolute;
-  bottom: 1rem;
-  left: 1rem;
-  font-size: 2.5rem;
+  bottom: 0.25rem;
+  left: 0.5rem;
+  font-size: 2rem;
 
+  transition: transform 0.25s;
+  &:hover {
+    transform: scale(1.125);
+  }
+`;
+
+const CustomerJourneyButton = styled(Link)`
+  color: white;
+  text-decoration: none;
+  border-radius: 0.5rem;
+  height: fit-content;
+  position: absolute;
+  bottom: 0.25rem;
+  right: 0.5rem;
+  font-size: 2rem;
   transition: transform 0.25s;
   &:hover {
     transform: scale(1.125);
@@ -142,15 +157,13 @@ export default function Navigation() {
                 />
               </StyledLink>
             </StyledListItem>
-            <StyledListItem>
-              <StyledLink href="/filteredTour">
-                <StyledIcon icon={faSignsPost} />
-              </StyledLink>
-            </StyledListItem>
           </StyledUnorderedList>
           <AboutButton href="/about">
             <FontAwesomeIcon icon={faCircleInfo} />
           </AboutButton>
+          <CustomerJourneyButton href="/filteredTour">
+            <FontAwesomeIcon icon={faSignsPost} />
+          </CustomerJourneyButton>
         </StyledNavigation>
       </StyledNavigationWrapper>
     );
@@ -170,15 +183,13 @@ export default function Navigation() {
               />
             </StyledLink>
           </StyledListItem>
-          <StyledListItem>
-            <StyledLink href="/filteredTour">
-              <StyledIcon icon={faSignsPost} />
-            </StyledLink>
-          </StyledListItem>
         </StyledUnorderedList>
         <AboutButton href="/about">
           <FontAwesomeIcon icon={faCircleInfo} />
         </AboutButton>
+        <CustomerJourneyButton href="/filteredTour">
+          <FontAwesomeIcon icon={faSignsPost} />
+        </CustomerJourneyButton>
       </StyledNavigation>
     </StyledNavigationWrapper>
   );
