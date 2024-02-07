@@ -257,6 +257,7 @@ export default function HomePage({ onToggleFavourites, favouriteIdeas }) {
           ? ""
           : paginatedIdeas.map((idea) => (
               <LinkWrapper
+                key={idea._id}
                 href={`/ideaDetails/${idea._id}`}
                 aria-label={`Link to idea: ${idea.title}`}
               >
