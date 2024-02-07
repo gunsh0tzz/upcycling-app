@@ -20,6 +20,7 @@ const StyledNavigation = styled.div`
   max-width: 42rem;
   background-image: url("/Rectangle.svg");
   background-size: cover;
+  position: relative;
   z-index: 1;
   @media screen and (min-width: 600px) {
     background-image: url("/Desktop_NavImage.svg");
@@ -55,7 +56,7 @@ const StyledIcon = styled(FontAwesomeIcon)`
   color: white;
   font-size: 2rem;
   padding: 0.5rem;
-  position: fixed;
+  position: absolute;
   bottom: 0;
   right: 0;
 `;
