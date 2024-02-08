@@ -1,8 +1,6 @@
 import styled from "styled-components";
 import Image from "next/image";
-import AuthButton from "../AuthButton/AuthButton";
 import ProfileButton from "../ProfileButton";
-import Link from "next/link";
 
 const StyledHeader = styled.header`
   padding: 2vh 4vh;

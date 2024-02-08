@@ -65,12 +65,11 @@ const StyledContainer = styled.div`
 
 const AboutCard = styled.div`
   border-radius: 0.5rem;
-  box-shadow: 0 0 0.5rem black;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
   width: fit-content;
   padding: 1rem;
   background-color: #fafafa;
   text-align: center;
-
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -108,7 +107,7 @@ const TechBadge = styled.p`
   border-radius: 0.25rem;
   background-color: white;
   color: black;
-  box-shadow: 0 0 0.5rem black;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
 `;
 
 export default function AboutPage() {
