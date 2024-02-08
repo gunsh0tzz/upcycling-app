@@ -120,7 +120,7 @@ export default function IdeaDetails() {
   */
 
   if (!isReady || isLoading) {
-    return <h2>Loading...</h2>;
+    return <h2 style={{ alignSelf: "center" }}>Loading...</h2>;
   }
 
   const { instructions, items, hashtags, title, image, cover } = data;
