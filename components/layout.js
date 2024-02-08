@@ -26,6 +26,7 @@ const StyledContainer = styled.div`
 const StyledBackgroundContainer = styled.div`
   display: flex;
   justify-content: center;
+  flex-direction: column;
 
   width: 100%;
   min-height: 32rem;
