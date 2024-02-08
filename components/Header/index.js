@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Image from "next/image";
 import AuthButton from "../AuthButton/AuthButton";
 import ProfileButton from "../ProfileButton";
+import Link from "next/link";
 
 const StyledHeader = styled.header`
   padding: 2vh 4vh;
@@ -30,6 +31,12 @@ const StyledImage = styled(Image)`
   }
 `;
 
+const ButtonContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+`;
+
 export default function Header() {
   return (
     <StyledHeader>
@@ -39,7 +46,9 @@ export default function Header() {
         height={60}
         alt="logo reuse"
       />
-      <ProfileButton />
+      <ButtonContainer>
+        <ProfileButton />
+      </ButtonContainer>
     </StyledHeader>
   );
 }
