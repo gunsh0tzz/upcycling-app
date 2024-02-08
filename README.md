@@ -1,4 +1,4 @@
-![Reuse_Banner](https://github.com/kevinldg/upcycling-app/assets/68171149/36b07e2a-865b-4308-9f5e-98129bda830e)
+![Reuse_Banner](https://github.com/kevinldg/reuse-app/assets/68171149/36b07e2a-865b-4308-9f5e-98129bda830e)
 
 # Reuse (an Upcycling App)
 
@@ -8,7 +8,7 @@ An App for sharing upcycling ideas and improving sustainability.
   <br/>
   <summary>App view</summary>
   
-  ![image](https://github.com/kevinldg/upcycling-app/assets/68171149/1acf2248-06af-4934-b905-46206fa6005e)
+  ![image](https://github.com/kevinldg/reuse-app/assets/68171149/1acf2248-06af-4934-b905-46206fa6005e)
 </details>
 
 ## Capstone Project
@@ -37,11 +37,11 @@ This app was a capstone project from Hendrik, Jore, Kevin and Sarah. Part of the
 
 1. Clone the repository from GitHub
 ```
-git clone https://github.com/kevinldg/upcycling-app.git
+git clone https://github.com/kevinldg/reuse-app.git
 ```
 2. Go into the repository
 ```
-cd upcycling-app
+cd reuse-app
 ```
 3. Install required packages
 ```
