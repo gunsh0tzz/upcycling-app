@@ -5,6 +5,8 @@ import { SWRConfig } from "swr";
 import { SessionProvider } from "next-auth/react";
 
 import useLocalStorageState from "use-local-storage-state";
+import { useEffect, useState } from "react";
+import LoadingAnimation from "@/components/LoadingAnimation";
 
 const fetcher = (url) => fetch(url).then((response) => response.json());
 
@@ -23,6 +25,19 @@ export default function App({
   } = useSWR("/api/ideas", fetcher, {
     fallbackData: [],
   });
+
+  const [showLoader, setShowLoader] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowLoader(false);
+    }, 1000);
+    return () => clearTimeout(timer);
+  });
+
+  if (isLoading || showLoader) {
+    return <LoadingAnimation fullScreen={true} showLogo={true} />;
+  }
 
   if (!ideas) {
     return <p>ideas not found!</p>;

@@ -13,6 +13,8 @@ import Card from "../components/Card";
 import Searchbar from "@/components/Searchbar";
 import Router, { useRouter } from "next/router";
 
+import LoadingAnimation from "@/components/LoadingAnimation";
+
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -268,7 +270,7 @@ export default function HomePage({ onToggleFavourites, favouriteIdeas }) {
                 href={`/ideaDetails/${idea._id}`}
                 aria-label={`Link to idea: ${idea.title}`}
               >
-                <CardListItem key={idea._id}>
+                <CardListItem>
                   <Card
                     image={idea.image}
                     cover={idea.cover}

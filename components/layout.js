@@ -24,6 +24,9 @@ const StyledContainer = styled.div`
 `;
 
 const StyledBackgroundContainer = styled.div`
+  display: flex;
+  justify-content: center;
+
   width: 100%;
   min-height: 32rem;
 
@@ -44,7 +47,9 @@ export default function Layout({ children }) {
       </Head>
       <Header />
       <StyledMain>
-        <StyledBackgroundContainer aria-label="Background Container">{children}</StyledBackgroundContainer>
+        <StyledBackgroundContainer aria-label="Background Container">
+          {children}
+        </StyledBackgroundContainer>
       </StyledMain>
       <Navigation />
     </StyledContainer>
