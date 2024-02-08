@@ -17,7 +17,7 @@ const StyledContainer = styled.div`
 const StyledImage = styled(Image)`
   border-radius: 100%;
   border: 0rem solid black;
-  box-shadow: 0 0 0.5rem black;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
 `;
 
 export default function ProfilePage() {

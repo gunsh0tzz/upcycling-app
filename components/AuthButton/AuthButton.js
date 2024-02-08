@@ -13,13 +13,11 @@ const Button = styled.button`
   align-items: center;
   gap: 0.5rem;
   padding: 0.5rem;
-
   border: none;
   border-radius: 0.5rem;
-
   background-color: #ca92de;
   color: white;
-  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
 
   transition: transform 0.25s;
   &:hover {
@@ -30,7 +28,6 @@ const Button = styled.button`
 const Icon = styled(FontAwesomeIcon)`
   border-radius: 0.5rem;
   border: none;
-
   font-size: 1.125rem;
   color: white;
 `;

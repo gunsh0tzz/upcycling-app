@@ -5,9 +5,8 @@ import styled from "styled-components";
 import AuthButton from "../AuthButton/AuthButton";
 
 const StyledImage = styled(Image)`
-  box-shadow: 0 0 0.25rem black;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
   border-radius: 100%;
-  border: 1px solid gray;
 `;
 
 export default function ProfileButton() {
